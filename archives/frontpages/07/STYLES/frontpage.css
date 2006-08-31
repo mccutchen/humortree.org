@@ -1,0 +1,18 @@
+BODY {
+	background-color: #ccc;
+	color: #333;
+	padding: 10px;
+}
+A, A:link {
+	color: #000;
+	background-color: transparent;
+}
+A:visited {
+	color: #666;
+	background-color: transparent;
+}
+A:hover,A:active {
+	text-decoration: none;
+	background-color: #000;
+	color: #000;
+}

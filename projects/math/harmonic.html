@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+	<script language="javascript">
+		var t_cos = 0;
+		var t_sin = 0;
+		var t_increment = .1;
+		var amplitude = 10;
+		var period = 2 * Math.PI;
+		
+		//alert(Math.cos(0));
+		
+		function init()
+		{
+			sine();
+			cosine();
+		}
+		
+		function sine()
+		{
+			var y = amplitude * Math.sin( (Math.PI * t_sin) / 10);
+			
+			y /= Math.PI;
+			
+			y *= 100;
+			y = Math.floor(y);
+			
+			y /= 10;
+			y = Math.round(y);
+			
+			y += 100;
+			
+			//document.all("number").innerHTML = y;
+			
+			t_sin += t_increment;
+			if(t_sin >= 6*period)
+				t_sin = 0;
+			
+			document.all("sine").style.top = y;
+			document.all("sine").style.left = t_sin*10;	
+			
+			setTimeout("sine();",10);
+		}
+		
+		function cosine()
+		{
+			var y = amplitude * Math.cos( (Math.PI * t_cos) / 10);
+			
+			y /= Math.PI;
+			
+			y *= 100;
+			y = Math.floor(y);
+			
+			y /= 10;
+			y = Math.round(y);
+			
+			y += 100;
+			
+			t_cos += t_increment;
+			if(t_cos >= 6*period)
+				t_cos = 0;
+			
+			//alert(y);
+			
+			document.all("cosine").style.top = y;
+			document.all("cosine").style.left = t_cos*10;	
+			
+			setTimeout("cosine();",10);
+		}
+		
+	</script>
+</head>
+
+<body bgcolor="#cccccc" onload="init();">
+
+<div id="cosine" style="position:absolute; top:0px; left:0px;">
+cosine
+</div>
+
+<div id="sine" style="position:absolute; top:0px; left:0px;">
+sine
+</div>
+
+<div style="position:absolute; top:300px; left:10px;">
+simple harmonic motion is what i think this is called.
+<br>
+<br>
+a sine wave and a cosine wave, sort of... the starts are off,
+<br>
+so they sort of follow each other, which is not the desired effect.
+<br>
+<br>
+still working on this one.
+</div>
+
+</body>
+</html>

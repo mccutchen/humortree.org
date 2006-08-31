@@ -1,0 +1,105 @@
+BODY
+{
+	background-color: #cccccc;
+	color: #6699cc;
+	font: 11px verdana,arial;
+	margin: 40px 0px;
+	padding: 0px;
+	text-align: center; /* makes the content of the body centered in IE 5 Win */
+}
+
+.container
+{
+	width: 502px;
+	background-color: #6699cc;
+	text-align: left;
+	color: white;
+	position: relative;
+	margin: 0px auto; /* makes the 'container' div centered in proper browsers */
+}
+
+A:link,A:visited
+{
+	color: #336699;
+	background-color: white;
+	text-decoration: none;
+}
+
+A:hover, A:active
+{
+	color: white;
+	background-color: #6699cc;
+	text-decoration: none;
+}
+
+A.copy:link,A.copy:visited
+{
+	color: white;
+	background-color: #6699cc;
+	text-decoration: none;
+}
+
+A.copy:hover, A.copy:active
+{
+	color: #6699cc;
+	background-color: white;
+	text-decoration: none;
+}
+
+.logospace
+{
+	width: 500px;
+	color: white;
+	text-align: left;
+	background-color: #6699cc;
+	vertical-align: middle;
+	padding: 0px 0px 100px 0px;
+}
+
+.logotype
+{
+	font: 11px verdana,arial;
+	font-weight: bold;
+	color: white;
+	background-color: #6699cc;
+	text-align: left;
+	vertical-align: top;
+	padding: 10px;
+}
+
+.content
+{
+	width: 500px;
+	background-color: white;
+	border-left: 1px solid #6699cc;
+	border-right: 1px solid #6699cc;
+	border-bottom: 1px solid #6699cc;
+	color: #6699cc;
+}
+
+.words
+{
+	font: 11px verdana,arial;
+	color: #6699cc;
+	text-align: left;
+	vertical-align: top;
+	background-color: white;
+}
+
+.subhead
+{
+	font: 18px verdana, arial;
+	color: #6699cc;
+	text-align: left;
+	vertical-align: middle;
+	background-color: white;
+}
+
+.fineprint
+{
+	font: 10px verdana, arial;
+	color: white;
+	text-align: right;
+	vertical-align: middle;
+	background-color: #6699cc;
+}

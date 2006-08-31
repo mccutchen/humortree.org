@@ -1,0 +1,332 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Organic Motion, Attempt 1 (using HTLIB&copy;) </title>
+	
+	<script type="text/javascript" language="javascript" src="HTLIB.js"></script>
+	
+	<script type="text/javascript" language="javascript">
+		
+		// SEMI-ORGANIC MOTION, version 1.0
+    // http://www.humortree.org 
+		
+    // copyright 2001 Will McCutchen
+    // use and abuse this all you want,
+    // just give me credit here.
+    
+    
+		var STEPS = 10; // number of steps to take to get to the next point
+		var DELAY = 10; // delay between steps of the animation
+		var animateObjectIndex = 0; // to count the number of animateObjects created
+		var animateObjectArray = new Array(); // an array to put the objects into
+		
+		// the newTarget() function picks a new target in a box that extends this many pixels away from the
+		// current point in any direction
+		var MAXOFFSET = 10;
+		var MINOFFSET = -10;
+		
+		var xORIGIN = 250;
+		var yORIGIN = 250;
+		
+		var LEFTMIN = 0;
+		var LEFTMAX = 500;
+		var TOPMIN = 0;
+		var TOPMAX = 500;
+		
+		function init()
+		{
+			HT_init();
+			for (var i = 2; i <= 11; i++) // start with the third div tag, and go through the 12th.
+				var temp = new animateObject(i);
+			for (var i = 0; i < animateObjectArray.length; i++)
+				animateObjectArray[i].newTarget(); // start the animation for each object in the array
+		}
+		
+		
+		function animateObject(id)
+		{
+			this.style = HT_getStyleObject(id); // modified like: myObject.style.top = 10; or whatever
+			
+			// this.top and this.left are read-only... modifying them will not affect the object's position
+			this.top = parseInt(this.style.top);
+			this.left = parseInt(this.style.left);
+			
+			// xStep and yStep are assigned by the getSlope() function... they are the change in x or y 
+			// for each step of the animation
+			this.xStep;
+			this.yStep;
+			
+			this.stepCount = 0; // counts the steps taken, up to value of var STEPS
+			this.timer; // holds the setTimeout() function for this object.
+			this.index = animateObjectIndex; // this.index is the index of this object in the animateObjectArray array.
+			
+			// function assignments - the value on the left is the name of a function inside this function
+			this.getSlope = _getSlope;
+			this.animate = _animate;
+			this.update = _update;
+			this.newTarget = _newTarget;
+			this.reset = _reset;
+			
+			animateObjectArray[this.index] = this; // puts this object into the animateObjectArray array at this.index
+			this.string = "animateObjectArray[" + this.index + "]"; // a string to be used for setTimeout()
+			animateObjectIndex++; // update the animateObjectIndex
+			
+			function _animate()
+			{
+				if (this.stepCount < STEPS) // runs through the animation until this.stepCount is bigger than var STEPS
+				{
+					this.style.left = parseInt(this.style.left) + this.xStep + "px"; // add this.xStep to this.left ("px" is necessary for NS6)
+					this.style.top = parseInt(this.style.top) + this.yStep + "px"; // add this.yStep to this.top
+					
+					this.update(); // updates the read-only variables in this object
+					this.stepCount++; // increment stepCount
+					
+					// this method was used after looking at the source code of WebFX's animation library,
+					// at http://webfx.eae.net.
+					// i couldn't make it work the other way i was trying, and i saw that they did it
+					// like this, so i tried it and it worked.
+					animateObjectArray[this.index].timer = setTimeout(this.string + ".animate()",DELAY);
+					return null;
+				}
+				else if(this.stepCount >= STEPS)
+				{
+				 	this.reset(); // reset all internal variables and get a new target to go to
+					return null;
+				}
+			}
+			
+			function _newTarget()
+			{
+				var xoffset = HT_randomNumber(MINOFFSET,MAXOFFSET); // how much x will change to find the new x
+				var yoffset = HT_randomNumber(MINOFFSET,MAXOFFSET); // how much y will change to find the new y
+				
+				if (this.left + xoffset < LEFTMIN || this.left + xoffset >= LEFTMAX || this.top + yoffset < TOPMIN || this.top + yoffset >= TOPMAX)
+				{
+					this.style.left = xORIGIN + "px";
+					this.style.top = yORIGIN + "px";
+					this.update();
+					flash(1);
+				}
+				
+				// get slope between the current values and the new ones
+				this.getSlope(this.left,this.top, this.left + xoffset, this.top + yoffset);
+				return null;
+			}
+			
+			function _getSlope(x1,y1,x2,y2)
+			{
+				// formula for slope is:     y2 - y1
+				//                       m = -------
+				//                           x2 - x1
+				
+				var top = y2-y1; // the value of the top of the slope equation
+				var bottom = x2-x1; // the value of the bottom
+				
+				// divides the top and the bottom by the number of steps and rounds
+				this.xStep = Math.round(top / STEPS);
+				this.yStep = Math.round(bottom / STEPS);
+				
+				// make sure x and ystep are not 0
+				if(this.xStep == 0)
+					this.xStep++;
+				if(this.yStep == 0)
+					this.yStep++;
+					
+				this.animate(); // once a slope is found, start it moving
+				return null;
+			}
+			
+			function _update()
+			{
+				// updates the read-only values 'top' and 'left' with their real values
+				this.top = parseInt(this.style.top);
+				this.left = parseInt(this.style.left);
+				return null;
+			}
+			
+			function _reset()
+			{
+				// reset everything and start over
+				this.stepCount = 0;
+				this.xStep = 0;
+				this.yStep = 0;
+				this.newTarget();
+				return null;
+			}			
+		}
+		
+		/////////////////////////////////////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////////////////////////////////////
+		
+		function stopAll()
+		{
+			for (var i = 0; i < animateObjectArray.length; i++)
+				clearTimeout(animateObjectArray[i].timer);
+			//startAll();
+		}
+		
+		function startAll()
+		{
+			for (var i = 0; i < animateObjectArray.length; i++)
+				animateObjectArray[i].animate();
+		}
+		
+		function flash(state)
+		{
+			var h = HT_getStyleObject("hospital");
+			if(state)
+			{
+				h.backgroundColor = "red";
+				setTimeout("flash(0);",100);
+			}
+			else
+				h.backgroundColor = "#333333";
+			
+		}
+		
+	</script>
+		
+	<style type="text/css">
+		body
+		{
+			background-color: #666666;
+			color: #cccccc;
+			font: 14px verdana, arial;
+			font-weight: bold;
+		}
+		
+		.container
+		{
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			height: 500px;
+			width: 500px;
+			border: 1px solid #cccccc;
+			overflow: hidden;
+			background-color: #333333;
+			color: #cccccc;
+		}
+		.hospital
+		{
+			position: absolute;
+			top: 245px;
+			left: 242px;
+			height: 30px;
+			width: 30px;
+			border: 1px solid #cccccc;
+		}
+		
+		.explanation
+		{
+			position: absolute;
+			top: 20px;
+			left: 540px;
+			border: 1px solid #cccccc;
+			background-color: #333333;
+			color: #cccccc;
+		}
+		.words
+		{
+			font: 11px verdana, arial;
+			background-color: #333333;
+			color: #cccccc;
+		}
+		a:link,a:visited
+		{
+			color: #aaaaaa;
+			text-decoration: none;
+			font-weight: bold;
+		}
+		a:hover,a:active
+		{
+			color: red;
+			text-decoration: none;
+			font-weight: bold;
+		}
+</style>
+	
+	<meta http-equiv= "pragma" CONTENT="no-cache">
+	<meta name="ROBOTS" content="ALL">
+	<meta name="DESCRIPTION" content="">
+	<meta name="KEYWORDS" content="">
+	<meta name="AUTHOR" content="will mccutchen - will@humortree.org">
+	
+</head>
+
+<body onload="init();">
+
+<div class="container">
+
+	<div id="hospital" class="hospital" style="backround-color: #333333;"></div>
+	
+	<div id="a" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="b" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="c" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="d" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="e" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="f" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="g" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="h" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="i" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	<div id="j" style="position:absolute; top:250px; left:250px;">&copy;</div>
+	
+</div>
+
+<div class="explanation">
+<table border="0" cellpadding="0" cellspacing="10">
+<tr>
+	<td class="words">
+		<strong>Organic Motion, Attempt 1</strong>
+	</td>
+</tr>
+<tr>
+	<td class="words">
+		This is my first attempt at something that i have been interested
+		in for a long time now: organic motion.
+	</td>
+</tr>
+<tr>
+	<td class="words">
+		(This is just an attempt to simulate organic motion;  it is not based
+		on any real mathematics or anything.)
+	</td>
+</tr>
+<tr>
+	<td class="words">
+		The little copyright symbols move at the most 20 pixels on each leg
+		of their journey.  After each leg is completed, the move to a random
+		new location.
+	</td>
+</tr>
+<tr>
+	<td class="words">
+		If they move outside their bounding box, they are killed and born
+		again in the cage in the middle.  The cage flashes red every time
+		a copyright symbol is born.
+	</td>
+</tr>
+<tr>
+	<td class="words">
+		This was pretty complex for me.  Hopefully, over time i will refine
+		this idea, and create something that is more life-like in the way
+		that it moves.
+	</td>
+</tr>
+<tr>
+	<td class="words">
+		It also just about kills Netscape 6 performance-wise, and probably looks
+		choppy on Windows 95/98/ME.
+	</td>
+</tr>
+<tr>
+	<td class="words" align="right">
+		<a href="../../">&laquo; Back to Humor Tree</a>
+	</td>
+</tr>
+</table>
+</div>
+
+</body>
+</html>

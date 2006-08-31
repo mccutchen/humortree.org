@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>HUMOR TREE // "I GOT A CALL OF A DISTURBANCE HERE"</title>
+	<style type="text/css">
+		.title
+		{
+			font: 24pt arial;
+			color: white;
+		}
+		a:link,a:visited
+		{
+			color: white;
+			text-decoration:none;
+		}
+		a:hover
+		{
+			color: #555555;
+			text-decoration:none;
+		}
+		.text2
+		{
+			font: 12px arial;
+			color: white;
+		}
+		.text
+		{
+			font: 12px arial;
+			color: #DDDDDD;
+			text-decoration:none;
+		}
+	</style>
+	<script language="javascript">
+		
+		var nspages = new Array("colorfade","will2","dim_the_lights","ill-fated","frames","bricks","will","drugs","circles","squares","ht");
+		var nsno = new Array("stripes","voyeur","grid","reminder","herman","smalltype","fotograf","swear","colors","kid","this_is","liberty","no","nipples");
+		var allpages = new Array("colorfade","will2","dim_the_lights","stripes","ill-fated","frames","voyeur","grid","reminder","herman","smalltype","fotograf","swear","bricks","colors","kid","this_is","liberty","no","will","nipples","drugs","circles","squares","ht");
+		var ns6pages = new Array("colorfade","will2","dim_the_lights","stripes");
+		function list()
+		{
+			var str = "";
+			var link_pre = "<a target=\"_parent\" href=\"";
+			var link_post = "/index.html\">";
+			var link_close = "</a><br>";
+
+			if(document.all)
+			{
+				for(var i = 0; i < allpages.length; i++)
+					str += link_pre + allpages[i] + link_post + allpages[i] + link_close;
+			}
+
+			else if(document.layers)
+			{
+				for(var i = 0; i < nspages.length; i++)
+					str += link_pre + nspages[i] + link_post + nspages[i] + link_close;
+			}
+			else if(document.getElementById)
+			{
+				for(var i = 0; i < ns6pages.length; i++)
+					str += link_pre + allpages[i] + link_post + allpages[i] + link_close;
+			}
+
+			return str;
+		}
+
+		function nolist()
+		{
+			var str = "";
+			if(document.all)
+			{
+				str = "<i>none</i>";
+			}
+			else if(document.layers)
+			{
+				for(var i = 0; i < nsno.length; i++)
+					str += nsno[i] + "<br>";
+			}
+
+			return str;
+		}
+	</script>
+</head>
+
+<body BGCOLOR="#aaaaaa">
+
+
+<table border="0" cellpadding="0" cellspacing="0" align="center" width="300">
+<tr>
+	<td align="left" class="title" width="300">HUMOR TREE</td>
+</tr>
+<tr>
+	<td align="left" class="title">humortree.org</td>
+</tr>
+<tr>
+	<td align="left" class="title">
+		<a href="mailto:will@humortree.org">WILL MCCUTCHEN</a>
+	</td>
+</tr>
+<tr>
+	<td align="left" class="title">1999 / 2000</td>
+</tr>
+
+<tr>
+	<td align="left" class="text">
+	<br>
+	<br>
+		This website is my playground.  It is where I experiment, where I try new
+		things.  It could serve as a sort of portfolio, as well.  It documents the
+		changes in my programming and design skills pretty accurately over the last
+		year or so.
+		<br>
+		<br>
+		Some of the "branches" are rudimentary, ugly things -- built only to try a
+		new idea out.  Some of the branches are (in my opinion) beautiful things,
+		involving things, and thought-provoking things.
+		<br>
+		<br>
+		I think you should navigate this site using <a href="http://www.microsoft.com/ie/" target="_new">Internet Explorer 5</a>.
+		Any Netscape browser that isn't Netscape 6 is worthless.
+		<br>
+		<br>
+		If this is your first visit, please start at the bottom of the list, with <a href="ht/index.html">"ht."</a>  Each branch
+		leads to the next branch... once you've gone through the whole site, you'll end up back here.
+	</td>
+</tr>
+<tr>
+	<td>
+	<br>
+
+		<table border="0" cellpadding="0" cellspacing="0" align="center" width="300">
+		<tr>
+			<td align="left" class="text2" valign="top" width="150">
+				// newest
+			</td>
+			<td rowspan="2" align="left" valign="top" class="text2" width="150">
+				<div>
+					<b><a href="../design/index.html" target="_new">*NEW*  The HTDC arrives!</a></b><br>
+					<script language="javascript">
+						document.write(list());
+					</script>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align="left" valign="bottom" class="text2" width="150">
+				// oldest
+			</td>
+		</tr>
+		</table>
+
+
+
+	</td>
+</tr>
+
+<tr>
+	<td>
+	<br>
+
+		<table border="0" cellpadding="0" cellspacing="0" align="center" width="300">
+		<tr>
+			<td rowspan="1" align="left" class="text" valign="top" width="150">// unviewable</td>
+			<td align="left" valign="top" class="text" width="150">
+				<div>
+					<script language="javascript">
+						document.write(nolist());
+					</script>
+				</div>
+			</td>
+		</tr>
+		</table>
+
+
+
+	</td>
+</tr>
+
+</table>
+
+
+</body>
+</html>

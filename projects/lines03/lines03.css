@@ -1,0 +1,84 @@
+html, body, h1, h2, h3, h4, h5, h6, h7, div, p {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    background-image: url(lines.py);
+    color: #333;
+
+	font-family: Georgia, serif;
+	font-size: 11px;
+}
+
+a, a:link, a:visited {
+	color: #930;
+}
+a:hover {
+	text-decoration: none;
+}
+
+div#header, div#content {
+	margin: 0;
+	padding: 10px 0;
+}
+div#header {
+    background: transparent url(backgrounds/stripe.png) bottom left repeat-x;
+	padding-bottom: 13px; /* to compensate for the drop shadow in the background */
+}
+div#content {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: transparent url(backgrounds/stripe.png) top left repeat-x;
+	padding-top: 13px; /* to compensate for the drop shadow in the background */
+}
+
+/* feed Internet Explorer transparent gifs, instead */
+* html div#header {
+	background: transparent url(backgrounds/stripe.gif) bottom left repeat-x;
+}
+* html div#content {
+	background: transparent url(backgrounds/stripe.gif) top left repeat-x;
+}
+
+
+/* fix the padding of the contents */
+h1, h2, p {
+	padding: 0 15px;
+}
+
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+}
+h2 {
+	font-size: 1.25em;
+	font-weight: bold;
+}
+
+.hint {
+	padding: .5em 1em;
+	margin: 1em -1em;
+	background-color: #f5f5f5;
+}
+
+div.algorithm, div.source-code {
+	width: 45%;
+	float: left;
+	margin-right: 20px;
+}
+div.source-code {
+	margin-right: 0;
+}
+
+ol {
+	margin-top: .5em;
+}
+p {
+	clear: both;
+}

@@ -1,0 +1,915 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>HUMOR_TREE!COLORS!BOLD!DARING!INSPIRES_HEADACHES_IN_SMALL_CHILDREN!</title>
+	
+	<style type="text/css">          
+		.sq
+    {
+    	height: 25px;
+      width: 29px;
+      border: 1px solid white;
+      
+      background-color: #000000;
+    }
+           
+    .formstyle
+    {
+    	font: 11px arial;
+      width: 341px;
+			color: white;
+			background-color: black;
+			border-color: white;
+    }
+					 
+		.text
+		{
+			color: #cccccc;
+			font: 11px arial;
+		}
+		
+		a:link
+		{
+			color: #777777;
+			text-decoration: underline;
+		}
+		
+		a:hover
+		{
+			color: #ff0000;
+			text-decoration: underline;
+		}
+		
+		a:visited
+		{
+			color: #888888;
+			text-decoration: underline;
+		}
+	</style>
+	
+	<script language="javascript">
+		var colors = new Array("00","33","66","99","cc","ff");
+		var grays = new Array("f","e","d","c","b","a","9","8","7","6","5","4","3","2","1");
+		var counter = 0;
+		var colorCounter = 0;
+		var resetCounter;
+		var rr = 0;
+		var gg = 0;
+		var bb = 0;
+		var gray = 0;
+		var dir = "up";
+		var going = 0;
+		
+		// variable specifically for spiral_fill
+		var left = 1;
+		var up = 1;
+		var down = 2;
+		var right = 2;
+		var spiralPos = 40;
+		var co = 0;
+		var spiralDel = 50;
+		
+		function spiralFill()
+		{
+			var smith = document.getElementsByTagName("div");
+			if(counter < smith.length - 1 && going != 0)
+			{
+				going = 1;
+				
+				if(dir == "up")
+				{
+					if(co < up)
+					{
+						spiralPos -= 9;
+						smith[spiralPos].style.backgroundColor = makeColor();
+						co++;
+						counter++;
+						setTimeout("spiralFill()",spiralDel);
+					}
+					
+					else
+					{
+						co = 0;
+						up += 2;
+						dir = "left";
+					}
+				}
+				
+				if(dir == "left")
+				{
+					if(co < left)
+					{
+						spiralPos -= 1;
+						smith[spiralPos].style.backgroundColor = makeColor();
+						co++;
+						counter++;
+						setTimeout("spiralFill()",spiralDel);
+					}
+					
+					else
+					{
+						co = 0;
+						left+=2;
+						dir = "down";
+					}
+				}
+				
+				if(dir == "down")
+				{
+					if(co < down)
+					{
+						spiralPos += 9;
+						smith[spiralPos].style.backgroundColor = makeColor();
+						co++;
+						counter++;
+						setTimeout("spiralFill()",spiralDel);
+					}
+					
+					else
+					{
+						co = 0;
+						down += 2;
+						dir = "right";
+					}
+				}
+				
+				if(dir == "right")
+				{
+					if(co < right)
+					{
+						spiralPos += 1;
+						smith[spiralPos].style.backgroundColor = makeColor();
+						co++;
+						counter++;
+						setTimeout("spiralFill()",spiralDel);
+					}
+					
+					else
+					{
+						co = 0;
+						right+=2;
+						dir = "up";
+						setTimeout("spiralFill()",0);
+					}
+				}
+				
+			}// big loop-determining if
+							
+			else
+			{
+				dir = "up";
+				going = 0;
+				left = 1;
+				up = 1;
+				down = 2;
+				right = 2;
+				spiralPos = 40;
+				co = 0;
+				spiralDel = 50;
+				counter = 0;
+			}
+		}
+		
+		function handler(which)
+		{
+			if(which == 1 && going != 1)
+			{
+				going = 1;
+				fillRandom();
+			}
+			
+			if(which == 2 && going != 1)
+			{
+				going = 1;
+				fillOrdered();
+			}
+				
+			if(which == 3 && going != 1)
+			{
+				going = 1;
+				fillGray();
+			}
+			
+			if(which == 4 && going != 1)
+			{
+				going = 1;
+				bgFade();
+			}
+			
+			if(which == 5 && going != 1)
+			{
+				going = 1;
+				seizure();
+			}
+			
+			if(which == 6 && going != 1)
+			{
+				going = 1;
+				var smith = document.getElementsByTagName("div");
+				smith[spiralPos].style.backgroundColor = makeColor();
+				spiralFill();
+			}
+				
+			if(which == 7)
+				reset();
+		}		
+		
+		function reset()
+		{
+			going = 0;
+			var smith = document.getElementsByTagName("div");
+			document.bgColor = "#000000";
+			document.getElementById("seize").style.backgroundColor = "#000000";
+			document.getElementById("fade").style.backgroundColor = "#000000";
+			document.getElementById("rand").style.backgroundColor = "#000000";
+			document.getElementById("order").style.backgroundColor = "#000000";
+			document.getElementById("gray").style.backgroundColor = "#000000";
+			document.getElementById("res").style.backgroundColor = "#000000";
+			document.getElementById("spiral").style.backgroundColor = "#000000";
+						
+			document.getElementById("seize").style.borderColor = "#ffffff";
+			document.getElementById("fade").style.borderColor = "#ffffff";
+			document.getElementById("rand").style.borderColor = "#ffffff";
+			document.getElementById("order").style.borderColor = "#ffffff";
+			document.getElementById("gray").style.borderColor = "#ffffff";
+			document.getElementById("res").style.borderColor = "#ffffff";
+			document.getElementById("spiral").style.borderColor = "#ffffff";
+				
+			document.getElementById("seize").style.color = "#ffffff";
+			document.getElementById("fade").style.color = "#ffffff";
+			document.getElementById("rand").style.color = "#ffffff";
+			document.getElementById("order").style.color = "#ffffff";
+			document.getElementById("gray").style.color = "#ffffff";
+			document.getElementById("res").style.color = "#ffffff";
+			document.getElementById("spiral").style.color = "#ffffff";
+			
+			for(resetCounter = 0; resetCounter < smith.length; resetCounter++)
+			{
+				smith[resetCounter].style.backgroundColor = "#000000";
+				smith[resetCounter].style.borderColor = "#ffffff";
+			}
+			
+			going = 0;
+			dir = "up";
+			going = 0;
+			left = 1;
+			up = 1;
+			down = 2;
+			right = 2;
+			spiralPos = 40;
+			co = 0;
+			spiralDel = 50;
+			counter = 0;
+		}
+		
+		function makeColor()
+		{
+			var colorString = "#";
+			
+			var trr = colors[Math.floor(Math.random() * colors.length)];
+			var tgg = colors[Math.floor(Math.random() * colors.length)];
+			var tbb = colors[Math.floor(Math.random() * colors.length)];
+			
+			colorString = colorString + trr + tgg + tbb;				
+			return colorString;
+		}
+		
+		function fillRandom()
+		{
+			var smith = document.getElementsByTagName("div");
+			
+			if(counter < smith.length && going != 0)
+			{
+				going = 1;
+				smith[counter].style.backgroundColor = makeColor();
+				counter++;
+				setTimeout("fillRandom();",50);
+			}
+			
+			else
+			{
+				going = 0;
+				counter = 0;
+			}
+		}
+
+		function fillOrdered()
+		{
+			var smith = document.getElementsByTagName("div");
+			
+			if(counter <= smith.length && rr <= 5 && going != 0)
+			{
+				going = 1;
+				var thisColor = "#" + colors[rr] + colors[gg] + colors[bb];
+				smith[counter].style.backgroundColor = thisColor;
+				if(bb <= colors.length)
+					bb++;
+				
+				if(bb >= colors.length)
+				{
+					bb = 0;
+					gg++;
+				}
+				
+				if(gg >= colors.length)
+				{
+					gg = 0;
+					rr++;
+				}
+
+				counter++;
+				if(counter == smith.length)
+					counter = 0;
+					
+				setTimeout("fillOrdered();",50);
+			}
+			
+			else
+			{
+				counter = 0;
+				rr = 0;
+				gg = 0;
+				bb = 0;
+				going = 0;
+			}
+		}
+
+	function fillGray()
+	{
+		var smith = document.getElementsByTagName("div");
+
+		if(counter < smith.length && going != 0)
+		{
+			going = 1;
+			var thisColor = "#" + grays[gray] + grays[gray] + grays[gray] + grays[gray] + grays[gray] + grays[gray];
+			smith[counter].style.backgroundColor = thisColor;
+		
+			if(dir == "up")
+				gray++;
+			else
+				gray--;
+				
+			if(gray > grays.length - 2)
+				dir = "down";
+			if(gray <= 0)
+				dir = "up";
+				
+			counter++;
+			setTimeout("fillGray();",50);
+		}
+		
+		else
+		{
+			counter = 0;
+			gray = 0;		
+			going = 0;
+			dir = "up";
+		}
+	}
+	
+	function bgFade()
+	{	
+		if(rr <= 5 && going != 0)
+		{	
+			going = 1;
+			var thisColor = "#" + colors[rr] + colors[gg] + colors[bb];
+			document.bgColor = thisColor;
+			if(bb < colors.length)
+				bb++;
+			
+			if(bb >= colors.length)
+			{
+				bb = 0;
+				gg++;
+			}
+			
+			if(gg >= colors.length)
+			{
+				gg = 0;
+				rr++;
+			}
+			setTimeout("bgFade();",00);
+		}
+		else
+		{
+			counter = 0;
+			rr = 0;
+			gg = 0;
+			going = 0;
+			bb = 0;
+		}	
+	}
+		
+	function seizure()
+	{
+		var smith = document.getElementsByTagName("div");
+		
+		if(counter < smith.length && going != 0)
+		{
+			going = 1;
+			smith[counter].style.backgroundColor = makeColor();
+			document.bgColor = makeColor();
+			smith[counter].style.borderColor= makeColor();
+							
+			document.getElementById("seize").style.backgroundColor = makeColor();
+			document.getElementById("fade").style.backgroundColor = makeColor();
+			document.getElementById("rand").style.backgroundColor = makeColor();
+			document.getElementById("order").style.backgroundColor = makeColor();
+			document.getElementById("gray").style.backgroundColor = makeColor();
+			document.getElementById("res").style.backgroundColor = makeColor();
+			document.getElementById("spiral").style.backgroundColor = makeColor();
+			
+			document.getElementById("seize").style.color = makeColor();
+			document.getElementById("fade").style.color = makeColor();
+			document.getElementById("rand").style.color = makeColor();
+			document.getElementById("order").style.color = makeColor();
+			document.getElementById("gray").style.color = makeColor();
+			document.getElementById("res").style.color = makeColor();
+			document.getElementById("spiral").style.color = makeColor();
+			
+			document.getElementById("seize").style.borderColor = makeColor();
+			document.getElementById("fade").style.borderColor = makeColor();
+			document.getElementById("rand").style.borderColor = makeColor();
+			document.getElementById("order").style.borderColor = makeColor();
+			document.getElementById("gray").style.borderColor = makeColor();
+			document.getElementById("res").style.borderColor = makeColor();
+			document.getElementById("spiral").style.borderColor = makeColor();
+				
+			counter++;
+			setTimeout("seizure();",0);
+		}
+			
+		else
+		{
+			going = 0;
+			counter = 0;
+		}
+	}
+	</script>	
+	
+</head>
+
+<body bgcolor="#00000">
+
+<table align="left" cellpadding="0" cellspacing="10" border="0">
+	<tr>
+		<td rowspan="20" align="left" valign="top">
+		<!--new table-->
+			<table border="0" cellpadding="0" cellspacing="0" width="357">
+				<tr>
+					<td align="right" width="357" valign="top">
+						<img src="logo.gif">
+					</td>
+				</tr>
+				
+				<tr>
+					<td height="25">
+					</td>
+				</tr>
+				
+				<tr>
+					<td valign="top">
+						<span class="text">
+						This page is a meditation on <b>color</b>.  It is completely <b>color-centric</b>,
+						paying no attention to anything that is not within the realm of <b>color</b>.  It is, of course, also
+						an experiment in dynamic HTML and javascript, meant to help broaden my understanding of those two concepts, and is one 
+						of my proudest acheivements to that	end.
+						<br>
+						<br>
+						I have found that in order to truly appreciate each of the different kinds of '<b>color fills</b>,' 
+						it may be necessary for you to 'reset' the grid after each go-round.
+						<br>
+						<br>
+						Note:  The sequential_fill does produce <b>colors</b> in a specific order, but is a mathematical order, instead of a 
+						visual order.  There are times when you can observe a procession of similar <b>colors</b>, but it also tends to jump 
+						around, and to look generally un-ordered.
+						<br>
+						<br>
+						Both the sequential_fill and the background_fade use the same 216 <b>colors</b> (the <b>colors</b> that will render 
+						the same on any operating system), so they may take a little while longer to finish.  The
+						background_fade especially takes a while, because of processor and memory limitations.
+						<br>
+						<br>
+						It must also be noted that I owe the awe-inspiring spiral_fill to <a href="mailto:diconix4@aol.com">Mr. Justin Tippit</a>.
+						Were it not for his mathematical prowess and nimble, lucid thought process, this experiment with <b>color</b> would be
+						incomplete.
+						</span>
+					</td>
+				</tr>		
+				
+				<tr>
+					<td>
+					</td>
+				</tr>		
+			</table>
+			<!-- end new table-->
+		</td>
+			
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+		<td height="25" width="29">
+			<div class="sq">&nbsp;</div>
+		</td>
+		
+	</tr>
+	
+	<tr>
+	<form>
+		<td align="center" colspan="9">
+			<input type="button" id="rand" size="341" value="random_fill" class="formstyle" onClick="handler(1);">
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" colspan="9">
+			<input type="button" id="order" value="sequential_fill" class="formstyle" onClick="handler(2);">
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" colspan="9">
+			<input type="button" value="spiral_fill" class="formstyle" onClick="handler(6);" id="spiral">
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" colspan="9">
+			<input type="button" id="gray" value="gray_fill" class="formstyle" onClick="handler(3);">
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" colspan="9">
+			<input type="button" id="fade" value="background_fade" class="formstyle" onClick="handler(4);">
+		</td>
+	</tr>
+	
+	<tr>
+		<td align="center" colspan="9">
+			<input type="button" value="seizure_fill" class="formstyle" onClick="handler(5);" id="seize">
+		</td>
+	</tr>
+		
+	<tr>
+		<td align="center" colspan="9">
+			<input type="button" value="stop / reset" class="formstyle" onClick="handler(7);" id="res">
+		</td>
+	
+		
+	</form>
+	</tr>
+	
+	<tr>
+		<td colspan="10" align="right">
+		<a href="../bricks/index.html" class="text">
+		fini? -->
+		</a>
+		</td>
+	</tr>
+</table>
+
+</body>
+</html>

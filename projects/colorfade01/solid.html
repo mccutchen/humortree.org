@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title> </title>
+	
+	
+	
+	<script language="javascript" type="text/javascript">
+		var fadenum = 0;
+		var sr,sg,sb,er,eg,eb,step,i,end;
+		var count = 0;
+		var start = new Array(204,204,204);
+		
+		function startfade()
+		{
+			fadenum++;
+			if( (fadenum % 2) == 0 ) // means it is even
+				fadeout();
+			else
+				fadein();
+		}
+		
+	  function makearray(n)
+		{
+      this.length = n;
+      for(var i = 1; i <= n; i++)
+      this[i] = 0;
+      return this;
+    }
+    
+		hexa = new makearray(16);
+    
+		for(var i = 0; i < 10; i++) hexa[i] = i;
+    hexa[10]="a"; hexa[11]="b"; hexa[12]="c";
+    hexa[13]="d"; hexa[14]="e"; hexa[15]="f";
+    
+		function hex(i)
+		{
+			if (i < 0) return "00";
+      else if (i >255) return "ff";
+      else return "" + hexa[Math.floor(i/16)] + hexa[i%16];
+    }
+    
+		function setbgColor(r, g, b)
+		{	
+      var hr = hex(r); var hg = hex(g); var hb = hex(b);
+			document.bgColor = "#"+hr+hg+hb;
+    }
+    function fade()
+		{
+     	if(count <= step)
+			{
+				setbgColor(Math.floor(sr * ((step-count)/step) + er * (count/step)), Math.floor(sg * ((step-count)/step) + eg * (count/step)), Math.floor(sb * ((step-count)/step) + eb * (count/step)));
+				count++;
+				setTimeout("fade();",20);
+			}
+			else
+			{
+				count = 0;
+				startfade();
+			}
+    }
+		
+		function setvars(_sr,_sg,_sb,_er,_eg,_eb,_step)
+		{
+			sr = _sr;
+			sg = _sg;
+			sb = _sb;
+			er = _er;
+			eg = _eg;
+			eb = _eb;
+			step = _step;
+		}
+    
+		function fadein()
+		{
+			end = getColor();
+			setvars(start[0],start[1],start[2], end[0],end[1],end[2], 255);
+			fade();
+    }
+    function fadeout()
+		{
+			start = getColor();
+      setvars(end[0],end[1],end[2], start[0],start[1],start[2], 255);
+			fade();
+    }
+		
+		function getColor()
+		{
+			var arr = new Array();
+			arr[0] = Math.floor(Math.random() * 255);
+			arr[1] = Math.floor(Math.random() * 255);
+			arr[2] = Math.floor(Math.random() * 255);
+			//alert(arr);
+			return arr;			
+		}
+	</script>
+		
+</head>
+
+<body bgcolor="#cccccc" onload="setTimeout('startfade();',2000);">
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>two men standing in front of a blue wall.  their names are herman and hector.</title>
+	<style type="text/css">
+		body
+	 	{
+	 		color: #3300ff;
+			font-weight:  bold;
+		}
+	
+	</style>
+	<script language="javascript">
+	//#404040
+	var sofar = 1;
+	var total = "4";
+	var ready = false;
+	
+	function loaded()
+	{
+		sofar++;
+		if(sofar == total)
+		{
+			ready = true;
+			document.getElementById('top').src = "top_on.gif";
+		}
+	}
+	
+	function slideMe(which)
+	{
+		if(ready)
+		{
+			var me = document.getElementById(which);
+			var source = me.src;
+			
+			var him;
+			if(which == "top")
+				him = "bottom";
+			else if(which == "bottom")
+				him = "top";
+				
+			if(source.indexOf("still") != -1 || source.indexOf("off") != -1)// img src is in "still" or "off" state, needs to go "on"
+			{
+				me.src = which + "_on.gif";
+				document.getElementById(him).src = him + "_off.gif";
+			}
+			else if(source.indexOf("on") != -1) // img src is in "on" state, needs to go to off
+			{
+				me.src = which + "_off.gif";
+				document.getElementById(him).src = him + "_on.gif";
+			}
+		
+		}
+		
+		else
+			return;
+	}
+	</script>
+</head>
+<body background="bg.gif">
+
+<table border="0" cellpadding="0" cellspacing="0" width="330" align="center">
+	<tr valign="top">
+		<td rowspan="5" align="right" width="18" height="501" valign="bottom"><img src="banner.gif"></td>
+	 <td><img src="top.gif" width="330" height="131" border="0"></td>
+  </tr>
+  <tr valign="top">
+   <td><a href="javascript:slideMe('top');"><img id="top" src="top_still.gif" width="330" height="41" border="0"></a></td>
+	</tr>
+  <tr valign="top">
+   <td><img name="middle" src="middle.gif" width="330" height="46" border="0"></td>
+	</tr>
+  <tr valign="top">
+   <td><a href="javascript:slideMe('bottom');"><img id="bottom" src="bottom_still.gif" width="330" height="41" border="0"></td>
+	 </tr>
+  <tr valign="top">
+   <td><img src="bottom.gif" width="330" height="242" border="0"></td>
+	</tr>
+	<tr>
+		<td valign="top" align="right" colspan="2"><a href="../reminder/index.html"><img src="continue.gif" border="0"></a></td>
+	</tr>
+</table>
+
+
+<div style="visibility:hidden;">
+<img src="top_on.gif" onload="loaded();">
+<img src="top_off.gif" onload="loaded();">
+<img src="bottom_on.gif" onload="loaded();">
+<img src="bottom_off.gif" onload="loaded();">
+</div>
+
+</body>
+</html>

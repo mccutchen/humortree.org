@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>HTLIB version 1.0 Test Page</title>
+	<script src="HTLIB.js">
+	</script>
+	<script>
+		
+		var thetimer;
+		
+		function init()
+		{
+			HT_init();
+		}
+				
+		function libtest()
+		{
+			/*
+			tests every part of HTLIB by using the built-in
+			variables HT_screenWidth and HT_screenHeight,
+			the built-in functions using HT_randomNumber(),
+			HT_randomColor(), and HT_moveTo().
+			*/
+			
+			var xmax = HT_randomNumber(0, HT_screenWidth);
+			var ymax = HT_randomNumber(0, HT_screenHeight);
+			document.bgColor = HT_randomColor();
+			
+			HT_moveTo(0,xmax,ymax);
+			
+			//alert();
+			
+			thetimer = setTimeout("libtest();",100);
+		}
+	</script>
+</head>
+
+<body onload="init();">
+
+<h3><b>
+This page tests every part of HTLIB by using the<br>
+built-in variables HT_screenWidth and HT_screenHeight,<br>
+the built-in functions using HT_randomNumber(),<br>
+HT_randomColor(), and HT_moveTo().
+<br>
+<br>
+<a href="javascript:libtest();">Test It.</a>
+<br>
+<br>
+<a href="javascript:clearTimeout(thetimer);">Stop It.</a>
+</b></h3>
+
+<div id="god" style="position:absolute; top:300px; left:10px;">
+ this is the div
+</div>
+
+</body>
+</html>

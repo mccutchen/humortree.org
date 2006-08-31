@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title> </title>
+	
+	<script type="text/javascript" language="javascript" src="HTLIB.js">/* required by HTanimate.js - handles cross-browser crap */</script>
+	<script type="text/javascript" language="javascript" src="HTanimate.js">/* the butter for this toast */</script>
+	
+	<script type="text/javascript" language="javascript">
+		var myMover;
+		
+		function init(id)
+		{
+			myMover = new HT_animateObject(id);
+			
+		}
+		function moveMe()
+		{
+			var newLeft = Math.floor(Math.random() * 500);
+			var newTop = Math.floor(Math.random() * 500);
+			
+			HT_hide("mover","v");
+		}
+	</script>
+</head>
+
+<body onload="HT_init(); init('mover');">
+
+<a href="javascript:moveMe();">move it!</a>
+
+	<div id="mover" style="position:absolute; top:100px; left:100px;">&copy;</div>
+
+</body>
+</html>

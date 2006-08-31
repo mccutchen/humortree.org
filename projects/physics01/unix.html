@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Humor Tree&nbsp;&nbsp;/&nbsp;&nbsp;Physics 01&nbsp;&nbsp;/&nbsp;&nbsp;Friction and Elasticity</title>
+	<script type="text/javascript" src="HTLIB.js"></script>
+	<script type="text/javascript" src="PhysicsModel.js"></script>
+	<script type="text/javascript">	
+		var o = null;
+		var mousex = 0;
+		var mousey = 0;
+		var xoff = 20;
+		var yoff = 20;
+				
+		var maxx = 0;
+		var maxy = 0;
+		var minx = 30;
+		var miny = 30;
+		
+		function physicsHandler () {
+			var x = HTLIB.getLeft (o);
+			var y = HTLIB.getTop (o);
+			
+			P.setPosition (x, y);
+			P.setV ();
+						
+			HTLIB.moveTo (o, x + P.vx, y + P.vy);
+			
+			setTimeout ("physicsHandler ();", 20);
+		}
+		
+		function update (which, value) {
+			if (which == "e") P.e = value;
+			else if (which == "f") P.f = value;
+			return false;
+		}
+		
+		function init () {
+			HTLIB.init ();
+			o = HTLIB.getObject ("ball");
+			P = new PhysicsModel (6, 1.2);
+			document.f.f.value = P.f;
+			document.f.e.value = P.e;
+			
+			if (HTLIB.isDOM || HTLIB.isIE) document.onmousemove = updateMouse;
+			else if (HTLIB.isNS4) {
+				window.captureEvents(Event.MOUSEMOVE);
+       	window.onmousemove = updateMouse;
+			}
+			
+			maxx = HTLIB.xWindowSize;
+			maxy = HTLIB.yWindowSize;
+			
+			alert (maxx + ", " + maxy);
+			
+			physicsHandler ();
+		}
+		
+		function updateMouse (e) {
+			mousex = (HTLIB.isIE) ? parseInt (window.event.clientX) : parseInt (e.pageX);
+			mousey = (HTLIB.isIE) ? parseInt (window.event.clientY) : parseInt (e.pageY);
+			
+			if (mousey >= maxy) mousey = maxy;
+			if (mousey <= miny) mousey = miny;
+			
+			if (mousex >= maxx) mousex = maxx;
+			if (mousex <= minx) mousex = minx;
+			
+			mousex -= xoff;
+			mousey -= yoff;
+		}
+		
+	</script>
+	<link rel="stylesheet" type="text/css" href="physics01.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv= "pragma" CONTENT="no-cache">
+</head>
+
+<body onload="init ();">
+
+<div id="ball" style="position:absolute; top:0px; left:0px;"><img src="ball.gif" alt=""></div>
+	
+	<form name="f">
+		Friction:&nbsp;&nbsp;<input name="f" type="text" value="" class="inputText" onblur="update ('f',this.value);"><br>
+		Elasticity:&nbsp;&nbsp;<input name="e" type="text" value="" class="inputText" onblur="update ('e',this.value);"><br>
+	</form>
+	
+
+</body>
+</html>

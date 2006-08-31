@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title> </title>
+	
+	<script language="javascript">
+		var thetimer;
+		var thediv,thestyle;
+		var minleft,maxleft = 0;
+		var bannerwidth = 3500;
+		var del = 10;
+		var step = 2;
+		var totheend = false;
+		var imgloaded = false;
+		
+		function init()
+		{
+			if (document.layers)
+			{
+				thediv = "document.layers[";
+				thestyle = "]";
+				minleft = parseInt(window.screen.width) - bannerwidth;
+			}
+			else if(document.all)
+			{
+				//document.all.tags("div")[0].style.left;
+				thediv = "document.all.tags('div')[";
+				thestyle = "].style";
+				minleft = parseInt(document.body.clientWidth) - bannerwidth;
+			}
+			else if(document.getElementById)
+			{
+				thediv = "document.getElementsByTagName('div')[";
+				thestyle = "].style";
+				minleft = parseInt(window.screen.width) - bannerwidth;
+			}
+		}
+		
+		function loaded()
+		{
+			loaded = true;
+		}
+		
+		function over()
+		{
+			if(loaded)
+			{
+				var currentleft = parseInt( eval(thediv + 0 + thestyle + ".left") );
+				var newleft = currentleft - step;
+				if( currentleft > minleft) //move left
+				{
+					if( currentleft - 10 > minleft)
+						step = step;
+					else if(currentleft - 10 <= minleft)
+						step = 1;
+						
+					eval(thediv + 0 + thestyle + ".left = " + newleft);
+					thetimer = setTimeout("over();",del);
+				}
+				else
+				{
+					totheend = true;
+					clearTimeout(thetimer);
+				}
+			}
+		}
+		
+		function out()
+		{
+			clearTimeout(thetimer);
+		}
+		function next()
+		{
+			if(totheend)
+				window.parent.location = "../index.html";
+			else
+				return;
+		}
+	</script>
+		
+</head>
+
+<body bgcolor="#333333" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0" onload="init();">
+
+<div style="position:absolute; top:0px; left:0px;">
+<a href="javascript:next();" onmouseover="over();" onmouseout="out();"><img src="banner.jpg" border="0" alt="loading..." title="wait, dammit" onload="loaded();"></a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title> </title>
+	
+	<script language="javascript">
+		var nscount = 0;
+		
+		function loaded()
+		{	
+			if(document.layers)
+			{
+				if (nscount >= 14)
+				{
+					window.location = "bottomB.html";
+				}
+				else
+					nscount++;
+			}
+			else
+				window.location = "bottomB.html";
+		}	
+	</script>
+	
+	<style type="text/css">
+	</style>
+	
+</head>
+
+<body bgcolor="white" marginheight="0" marginwidth="0" topmargin="0" leftmargin="0">
+
+<img src="manstill.gif" height="427" width="223">
+
+<div style="visibility:hidden;">
+<img src="man.gif" onload="loaded();">
+</div>
+
+</body>
+</html>

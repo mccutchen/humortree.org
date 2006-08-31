@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+	<script language="javascript" src="../SCRIPTS/COLOR_script.js">
+	</script>
+	<script language="javascript">
+		var del = 100;
+		var BaseStripe;
+		var tempColor,tempColor2;
+		var stripes = new Array();
+		
+		function Stripe(which)
+		{
+			this.mystripe = document.all.tags("div")[which].style;  // the style of this stripe
+	
+			if(which > 0)
+				this.oneup = document.all.tags("div")[which - 1].style; // the style of the above stripe
+			
+			else if (which <= 0) // or the bottom one, if 'which' is top one
+				this.oneup = document.all.tags("div")[document.all.tags("div").length - 1].style;
+									
+			if(which >= document.all.tags("div").length - 1)
+				this.ambottom = true;
+				
+			this.swapup = _swapup;
+			return null;
+		}
+		
+		function _swapup(obj)
+		{
+			tempColor2 = obj.mystripe.backgroundColor;
+			obj.mystripe.backgroundColor = tempColor;
+			tempColor = tempColor2;
+		}
+		
+		
+		
+		function init()
+		{
+			var str;
+			var currentTop = 0;
+			var currentHeight = 200;
+			for(var i = 0; i < document.all.tags("div").length; i++)
+			{
+				document.all.tags("div")[i].style.backgroundColor = COLOR_makeColor();
+				document.all.tags("div")[i].style.height = 40 + "px";
+				document.all.tags("div")[i].style.top = currentTop + "px";
+				
+				currentTop += parseInt(document.all.tags("div")[i].style.height);
+				
+				stripes[i] = new Stripe(i);
+			}
+			
+			tempColor = stripes[document.all.tags("div").length - 1].mystripe.backgroundColor;
+		}
+	</script>
+</head>
+
+<body bgcolor="#aaaaaa" onload="init();">
+
+<div style="position:absolute; top:0px; left:0px; width:1024px; height:5px; background-color:#cccccc;"></div>
+<div style="position:absolute; top:0px; left:0px; width:1024px; height:5px; background-color:#cccccc;"></div>
+<div style="position:absolute; top:0px; left:0px; width:1024px; height:5px; background-color:#cccccc;"></div>
+<div style="position:absolute; top:0px; left:0px; width:1024px; height:5px; background-color:#cccccc;"></div>
+<div style="position:absolute; top:0px; left:0px; width:1024px; height:5px; background-color:#cccccc;"></div>
+
+</body>
+</html>

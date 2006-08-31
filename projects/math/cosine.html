@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>HUMOR TREE MATHEMATICS&nbsp; &gt; &nbsp;a cosine wave</title>
+	<link rel="stylesheet" href="mathstyle.css" type="text/css">
+	<script src="HTLIB.js"></script>
+	<script language="javascript">
+		var xcenter = 10;
+		var ycenter = 110;
+		var t_step = .1;
+		var t_max = Math.ceil(6.5 * Math.PI);
+		var t_min = 0;
+		var t = t_min;
+		var top,left;
+		var delay = 10;
+		var timer;
+		var stretch = 40;
+		var divisor = 2;
+				
+		function goOut()
+		{
+			// set new left and top values for the circle
+			left = x(t);
+			top = y(t);
+			
+			// move the div to the left and top values mentioned above,
+			// and display left and top coordinates in the form
+			HT_moveTo("circle",left,top);
+			document.f.x.value = left;
+			document.f.y.value = top;
+
+			// reset t if t is more than t_max
+			if(t < t_max)
+			{
+				t += t_step;
+				timer = setTimeout("goOut();",delay);
+			}
+			else if(t >= t_max)
+			{
+				clearTimeout(timer);
+				goIn();
+			}
+		}
+		function goIn()
+		{
+			left = x(t);
+			top = y(t);
+			
+			// move the div to the left and top values mentioned above,
+			// and display left and top coordinates in the form
+			HT_moveTo("circle",left,top);
+			document.f.x.value = left;
+			document.f.y.value = top;
+			
+			// reset t if t is more than t_max
+			if(t >= t_min)
+			{
+				t -= t_step;
+				timer = setTimeout("goIn();",delay);
+			}
+			else if(t < t_min)
+			{
+				t = t_min;
+				clearTimeout(timer);
+				goOut();
+			}			
+		}
+	
+		// x(t) = t * cos(t) + xcenter
+		// y(t) = t * sin(t) + ycenter
+		function x(tt)
+		{
+			return Math.round( tt * 10 ) + xcenter;
+		}
+		function y(tt)
+		{
+			return Math.round( stretch * Math.cos(tt) / divisor ) + ycenter;
+		}
+		
+	</script>
+	
+</head>
+
+<body onload="HT_init();">
+
+<div class="box" style="position:absolute; top:280px; left:20px; width:720px;">
+	<table border="0" cellpadding="0" cellspacing="15" width="720">
+	<tr>
+		<td align="left"><div class="logo">HUMOR TREE MATHEMATICS&nbsp; &gt; &nbsp;a cosine wave</div></td>
+		<td align="right"><div class="logo"><a href="index.html">&lt; &nbsp;back</td>
+	</tr>
+	</table>
+</div>
+
+<div class="box" style="position:absolute; top:20px; left:20px; width:240px; height:240px; padding:0px 0px 0px 0px;">
+	<div id="circle" style="position:absolute; top:130px; left:10px;">&copy;</div>
+</div>
+
+<div class="box" style="position:absolute; top:20px; left:280px; width:140px; height:240px;">
+	<form name="f">
+	<table border="0" cellpadding="0" cellspacing="15" align="center">
+	<tr>
+		<td>
+			left: <input type="text" name="x" value="x" size="3" class="text">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			top: <input type="text" name="y" value="y" size="3" class="text">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" value="accelerate" onclick="goOut();" class="button">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="button" value="decelerate" onclick="clearTimeout(timer);" class="button">
+		</td>
+	</tr>
+	</table>
+	</form>
+</div>
+
+<div class="box" style="position:absolute; top:20px; left:440px; width:300px; height:240px;">
+	<table border="0" cellpadding="0" cellspacing="15" align="center" width="300">
+	<tr>
+		<td>
+			The formula used for this cosine wave is:
+			<br>
+			<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left(t) = t * 10 + xcenter
+			<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;top(t) = stretch * sin(t/divisor) + ycenter
+			<br>
+			<br>
+			Left is the number of pixels from the left of the screen and top
+			is the number of pixels from the top of the screen. Stretch is 40
+			and divisor is 2. The range of t is [0,6.5&pi;].  the step
+			of t is 0.1.
+			<br>
+			<br>
+			I got this formula from my head.
+			<br>
+			<br>
+			The behavior of this function is inexplicable.  I don't know why it accelerates and decelerates, but it does.
+		</td>
+	</tr>
+	</table>
+</div>
+
+
+
+</body>
+</html>

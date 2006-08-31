@@ -1,0 +1,177 @@
+<html>
+
+<head>
+	<title>humor_tree.circles(circles & circles)</title>
+	
+	<style type="text/css">
+		.god 
+		{
+			font-weight : bold;
+		}
+		
+		div
+		{
+			 font: 13px Times;
+			 color: white;
+		}
+	</style>
+	<script language="javascript">
+		var ext = '.gif';
+		var olives = new Array('#99cc00','olive1','olive2','olive3','olive4');
+		var reds = new Array('#ff0000','red1','red2','red3','red4');
+		var blues = new Array('#3399ff','blue1','blue2','blue3','blue4');
+		var grays = new Array('#000000','gray1','gray2','gray3','gray4');
+		var current = new Array(' ',' ',' ', ' ',' ');
+		var arrays = new Array(grays,olives,reds,blues);
+		
+		current = grays;
+		
+		var flag1 = -1;
+		var x,y,z,i,n,k;
+		k = 0;
+		
+		function circle(which)
+		{
+			if (flag1 == -1)
+			{
+				n = Math.floor(Math.random() * 4);
+				if (n < 1)
+					n=1;
+				if (n > 4)
+					n=4;
+				document.images[which].src = current[n] + ext;
+				flag1 = 0;
+			}
+			
+			else // flag1 == 0
+			{
+				document.images[which].src = "empty.gif";
+				flag1 = -1;
+			}
+		}
+		
+		function refresh(which, mm)
+		{
+			for(i = 0; i <= 35; i++)
+				document.images[i].src = "empty.gif";
+				
+			document.bgColor = which[0];
+		}
+				
+		function clicked()
+		{
+			k++;
+			if (k < 4)
+			{
+				current = arrays[k];
+				refresh(current,k);		
+			}
+			else // k > 4
+			{
+				document.location = "../drugs/index.html";
+			}
+		}
+	</script>
+</head>
+
+<body bgcolor="#000000">
+
+<table align="left" cellspacing="1" cellpadding="0" border="0" width="372">
+<tr>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(0)" onMouseOut="circle(0)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(1)" onMouseOut="circle(1)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(2)" onMouseOut="circle(2)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(3)" onMouseOut="circle(3)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(4)" onMouseOut="circle(4)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(5)" onMouseOut="circle(5)"><img src="empty.gif" border="0"></a></td>
+</tr>
+<tr>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(6)" onMouseOut="circle(6)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(7)" onMouseOut="circle(7)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(8)" onMouseOut="circle(8)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(9)" onMouseOut="circle(9)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(10)" onMouseOut="circle(10)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(11)" onMouseOut="circle(11)"><img src="empty.gif" border="0"></a></td>
+</tr>
+<tr>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(12)" onMouseOut="circle(12)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(13)" onMouseOut="circle(13)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(14)" onMouseOut="circle(14)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(15)" onMouseOut="circle(15)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(16)" onMouseOut="circle(16)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(17)" onMouseOut="circle(17)"><img src="empty.gif" border="0"></a></td>
+</tr>
+<tr>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(18)" onMouseOut="circle(18)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(19)" onMouseOut="circle(19)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(20)" onMouseOut="circle(20)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(21)" onMouseOut="circle(21)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(22)" onMouseOut="circle(22)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(23)" onMouseOut="circle(23)"><img src="empty.gif" border="0"></a></td>
+</tr>
+<tr>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(24)" onMouseOut="circle(24)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(25)" onMouseOut="circle(25)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(26)" onMouseOut="circle(26)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(27)" onMouseOut="circle(27)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(28)" onMouseOut="circle(28)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(29)" onMouseOut="circle(29)"><img src="empty.gif" border="0"></a></td>
+</tr>
+<tr>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(30)" onMouseOut="circle(30)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(31)" onMouseOut="circle(31)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(32)" onMouseOut="circle(32)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(33)" onMouseOut="circle(33)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(34)" onMouseOut="circle(34)"><img src="empty.gif" border="0"></a></td>
+    <td align="center"><a href="javascript:clicked();" onMouseOver="circle(35)" onMouseOut="circle(35)"><img src="empty.gif" border="0"></a></td>
+</tr>
+</table>
+
+<table align="left" cellspacing="0" border="0" width="248">
+	<tr>
+		<td align="center"><img src="gray1.gif"></td>
+		<td align="center"><img src="olive1.gif"></td>
+		<td align="center"><img src="red1.gif"></td>
+		<td align="center"><img src="blue1.gif"></td>
+	</tr>
+	
+	<tr>
+		<td align="center"><img src="gray2.gif"></td>
+		<td align="center"><img src="olive2.gif"></td>
+		<td align="center"><img src="red2.gif"></td>
+		<td align="center"><img src="blue2.gif"></td>
+	</tr>
+	
+	<tr>
+		<td align="center"><img src="gray3.gif"></td>
+		<td align="center"><img src="olive3.gif"></td>
+		<td align="center"><img src="red3.gif"></td>
+		<td align="center"><img src="blue3.gif"></td>
+	</tr>
+
+	<tr>
+		<td colspan="4" align="left" width="248">
+			<div>
+				One night I woke up and saw the Hand&copy; of God&copy; hovering over my bed.  He&copy; was mashing his
+				index finger and Thumb&copy; together, simulating the squashing of my head. Puzzled, I asked:<br><br>
+				
+				
+				<span class="god">"God&copy;, why do you do this?"</span><br><br>
+				
+				
+				To which he responded:<br><br>
+				
+				
+				<span class="god">"Will, My Son&copy;, to tell you The Truth&copy;, I just do it because it makes me feel powerul."</span><br><br>
+				
+				
+				Taking into account the fact that He&copy; was God&copy;, I nodded my approval and turned over to try to go
+				back to sleep.
+			</div>
+		</td>
+	</tr>
+</table>
+	
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title></title>
+	<style>
+		BODY {
+			background-color: #eee;
+		}
+		SPAN {
+			font: 11px tahoma;
+		}
+		DIV#surface {
+			background-color: white;
+			border: 1px solid #ccc;
+		}
+	</style>
+	<script src="HTLIB.js"></script>
+	<script type="text/javascript">
+		var delay = 10;
+		var ints = new Array (1, .5, Math.PI / 6, Math.PI / 4, 1.5);
+		var slopes = new Array (1,-1,0,.5,-.5);
+		var raindrops = new Array ();
+		var timers = new Array ();
+		
+		function init () {
+			var divs = document.getElementsByTagName ("div");
+			var dropcount = 0;
+			for (var i = 0; i < divs.length; i++) {
+				if (divs[i].className == "drop") {
+					raindrops[dropcount] = new HTlayer (i);
+					dropcount++;
+				}
+			}
+				
+			for (var i = 0; i < raindrops.length; i++) {
+				raindrops[i].sine = new sineWave (raindrops[i].index);
+				raindrops[i].sine.spawn ();
+				doSine (i);
+			}
+		}
+		
+		function sineWave (index) {
+			this.index = index;
+			this.t = 0;
+			this.t_total = 0;
+			this.t_mod;
+			this.sine_mod;
+			this.period;
+			this.left;
+			this.slope;
+			this.t_max = 500;
+			this.t_int = 1;
+			this.spawn = spawn;
+			this.newWave = newWave;
+			this.newWave ();
+			
+			function newWave () {
+				this.t = 0;
+				this.slope = slopes[Math.floor (Math.random () * slopes.length)];
+				this.t_int = ints [Math.floor (Math.random () * ints.length)];
+				this.t_mod = Math.floor (Math.random () * 20 + 4);
+				this.sine_mod = Math.floor (Math.random () * 40 + 4);
+				this.period = this.t_mod * 2 * Math.PI;
+				//alert ("t_int: " + this.t_int);
+			}
+			function spawn () {
+				var newx = Math.floor (Math.random () * 500);
+				var newy = Math.floor (Math.random () * 250);
+				HTlayers[this.index].moveTo (newx, newy);
+				this.left = newx;
+				this.t_total = newy;
+				//doSine (this.index);
+			}
+			return this;
+		}
+		
+		function doSine (n) {
+			if (raindrops[n].sine.t_total <= raindrops[n].sine.t_max) {
+				with (raindrops[n]) {
+					if (sine.t > sine.period) sine.newWave ();
+					sine.t += sine.t_int;
+					sine.t_total += sine.t_int;
+					sine.left += sine.slope;
+					var x = Math.sin (sine.t / sine.t_mod) * sine.sine_mod + sine.left;
+					var y = sine.t_total;
+					//stats.innerHTML = "(" + x + ", " + y + ") - t: " + sine.t;
+					moveTo (x,y);
+				}
+				timers[n] = setTimeout ("doSine (" + n + ");",delay);
+			}
+			else {
+				clearTimeout (timers[n]);
+				//raindrops[n].sine.newWave ();
+				//raindrops[n].sine.spawn ();
+				//doSine (n);
+			}
+		}
+	</script>
+</head>
+
+<body bgcolor="white" onload="init();">
+
+<div id="surface" style="position:absolute; top:10px; left:10px; height:500px; width:500px; overflow:hidden;">
+
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop.gif"></div>
+
+</div>
+
+</body>
+</html>

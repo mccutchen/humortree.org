@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+	<script language="javascript">
+		var count = 0;
+		var step = 5;
+		var del = 0;
+		var clickcount = 0;
+		
+		function slide()
+		{
+			var finishedleft = document.body.clientWidth - 191;
+			var maxleft = document.body.clientWidth;
+			
+			if(count < 2 && clickcount == 0)
+			{
+				if(count == 0)
+				{
+					document.images[0].style.left = parseInt(document.images[0].style.left) + step;
+					if(parseInt(document.images[0].style.left) >= maxleft)
+						count = 1;
+					setTimeout("slide();",del);
+				}
+			
+				else if(count == 1)
+				{
+					step = 3;
+					document.images[0].src = "finished.gif";
+					document.images[0].style.left = parseInt(document.images[0].style.left) - step;
+					if(parseInt(document.images[0].style.left) <= finishedleft)
+						count = 2;
+					setTimeout("slide();",del);
+				}
+			}
+			
+			else
+			{
+				if(clickcount == 1)
+					window.parent.location = "../smalltype/index.html";
+					
+				else
+					clickcount = 1;
+					
+			}
+			
+		}
+		
+	</script>
+</head>
+
+<body bgcolor="#808080">
+<img src="fotograf.gif" border="0" style="position:absolute; top:0px; left:200px; cursor:hand;" onclick="slide();">
+
+<img src="finished.gif" style="display:none;">
+
+</body>
+</html>

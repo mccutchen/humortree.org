@@ -1,0 +1,50 @@
+body
+{
+	background-color: #6699ff;
+	font: 11px arial;
+	color: white;
+}
+td
+{
+	font: 11px arial;
+	color: white;
+}
+.box
+{
+	border: 1px dotted white;
+	background-color: #3366cc;
+}
+input
+{
+	background-color: #6699ff;
+	color: white;
+	text-align: center;
+	width: 80px;
+}
+
+input.text
+{
+	border: 1px dotted white;
+}
+input.button
+{
+	border: 1px solid white;
+	padding: 5px 5px 5px 5px;
+	width: 100px;
+}
+.logo
+{
+	font: 24px helvetica,arial;
+	color: white;
+	font-weight: bold;
+}
+a:link,a:visited
+{
+	color: #99ccff;
+	text-decoration: none;
+}
+a:hover,a:active
+{
+	color: white;
+	text-decoration: none;
+}

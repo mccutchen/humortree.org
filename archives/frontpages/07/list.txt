@@ -1,0 +1,38 @@
+2001
+colorfade
+image
+math
+organic1
+colorfade-B
+lines
+gradients
+raindrops
+texture
+physics01
+physics02
+physics03
+organic4
+
+#
+
+19992000(text)
+The original version of Humor Tree, the 1999/2000 projects, were
+developed as a sort of art project. They go in a series, and it
+is best if you experience them that way, from beginning to end.
+
+They were written by someone (me) just learning the ropes, so
+many will probably not work in newer browsers.  But, i think
+it's worth it to go ahead and try them out.
+
+<a href="19992000/ht/">Click here</a> to start the Original Humor Tree.
+
+#
+
+java
+EndpointsAndConnectors01
+BreathingBubbleTrail
+
+#
+
+contact(text)
+<a href="javascript:mail();">me at humortree.org</a>

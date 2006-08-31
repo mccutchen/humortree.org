@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Humor Tree&nbsp;&nbsp;/&nbsp;&nbsp;Physics 01&nbsp;&nbsp;/&nbsp;&nbsp;Friction and Elasticity</title>
+	<script type="text/javascript">	
+		var isIE = (document.all && document.getElementById) ? true : false;
+		var isNS = (document.getElementById && !document.all) ? true : false;
+		var o = null;
+		var mousex = 0;
+		var mousey = 0;
+		var xoff = 20;
+		var yoff = 20;
+		var P = null;
+		
+		var maxx = 0;
+		var maxy = 0;
+		var minx = 30;
+		var miny = 30;
+		
+		function physicsModel (f, e) {
+			this.f = f;
+			this.e = e;
+			this.vx = 0;
+			this.vy = 0;
+			this.x = this.y = 0;
+			
+			this.setPosition = setPosition;
+			this.setV = setV;
+			
+			function setPosition (x, y) {
+				this.x = x;
+				this.y = y;
+			}
+			function setV () {
+				var dx = mousex - this.x;
+				var dy = mousey - this.y;
+				
+				this.vx = (this.vx + (dx / this.f)) / this.e;
+				this.vy = (this.vy + (dy / this.f)) / this.e;
+			}
+		}
+		
+		function slideTo () {
+			var x = parseInt (o.style.left);
+			var y = parseInt (o.style.top);
+			
+			P.setPosition (x, y);
+			P.setV ();
+						
+			o.style.left = x + P.vx + "px";
+			o.style.top = y + P.vy + "px";
+			
+			setTimeout ("slideTo ();", 20);
+		}
+		
+		function update (nf, ne) {
+			P.e = Math.abs (ne);
+			P.f = Math.abs (nf);
+			return false;
+		}
+		
+		function init () {
+			o = document.getElementById ("ball");
+			P = new physicsModel (6, 1.2);
+			document.f.f.value = P.f;
+			document.f.e.value = P.e;
+			
+			document.onmousemove = updateMouse;
+			
+			maxx = parseInt (document.getElementById ("container").offsetWidth);
+			maxy = parseInt (document.getElementById ("container").offsetHeight);
+			
+			slideTo ();
+		}
+		
+		function updateMouse (e) {
+			mousex = (isIE) ? parseInt (window.event.clientX) : parseInt (e.pageX);
+			mousey = (isIE) ? parseInt (window.event.clientY) : parseInt (e.pageY);
+			
+			if (mousey >= maxy) mousey = maxy;
+			if (mousey <= miny) mousey = miny;
+			
+			if (mousex >= maxx) mousex = maxx;
+			if (mousex <= minx) mousex = minx;
+			
+			mousex -= xoff;
+			mousey -= yoff;
+		}
+		
+	</script>
+	<link rel="stylesheet" type="text/css" href="physics01.css">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv= "pragma" CONTENT="no-cache">
+</head>
+
+<body onload="init ();">
+
+<div id="container" style="position:absolute;">
+	<div id="ball" style="position:absolute; top:0px; left:0px;"><img src="ball.gif" alt=""></div>
+	
+	<div id="f" style="position: absolute; bottom: 10px; right: 10px;">
+	<form name="f" style="display:inline;">
+		Friction:&nbsp;&nbsp;<input name="f" type="text" value="" class="inputText"><br>
+		Elasticity:&nbsp;&nbsp;<input name="e" type="text" value="" class="inputText"><br>
+		<input type="submit" class="inputButton" value="change values" onclick="return update (this.parentElement.f.value, this.parentElement.e.value);">
+	</form>
+	</div>
+</div>
+
+<div id="explanation">
+	<div id="logo">Humor Tree&nbsp;&nbsp;/&nbsp;&nbsp;<strong>Physics 01</strong>&nbsp;&nbsp;/&nbsp;&nbsp;"Friction and Elasticity"</div>
+	<p>
+		<strong>Physics 01</strong> is an experiment that simulates
+		friction and elasticity.  I say "simulates" because the
+		equation that I am using is not an actual physics equation;
+		it just gives the appearance of friction and elasticity.
+	</p>
+	
+	<p>
+		I have long struggled with differnet equations to try and
+		achieve this effect, but to no avail.  I scoured my brain
+		and my Calculus book (why? I don't know), and all of the
+		physics web sites I could find.  I could never take the
+		equations I knew and relate them to a dynamic HTML
+		environment.
+	</p>
+	
+	<p>
+		Finally, I stumbled across a forum at
+		<a href="http://www.were-here.com" target="_blank">were-here</a>
+		that gave me the equations I needed.  It turns out that
+		there is an extemely simple and elegant solution.  One that
+		I could not figure out, for the life of me.  So, this
+		experiment is not really my own work.  It is mostly the
+		work of some Flash programmer somewhere else in the world.
+	</p>
+	<p>But, I can still wrap it up in a pretty package.</p>
+	<p class="tip">
+		<strong>Tips</strong><br><br>
+		You can experiment with different values for friction
+		and elasticity using the form above.  The larger the
+		value you enter for friction, the slower the ball
+		will travel (makes sense).
+		<br><br>
+		To get noticeable elasticity, enter values from 1 to about 1.6
+		(like 1.001, 1.205, etc.).  Smaller values produce more
+		elasticity.
+		<br><br>
+		The faster you move your mouse, the more noticable the
+		effects of friction and elasticity are.
+	</p>
+	<p>&laquo;&nbsp;&nbsp;<a href="../../">return to humor tree</a></p>
+</div>
+
+</body>
+</html>

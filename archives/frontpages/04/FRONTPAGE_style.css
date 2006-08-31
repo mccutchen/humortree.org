@@ -1,0 +1,118 @@
+body
+{
+	background-color: #cccccc;
+}
+.humortree
+{
+	font:30px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.willmccutchen
+{
+	font:20px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:25px;
+	left:0px;
+}
+.years
+{
+	font:24px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:40px;
+	left:0px;
+}
+.explanation
+{
+	font:14px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:75px;
+	left:0px;
+}
+.projectlist
+{
+	font:24px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.bybrowser
+{
+	font:14px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:21px;
+	left:0px;
+}
+.tablelist
+{
+	position:absolute;
+	top:46px;
+	left:0px;
+}
+.browsername
+{
+	font:14px arial;
+	font-weight:bold;
+	color:#333333;
+}
+a,a:link
+{
+	color:#333333;
+	text-decoration:none;
+}
+a:hover
+{
+	color:#ff0099;
+	text-decoration:none;
+}
+.listitems
+{
+	font:11px arial;
+	color:#888888;
+}
+.extras
+{
+	font:14px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:46px;
+	left:0px;
+	width:160px;
+}
+.extras2
+{
+	font:14px arial;
+	font-weight:bold;
+	color:#333333;
+	position:absolute;
+	top:46px;
+	left:210px;
+	width:155px;
+}
+.extrasdescription
+{
+	font:11px arial;
+	color:#333333;
+}
+.input
+{
+	font:11px arial;
+	color:#333333;
+	width:150px;
+	background-color:#aaaaaa;
+	text-align:center;
+}

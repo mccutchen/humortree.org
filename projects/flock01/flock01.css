@@ -1,0 +1,65 @@
+body {
+	background-color: #eee;
+	color: #333;
+	margin: 0px;
+	padding: 0px;
+}
+a,a:link,a:visited {
+	color: #000;
+}
+a:hover, a:active {
+	color: #3399cc;
+}
+div#world {
+	background-color: #ddd;
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	overflow: hidden;
+}
+div#controls {
+	font: 10px verdana;
+	position: absolute;
+	/* top: 330px; <- if it's outside the 'world' */
+	bottom: 10px;
+	right: 10px;
+	z-index: 100;
+	text-align: left;
+	vertical-align: bottom;
+}
+input {
+	width: 60px;
+}
+input.button {
+	color: #333;
+	background-color: #aaa;
+	border: 2px groove;
+	font: 10px verdana, tahoma, geneva, arial;
+	padding: 3px;
+	margin: 0px;
+}
+input.text {
+	color: #333;
+	background-color: #fff;
+	border: 2px groove;
+	font-size: 10px;
+	width: 55px;
+}
+input#reload {
+	background-color: #999;
+}
+
+
+div#explanation {
+	position: absolute;
+	top: 340px;
+	left: 20px;
+	font: 11px georgia;
+}
+h1 {
+	font-size: 12px;
+}
+h3 {
+	font-size: 11px;
+	font-weight: normal;
+	font-style: italic;
+}

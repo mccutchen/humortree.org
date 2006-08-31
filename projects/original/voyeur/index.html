@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>HUMOR TREE FOR VOYEURS!  SATISFY YOUR SPYING URGES RIGHT HERE!</title>
+	<style type="text/css">
+		.text,body
+		{
+			font: 10px arial;
+			color: #000000;
+		}
+		
+		.links
+		{
+			width: 512px;
+			border: 1px black solid;
+			padding: 10px;
+			text-align: center;
+		}
+		
+		a:link, a:visited
+		{
+			font: 10px arial;
+			color: #000000;
+			text-decoration: underline;
+		}
+		a:hover
+		{
+			color: #ff0000;
+		}
+	</style>
+	<script language="javascript">
+		var pre,post; // for cross-browser bs
+		
+		function showme(which)
+		{
+			//alert(eval(pre + which + post));
+			if(eval(pre + which + post) == "hidden" || "hide")
+				eval(pre + which + post + "= 'visible';");
+				
+			else if(eval(pre + which + post) == "visible")
+			{
+				alert();
+				eval(pre + which + post + "= 'hidden';");
+			}
+				
+			if(document.layers)
+				document.layers[which].left = 100;
+		}
+		
+		function init()
+		{
+			//ie: document.all.tags('div')[which].style.visibility = visible|hidden;
+			//ns: document.layers[which].visibility = visible|hidden;
+			if(document.all) // ie4+
+			{
+				pre = "document.all.tags('div')[";
+				post = "].style.visibility"
+			}
+			else if(document.layers) // ns4.x
+			{
+				pre = "document.layers[";
+				post = "].visibility";
+			}
+		}
+	</script>
+</head>
+
+<body bgcolor="#aaaaaa" onload="init();">
+
+<div style="position:absolute; top:0px; left:0px; width:510px; height:345px; z-index:0;"><img src="background.jpg" width="510" height="345" border="1" bordercolor="black"></div>
+
+<div style="position:absolute; left:330px; top:129px; width:51px; height:40px; z-index:1; visibility:hidden;"><img src="four.gif" width="51" height="40" border="0"></div>
+
+<div style="position:absolute; left:261px; top:152px; width:137px; height:164px; z-index:2; visibility:hidden;"><img src="one.gif" width="137" height="164" border="0"></div>
+
+<div style="position:absolute; top:173px; left:215px; width:286px; height:171px; z-index:3; visibility:hidden;"><img src="two.gif" width="286" height="171" border="0"></div>
+
+<div style="position:absolute; left:96px; top:95px; width:57px; height:151px; z-index:4; visibility:hidden;"><img src="three.gif" width="57" height="151" border="0"></div>
+
+<div style="position:absolute; left:221px; top:107px; width:41px; height:46px; z-index:5; visibility:hidden;"><img src="five.gif" width="41" height="46" border="0"></div>
+
+<div style="position:absolute; top:346px; left:0px; width:512px; padding:10px; border:1px black solid;">
+<center>
+[<a href="javascript:showme(2);">Sitting and enjoying a cool beverage</a>]
+[<a href="javascript:showme(3);">Taking in the test signal on Television</a>]
+<br>
+[<a href="javascript:showme(4);">Examining a painting on the wall</a>]
+[<a href="javascript:showme(1);">Eating a snack at the breakfast table</a>]
+<br>
+[<a href="javascript:showme(5);">Testing the milk for freshness</a>]
+</center>
+</div>
+
+<div class="text" style="position:absolute; top:0px; left:511px; height:347px; width:100px; border: 1px black solid; padding:10px; z-index:6;">
+I recently installed a hidden camera in my living room.  I did this because I tend to sleepwalk, and I would
+like to know exactly what I do when I do.  I have included on this page a few still images from last night's
+tour of the living room.  Follow <a href="../frames/index.html">this link</a> to order the full video for only
+US$19.95!  
+</div>
+
+</body>
+</html>

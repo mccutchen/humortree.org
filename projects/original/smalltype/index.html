@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>3 pixel tall type.  difficult to read.  poor usability.  for sale for $100 US.</title>
+	
+	<script language="javascript">
+	var step = 10;
+	var del = 10;
+	var colors = new Array("#555555","#999900","#cc9966","#ff6600")
+	
+	function init()
+	{
+		document.bgColor = colors[Math.floor(Math.random() * colors.length)];
+		document.images[4].style.height="66px";
+		document.images[4].style.height="66px";
+	}
+	
+	function magnify(which)
+	{
+		var temp = parseInt(document.images[4].style.height);
+		if(which == 'plus')
+		{
+			temp *= 2;
+			temp += "px";
+			document.images[4].style.height = temp;
+			document.images[4].style.width = temp;
+		}
+		
+		else if(which == 'equals')
+		{
+			document.images[4].style.height= "66px";
+			document.images[4].style.width = "66px";
+		}
+		
+		else if(which == 'minus' && temp > 66)
+		{
+			temp /= 2;
+			temp += "px";
+			document.images[4].style.height = temp;
+			document.images[4].style.width = temp;
+		
+		}
+
+	}
+	</script>
+</head>
+
+<body onload="init();">
+
+<table border="0" cellpadding="0" cellspacing="0" align="center" height="100%">
+<tr>
+
+<td align="middle" valign="top" height="33%">
+
+<table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr colspan="3">
+<td align="center" colspan="3"><img src="zoom.gif"></td>
+</tr>
+<tr>
+	<td><img src="plus.gif" style="cursor:hand;" border="0" onclick="magnify('plus');" alt="zoom_in"></td>
+	<td><img src="equals.gif" border="0" style="cursor:hand;" onclick="magnify('equals');" alt="null_zoom"></td>
+	<td><img src="minus.gif" border="0" style="cursor:hand;" onclick="magnify('minus');" alt="zoom_out"></td>
+</tr>
+</table>
+
+</td>
+</tr>
+
+<tr>
+<td height="33%" valign="middle" align="center">
+<img id="logo" src="logo.gif">
+</td>
+</tr>
+
+<tr>
+<td height="33%" valign="bottom" align="center"><a href="../herman/index.html"><img src="next.gif" border="0"></a></td>
+</tr>
+</table>
+
+</body>
+</html>

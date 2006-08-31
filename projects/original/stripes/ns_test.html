@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Untitled</title>
+	<script language="javascript" src="../SCRIPTS/COLOR_script.js">
+	</script>
+	<script language="javascript">
+		var del = 100;
+		var BaseStripe;
+		var tempColor,tempColor2;
+		var stripes = new Array();
+		var laststripe;
+		var ie = document.all;
+		var ns = document.layers;
+		var prefix;
+		
+		function Stripe(which)
+		{
+			this.mystripe = prefix[which].style;  // the style of this stripe
+			
+			this.myindex = which;
+			this.ambottom = false;
+			this.amtop = false;
+			
+			if(which > 0)
+			{
+				this.oneup = prefix[which - 1].style; // the style of the above stripe
+			}
+			
+			else if (which <= 0) // or the bottom one, if 'which' is top one
+			{
+				this.amtop = true;
+				this.oneup = prefix[laststripe].style;
+			}
+									
+			if(which >= laststripe)
+				this.ambottom = true;
+				
+			this.swapup = _swapup;
+			return null;
+		}
+		
+		function _swapup(obj)
+		{
+		//	alert();
+			if(obj.ambottom)
+				tempColor = COLOR_makeColor();
+				
+			tempColor2 = obj.mystripe.backgroundColor;
+			obj.mystripe.backgroundColor = tempColor;
+			tempColor = tempColor2;
+			
+			if(obj.amtop)
+				setTimeout("stripes[laststripe].swapup(stripes[laststripe]);",del);
+			else if(!obj.amtop)
+				stripes[obj.myindex - 1].swapup(stripes[obj.myindex - 1]);
+		}
+		
+		function init()
+		{
+			var str;
+			var currentTop = 0;
+			var currentHeight = 200;
+			var windowWidth;
+			
+			//alert(document.layers[0].height);
+			
+			if(ie)
+			{
+				prefix = document.all.tags("div");
+				laststripe = document.all.tags("div").length - 1;
+				windowWidth = document.body.clientWidth;
+			}
+			else if(ns)
+			{
+				prefix = document.layers;
+				laststripe = document.layers.length - 1;
+				windowWidth = window.screen.availWidth;
+			}
+			
+			for(var i = 0; i <= laststripe; i++)
+			{
+				if(ie)
+				{
+					document.all.tags("div")[i].style.backgroundColor = COLOR_makeColor();
+					document.all.tags("div")[i].style.width = windowWidth + "px";
+				}
+				
+				else if(ns)
+				{
+					document.layers[i].backgroundColor = COLOR_makeColor();
+					document.layers[i].width = windowWidth;
+				}
+				
+				if(ie)
+					currentTop += parseInt(document.all.tags("div")[i].style.height);
+				else if(ns)
+					currentTop += parseInt(document.layers[i].height);
+									
+				//stripes[i] = new Stripe(i);
+			}
+			//tempColor = stripes[laststripe].mystripe.backgroundColor;
+			//stripes[laststripe].swapup(stripes[laststripe]);
+		}
+	</script>
+</head>
+
+<body bgcolor="#aaaaaa">
+
+<div style="position:absolute; top:0px; left:0px; width:100; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:20px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:40px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:60px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:80px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:100px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:120px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:140px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:160px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+<div style="position:absolute; top:180px; left:0px; width:100px; line-height:20px; font-size:20px; background-color:#ffffff;">&nbsp;</div>
+
+</body>
+</html>

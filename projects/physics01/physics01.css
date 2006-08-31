@@ -1,0 +1,66 @@
+BODY {
+	margin: 0px;
+	background-color: #ddd;
+	color: #333;
+	font: 11px tahoma, verdana, sans-serif;
+}
+#container {
+	width: 100%;
+	height: 300px;
+	overflow: hidden;
+	background-color: #fff;
+	cursor: crosshair;
+}
+#explanation {
+	position: absolute;
+	top: 300px;
+	left: 0px;
+	width: 100%;
+	border-top: 2px solid #f69;
+}
+#logo {
+	background-color: #f9c;
+	color: #fff;
+	padding: 5px;
+	font: 12px tahoma, verdana, sans-serif;
+	border-bottom: 1px solid #f69;
+}
+P {
+	margin: 10px;
+}
+#f {
+	padding: 5px;
+	font: 10px tahoma, verdana, sans-serif;
+	text-align: right;
+	background-color: #eee;
+	color: #666;
+	border: 1px solid #ccc;
+	cursor: auto;
+}
+.inputText {
+	border: 1px solid #ccc;
+	font: 10px tahoma, verdana, sans-serif;
+	color: #666;
+	width: 50px;
+}
+.inputButton {
+	border: 2px solid #999;
+	font: 10px tahoma, verdana, sans-serif;
+	color: #666;
+	background-color: #ccc;
+	margin-top: 2px;
+	width: 100px;
+}
+.tip {
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+A, A:link, A:visited {
+	color: #000;
+	text-decoration: underline;
+}
+A:hover, A:active {
+	color: #f69;
+	text-decoration: none;
+}

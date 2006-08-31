@@ -1,0 +1,19 @@
+BODY {
+	background-color: white;
+	color: #333;
+	margin: 20px 20px;
+}
+PRE {
+	padding: 15px;
+	float: left;
+	background-image: url("IMG/bg.gif");
+}
+A, A:link {
+	color: #ff3399;
+}
+A:visited {
+	color: #999;
+}
+A:hover,A:active {
+	color: #336699;
+}

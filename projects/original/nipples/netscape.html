@@ -1,0 +1,176 @@
+<html>
+<head>
+	<title>FUN WITH NIPPLES </title>
+	<script language="javascript">
+		var has_clicked = 0;
+		var is_selected = 0;
+		var flag = 0;
+		var solution = new Array("one","two","three","four","ten","eleven","twelve","nineteen","twentytwo","twentyfive","twentysix","twentyseven","thirtyfour","thirtyfive","thirtysix","thirtyseven");
+		var total_solved = 0;
+		var count = 0;
+		var empty = false;
+		var pre;	
+		
+		function emptyMe()
+		{
+			if(!empty && count < document.images.length)
+			{
+				var tmp = document.images[count].src;
+				if(tmp == pre+"01.jpg" || tmp == pre+"02.jpg" || tmp == pre+"03.jpg" || tmp == pre+"04.jpg" || tmp == pre+"05.jpg" || tmp == pre+"06.jpg" || tmp == pre+"07.jpg" || tmp == pre+"08.jpg")
+					document.images[count].src = "blank.gif";
+					
+				count++;
+				setTimeout("emptyMe();",10);
+			}
+			
+			else
+			{
+				count = 0;
+				empty = true;
+				solveMe();
+			}
+		}
+		
+		function solveMe()
+		{			
+			if(count < solution.length)
+			{
+				document.images[ solution[count] ].src = "0" + Math.floor(Math.random() * 7 + 1) + ".jpg";
+				document.images[ solution[count] ].style.borderColor = "#ffffff";
+				count++;
+				setTimeout("solveMe();",10);
+			}
+			
+			else
+				change_logo('on')
+			return;
+		}
+								
+		function preLoad() 
+			{
+        		this_ = new Array();
+        		
+				this_[0] = new Image();
+        		this_[0].src = "side1_on.gif";
+		      
+				this_[1] = new Image();
+  		      this_[1].src = "side2_on.gif"; 
+       	  
+  			}
+		
+		function change_logo(state)
+		{
+			if (state == 'on')
+			{
+				document.images['side1'].src = "side1_on.gif";
+				document.images['side2'].src = "side2_on.gif";
+				document.images['side1'].style.cursor = "hand";
+				document.images['side2'].style.cursor = "hand";
+				flag = 1;
+			}
+				
+			else
+			{
+				document.images['side1'].src = "side1_off.gif";
+				document.images['side2'].src = "side2_off.gif";
+			}
+		}
+		
+		function sel(which)
+		{			 
+			has_clicked++;
+			var num = document.images[which].src;
+			if (is_selected == 0 && num == pre + "blank.gif")
+			{
+				//
+			}
+			
+			else
+			{
+				if (document.yy.to_change.value == " ")
+				{
+					document.images[which].src = "blank.gif";
+					document.images[which].style.borderColor = "#000000";
+					document.images['selected'].src = num;
+					document.yy.to_change.value = which;
+					document.yy.source.value = num;
+					is_selected = 1;
+				}
+			
+				else
+				{
+					document.images[which].src = document.yy.source.value;
+					document.images['selected'].src = "blank.gif";
+					document.yy.to_change.value = " ";
+					document.yy.source.value = " ";
+					is_selected = 0;
+										
+					for(var i = 0; i < 16; i++)
+					{
+						if (which == solution[i])
+						{
+							document.images[which].style.borderColor = "#ffffff";
+							total_solved++;
+						}
+						/////
+					}
+					/////////
+					
+				}
+				/////			
+			
+			}
+			
+			if (check_solution())
+				change_logo('on');				
+		}		
+		
+		function next_site()
+		{
+			if(flag != 0)
+				document.location = "../will/index.html";
+		}
+		
+		function check_solution()
+		{
+			var temp;
+			var counter = 0;
+			for (i = 0; i < 16; i++)
+			{
+				temp = solution[i];
+				if (document.images[temp].style.borderColor == "#ffffff")
+					counter++;
+			}
+			
+			if (counter == 16)
+				return true;
+				
+			else
+				return false;
+		}
+			
+	function setPre()
+	{
+		var root = document.images[3];
+		if(root.src.indexOf("blank") != -1)
+			return;
+			
+		else
+			pre = root.src.slice(0,root.src.indexOf("0"));
+	}	
+	</script>
+	<style type="text/css">
+	</style>
+</head>
+<body bgcolor="#cc9966" onLoad="preLoad();">
+
+
+
+<form name="yy">
+	<input type="hidden" name="to_change" value=" ">
+	<input type="hidden" name="source" value=" ">
+</form>
+
+</body>
+
+</html>

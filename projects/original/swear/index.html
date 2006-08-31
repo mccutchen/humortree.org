@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>swear-o-matic</title>
+	<style type="text/css">
+		td,.text,a:link,a:visited;
+		{
+			font: 8pt Arial;
+			color: white;
+		}
+		
+		a:hover
+		{
+			text-decoration: underline;
+		}
+	
+	</style>
+	
+	<script language="javascript">
+		function highlight()
+		{
+			window.event.srcElement.bgColor = "#66cc33";
+		}
+		
+		function lowlight()
+		{
+			window.event.srcElement.bgColor = "#99cc99";
+		}
+		/////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////
+		/////////////////////////////////////////////////////
+		var blanks = new Array(20); // array containing indexes of blank <TD>s for use in document.all.tags{td} or whatnot
+		var currentPos = 0; // current position in blanks[]
+		var TDs = document.all.tags("td"); // makes an array of td tags
+		var currentSave = 0; // position in saves[]
+		var saves = new Array(51,53,55,57,59,61); // array containing indexes of <TD>s to be saved to
+		var canisave = 1; // 1 for yes, 0 for no.
+		//here it is
+																																																																																																																																																																																						var swears = new Array("FUCK","SHIT","DAMN","HELL","BITCH","ASS","MOTHERFUCKER","FUCKTEETH","FUCKING","FUCKER","FUCKHEAD","SHITHEAD","DAMNATION","DAMMIT","DAMNIT","HELLNATION","HELLISH","HELLHOLE","BASTARD","ASSHOLE","ASSFACE","ASSHEAD","ASSBITCH","ASSFUCK","BITCHFUCK","ASSMONGER","BITCHASS","PUSSY","DICK","CUNT","BOX","SNATCH","TWAT","COCK","COCKHEAD","COOCHIE","COOTER");
+		
+		// initialize blanks array
+		for(var i = 0; i < blanks.length; i++)
+		{
+			blanks[i] = 28 + i;
+		}
+				
+		function sel() // function called whenever user clicks on a letter
+		{
+			var letter  = window.event.srcElement.innerHTML; // get letter clicked on...
+			
+			if(letter == "(backspace)") // handle backspace by decreasing currentPos by 1 and changing bgColor and innerHTML back to normal
+			{
+				if(currentPos == 0)  // does not allow space as first character
+					return;
+				
+				else
+				{
+					currentPos--; // decreases "cursor" and changes background color and innerHTML of that space back to normal
+					TDs[blanks[currentPos]].innerHTML = "&nbsp;";
+					TDs[blanks[currentPos]].bgColor = "#99cc99";
+				}
+			}
+			
+			else if(currentPos < blanks.length) // letter was not backspace
+			{
+				TDs[blanks[currentPos]].innerHTML = letter; //fill space of currentPos with letter selected
+				TDs[blanks[currentPos]].bgColor = "#66cc33"; // and change background color of that cell
+				currentPos++; // increment "cursor"
+			}
+			
+			if(currentPos >= blanks.length)
+				currentPos = 0; // if they have typed too far, set currentPos back to zero... let them solve their own mess
+		}
+		
+		function initSave() // reset currentPos before saving, get and test swear-word
+		{
+			var okay = 0; // set to "1" if the word matches up with a word in the array of swears
+			var word = "";
+			
+			// get a word to test against bank of curse words
+			for(var i = 0; i < blanks.length; i++)
+			{
+				if(TDs[blanks[i]].innerHTML != "&nbsp;")
+					word += TDs[blanks[i]].innerHTML;
+			}
+			
+			// test to see if that word matches any word in the bank
+			for(var i = 0; i < swears.length; i++)
+			{
+				if(swears[i] == word)
+					okay = 1;
+			}
+			
+			if(canisave != 0 && okay == 1)
+			{
+				currentPos = 0;
+				save();
+			}
+		}
+		
+		function save()
+		{
+			
+			if(currentPos < blanks.length && TDs[blanks[currentPos]].innerHTML != "&nbsp;")  // make sure currentPos does not exceed limit of characters, and that it does not contain a space... when it hits a space, the loop stops
+			{
+				TDs[saves[currentSave]].innerHTML += TDs[blanks[currentPos]].innerHTML;
+				TDs[blanks[currentPos]].bgColor = "#99cc99";
+				TDs[blanks[currentPos]].innerHTML = "&nbsp;";
+				currentPos++;
+				setTimeout("save();",100);
+			}
+			
+			else
+			{
+				currentPos = 0;
+				currentSave++;
+				if(currentSave >= saves.length)
+					canisave = 0;
+					
+				return;
+			}
+		}
+		
+	</script>
+</head>
+
+<body bgcolor="#99cc99">
+
+<table border="1" bordercolor="white" cellpadding="5" align="center">
+
+<tr>
+	<td align="left" colspan="26"><font size="7"><b>Make your own swear-words</b></font></td>
+</tr>
+
+<tr>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">A</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">B</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">C</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">D</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">E</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">F</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">G</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">H</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">I</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">J</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">K</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">L</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">M</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">N</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">O</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">P</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">Q</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">R</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">S</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">T</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">U</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">V</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">W</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">X</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">Y</td>
+	<td width="15" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();">Z</td>
+</tr>
+<tr>
+	<td align="center" onClick="sel();" onmouseover="highlight();" onmouseout="lowlight();" colspan="28">(backspace)</td>
+</tr>
+
+<tr>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+	<td width="15">&nbsp;</td>
+		
+	<td colspan="6">
+		Your swear-words:
+	</td>
+</tr>
+
+<tr>
+	<td colspan="10" onClick="initSave();" onmouseover="highlight();" onmouseout="lowlight();">Save swear-word //</td>
+	<td colspan="10"><a href="mailto:will@humortree.org">Suggest swear-word //</a></td>
+	<td colspan="6">&nbsp;</td>
+</tr>
+
+<tr>
+	<td colspan="20">&nbsp;</td>
+	<td colspan="6">&nbsp;</td>
+</tr>
+
+<tr>
+	<td colspan="20">&nbsp;</td>
+	<td colspan="6">&nbsp;</td>
+</tr>
+
+<tr>
+	<td colspan="20">&nbsp;</td>
+	<td colspan="6">&nbsp;</td>
+</tr>
+
+<tr>
+	<td colspan="20">&nbsp;</td>
+	<td colspan="6">&nbsp;</td>
+</tr>
+
+<tr>
+	<td colspan="20">&nbsp;</td>
+	<td colspan="6">&nbsp;</td>
+</tr>
+
+<tr>
+	<td colspan="10" width="250">
+	This page is a reaction to Longview High School's decision to censor humor tree.  don't take this too
+	seriously, and don't get into trouble playing with this.  This thing knows if you are using a real swear-
+	word or not, so don't try to trick it.
+	</td>
+	<td colspan="16" align="center"><b>
+		<a href="http://www.aclu.org/" target="_new" style="font-size:32pt; font-weight:bold;">CENSORSHIP IS BAD</a>
+	</b></td>
+</tr>
+
+<tr>
+	<td colspan="26" align="center"><a href="../fotograf/index.html">all sworn out? next // -></a></td>
+</tr>
+</table>
+</body>
+</html>

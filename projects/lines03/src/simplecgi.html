@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>simplecgi.py</title>
+        <script type="text/javascript" src="CodeHighlighter.js" />
+        <script type="text/javascript" src="python.js" />
+        <link rel="stylesheet" type="text/css" href="hilite.css" />
+    </head>
+
+
+    <body>
+
+<pre><code class="python"># $Id: simplecgi.py 1 2005-09-29 14:53:00Z mccutchen $
+
+import cgi, os, sys, time
+
+# redirect stderr to stdout
+# TODO: Is this a good idea?
+sys.stderr = sys.stdout
+
+# enable traceback support
+import cgitb; cgitb.enable()
+
+# optionally create a debug file
+debugpath = 'debug'
+debugfile = None
+
+# get the querystring
+try:
+    querystring = os.environ['QUERY_STRING']
+except KeyError:
+    querystring = ''
+
+
+# parse the querystring into a list of key, value pairs
+args = cgi.parse_qsl(querystring)
+
+def arg(key, func=str):
+    for k, v in args:
+        if key == k:
+            try:
+                return func(v)
+            except:
+                return v
+    return None
+
+
+def debug(msg):
+    global debugfile
+    if debugfile is None:
+        debugfile = file(debugpath,'wa')
+        print >> debugfile, '--- %s ---' % time.strftime('%Y/%m/%d @ %H:%M:%S')
+    print >> debugfile, msg
+
+
+def init(content_type='text/html'):
+    """
+    Print the required Content-type header.  This
+    method should be called before any output is
+    sent to the browser.
+    """
+    print 'Content-type: %s\n' % content_type</code></pre>
+
+    </body>
+</html>

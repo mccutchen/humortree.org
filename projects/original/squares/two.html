@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title> </title>
+	<script>
+		var bgColors = new Array("#ffffff","#dddddd","#000000","#ffffff");
+		function bgColorChange() 
+		{
+			document.bgColor = bgColors[Math.floor(Math.random() * 4)];
+			setTimeout("bgColorChange()",1);
+		}
+		
+		function changeArray(what) 
+		{
+			if (what == 'on')
+			{
+				bgColors[0] = "#336600";
+				bgColors[1] = "#339900";
+				bgColors[2] = "#33cc00";
+				bgColors[3] = "#33ff00";
+			}
+			else
+			{
+				bgColors[0] = "#ffffff";
+				bgColors[1] = "#dddddd";
+				bgColors[2] = "#000000";
+				bgColors[3] = "#ffffff";
+				bgColors = new Array("#ffffff","#dddddd","#000000","#ffffff");
+			}
+		}
+		
+		function next_page()
+		{
+			document.location = "index2.html";
+		}
+		
+	</script>
+</head>
+
+<body style="cursor:hand" bgcolor="#ffffff" onLoad="bgColorChange();" onMouseOver="changeArray('on');" onMouseOut="changeArray('off');" onClick="next_page();">
+	<layer id="layer1" height="100%" width="100%" onmouseover="changeArray('on');" onmouseout="changeArray('off');" onMouseDown="alert();">
+	<script>
+	// wacky work-around for Netscape, because it doesnt support onclick for body...
+	if(document.layers)
+	{
+		layer1.captureEvents(Event.MOUSEDOWN);
+		layer1.onmousedown = next_page;
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>DIMTHELIGHTS - - - - hu&nbsp;m&nbsp;&nbsp;o&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e</title>
+	
+	<script language="javascript">
+		var clicks = 0;
+		var swaps = 0;
+		var prefix, postfix;
+		var imgs = new Array("a.gif","b.gif","c.gif","d.gif");
+		var isNS, is6, isIE = false;
+		
+		function swap(which)
+		{
+			if(isIE || is6)
+				document.images[which].src = imgs[which];
+			else if(isNS)
+			{
+				document.layers[which].document.images[0].src = imgs[which];
+				//alert(document.layers[which].document.images[which].src);
+			}
+			clicks++;
+			//alert(clicks);
+			
+			if(clicks > 3 && swaps > 3)
+				show('nixt');
+		}
+		
+		function next()
+		{
+			window.location = "../will2/index.html";
+		}
+		
+		function show(which)
+		{
+			if(which != 'nixt')
+			{
+				var me = which + 2;
+				if(me == 4)
+					me = 1;
+				if(me == 5)
+					me = 2;
+			}
+			
+			else
+				me = 4;
+			
+			swaps++;
+			eval(prefix + me + postfix + ".visibility = 'visible';");
+		}
+		
+		function init()
+		{
+			if(document.all)
+			{
+				prefix = "document.all.tags('div')[";
+				postfix = "].style";
+				isIE = true;
+			}
+			
+			else if(document.layers)
+			{
+				prefix = "document.layers[";
+				postfix = "]";
+				isNS = true;
+			}
+			
+			else if(document.getElementById)
+			{
+				prefix = "document.getElementsByTagName('div')[";
+				postfix = "].style";
+				is6 = true;
+			}
+				
+		}
+	</script>
+	
+	<style type="text/css">
+		.one
+		{
+			position: absolute;
+			top: 75px;
+			left: -15px;
+			font: 50px arial bold;
+			color: #ffffff;
+		}
+			
+		.two
+		{
+			position: absolute;
+			top: 240px;
+			left: 0px;
+			font: 25px arial bold;
+			color: #ffffff;
+		}
+		
+		.three
+		{
+			position: absolute;
+			top: 450px;
+			left: 0px;
+			font: 20px arial bold;
+			color: #ffffff;
+		}
+		
+		.four
+		{
+			position: absolute;
+			top: 625px;
+			left: 0px;
+			font: 18px arial bold;
+			color: #ffffff;
+		}
+		
+	</style>
+	
+</head>
+
+<body bgcolor="#555555" background="bg.gif" alink="black" vlink="black" link="black" onload="init();">
+
+
+<!---------------------------------------------------------------------------
+------------------------
+-----------------------
+-------------------------->
+<div style="position:absolute; top:1675px; left:200px;">
+	<a href="javascript:swap(0);" onmouseover="show(0);"><img src="x.gif" border="1" height="50" width="50"></a>
+</div>
+
+<div style="position:absolute; top:1875px; left:500px; visibility:hidden;">
+	<a href="javascript:swap(1);" onmouseover="show(1);"><img src="x.gif" border="1" height="50" width="50"></a>
+</div>
+
+<div style="position:absolute; top:1875px; left:600px; visibility:hidden;">
+	<a href="javascript:swap(2);" onmouseover="show(2);"><img src="x.gif" border="1" height="50" width="50"></a>
+</div>
+
+<div style="position:absolute; top:1875px; left:700px; visibility:hidden;">
+	<a href="javascript:swap(3);" onmouseover="show(3);"><img src="x.gif" border="1" height="50" width="50"></a>
+</div>
+
+<div style="position:absolute; top:1875px; left:800px; visibility:hidden;">
+	<a href="javascript:next();"><img src="nixt.gif" border="1" height="50" width="50"></a>
+</div>
+
+<div class="e" style="position:absolute; top:1944px; left:500px;">
+	<img src="blank.gif" border="0" height="50">
+</div>
+
+<!----------------
+--------------
+-----------------
+------------------
+------------------------>
+
+<div class="one" style="position:absolute; top:75px; left:-15px; font:50px arial; font-weight:bold; color:white;">&nbsp;&nbsp;&nbsp;DIM THE LIGHTS, THIS BOY HAS SOMETHING TO SAY.</div>
+
+<div class="two" style="position:absolute; top:240px; left:0px; font:25px arial; font-weight:bold; color:white;">
+	I KNEW A GIRL, ONCE, WHO TRIED TO BE MY FRIEND.  SHE USED TO TO SIT BY ME AT LUNCH TIME IN THE CAFETERIA, BUT I WOULD
+	ALWAYS GET UP AND PRETEND TO BE DONE EATING.  SHE NEVER LOOKED OFFENDED, EVEN THOUGH SHE MUST HAVE KNOWN WHAT I WAS DOING.
+</div>
+
+<div class="three" style="position:absolute; top:450px; left:0px; font:20px arial; font-weight:bold; color:white;">
+	SHE WAS IN MY ENGLISH CLASS AND SAT TWO SEATS BEHIND ME.  DURING EACH CLASS PERIOD, SHE WOULD WRITE ME LITTLE NOTES, SILLY
+	THINGS, AND PASS THEM UP TO ME.  THEY ALWAYS ENDED IN THE SAME WAY: "THERE ARE A LOT OF PEOPLE IN THIS WORLD, BUT I AM NOT
+	WORRIED ABOUT THEM.  I AM ONLY WORRIED ABOUT YOU."  I NEVER PASSED ANY NOTES BACK TO HER.
+</div>
+
+<div class="four" style="position:absolute; top:625px; left:0px; font:18px arial; font-weight:bold; color:white;">
+	THEN SHE MOVED AWAY, BUT I DON'T KNOW WHERE TO.  BEFORE SHE LEFT, SHE CALLED ME ON THE TELEPHONE.  I HUNG UP ON HER.  SHE
+	CALLED AGAIN, AND I HUNG UP ON HER AGAIN.  SHE CALLED FOR A THIRD TIME, AND I LET HER TALK.  SHE TOLD ME THAT WHEN SHE FIRST
+	SAW ME, I DID SOMETHING THAT MADE HER FALL IN LOVE WITH ME COMPLETELY.  I ASKED HER WHAT I HAD DONE.  SHE SAID THAT I HAD GIVEN
+	MY SWEATSHIRT TO A BOY WHO HAD SPILLED CHOCOLATE MILK DOWN THE FRONT OF HIS SHIRT, EVEN THOUGH IT WAS COLD OUTSIDE.  I DENIED
+	EVER HAVING DONE ANYTHING LIKE THAT, AND HUNG UP ON HER AGAIN.  SHE DIDN'T CALL BACK.
+</div>
+
+<div style="position:absolute; top:0px; left:-500px; visibility:hidden;">
+<img src="a.gif">
+<img src="b.gif">
+<img src="c.gif">
+<img src="d.gif">
+</div>
+
+</body>
+</html>
+

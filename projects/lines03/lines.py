@@ -1,0 +1,159 @@
+#!/usr/bin/env python
+# $Id: lines.py 30 2006-03-21 17:09:06Z mccutchen $
+
+"""
+Generates an image composed of randomly-colored
+vertical lines.
+"""
+
+import os, random, sys
+import Image, ImageDraw
+import simplecgi
+
+directions = ('horizontal','vertical','slanted')
+
+# make sure we have a direction we can work with
+direction = simplecgi.arg('direction')
+if direction not in directions:
+    # pick a random default direction
+    direction = random.choice(directions)
+
+# set up sane defaults based on the requested direction
+if direction == 'vertical':
+    default_width = 2000
+    default_height = 1
+elif direction == 'horizontal':
+    default_width = 1
+    default_height = 2000
+elif direction == 'slanted':
+    default_width = 2000
+    default_height = 2000
+else:
+    default_width = 100
+    default_height = 100
+
+# set up the width and height of the image to generate
+width = simplecgi.arg('width', int) or default_width
+height = simplecgi.arg('height', int) or default_height
+
+# store the larger dimension, for use in generating
+# slanted images
+maxdimension = max(width, height) * 2
+
+# how much can each color vary from the previous?
+colordelta = simplecgi.arg('delta', int) or 10
+alphadelta = simplecgi.arg('alphadelta', int) or 0
+
+# how far back does a color bounce when it gets too
+# large or small?
+bounciness = simplecgi.arg('bounciness', float) or 2.2
+
+
+def sloppycolor(base=None):
+    """
+    Produces a random color optionally based
+    on the given base color, supplied as a
+    3-tuple like (red, green, blue) where
+    red green and blue are between 0 and 255.
+    """
+
+    if base is None:
+        # return a completely random color
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        a = 255
+        return (r,g,b,a)
+
+    else:
+        # return a random color that is fairly
+        # close to the given base color
+        assert len(base) is 4
+        r = validate(base[0] + getdelta(colordelta))
+        g = validate(base[1] + getdelta(colordelta))
+        b = validate(base[2] + getdelta(colordelta))
+        a = validate(base[3] + getdelta(alphadelta))
+        return (r,g,b,a)
+
+
+def validate(component):
+    """
+    Ensures that component (which represents the
+    red, green or blue component of a color) is
+    between 0 and 255.  If a given component is
+    too large or too small, it is 'bounced' back
+    the other way by an amount controlled by the
+    bounciness parameter.
+    """
+    assert isinstance(component, int)
+
+    if component > 0 and component < 256:
+        return component
+
+    delta = 0
+    if component > 255:
+        delta = int((255 - component) * bounciness)
+    elif component < 0:
+        delta = int(-component * bounciness)
+    return component + delta
+
+
+def getdelta(max):
+    """
+    return a random delta value that is between
+    -max and max
+    """
+    return random.randint(-max, max)
+
+
+def main(outfile):
+    if direction == 'slanted':
+        # if we're generating a slanted image, we have to
+        # make it twice as big as the largest requested dimension
+        # and then crop it, so the lines come out right
+        size = (maxdimension, maxdimension)
+    else:
+        # if we're making a horizontal or vertical image, we
+        # can just make it the requested size
+        size = (width, height)
+
+    image = Image.new('RGB', size)
+    draw = ImageDraw.Draw(image)
+
+    c = sloppycolor()
+    if direction == 'vertical':
+        for i in range(0, width):
+            c = sloppycolor(c)
+            draw.line((i, 0) + (i, height), c)
+    elif direction == 'horizontal':
+        for i in range(0, height):
+            c = sloppycolor(c)
+            draw.line((0, i) + (width, i), c)
+    elif direction == 'slanted':
+        for i in range(0, maxdimension):
+            c = sloppycolor(c)
+            x1 = min(i, maxdimension)
+            y1 = max(0, i - maxdimension)
+            x2 = max(0, i - maxdimension)
+            y2 = min(i, maxdimension)
+
+            #simplecgi.debug('Drawing a line to these coords: %s' % str((x1, y1, x2, y2)))
+            draw.line((x1, y1, x2, y2), c)
+
+        # crop the image back to its requested size
+        image = image.crop((0,0, width, height))
+
+    # try to disable any caching of the image, so page refreshes will generate a new one
+    # (FIXME: this doesn't work right now)
+    #simplecgi.header('Cache-control', 'no-cache, no-store, max-age=0')
+    #simplecgi.header('Expires', 'Fri, 30 Oct 1998 14:19:41 GMT')
+
+    # tell the browser what kind of file we're sending
+    simplecgi.init('image/png')
+
+    # send the file itself
+    image.save(outfile, 'PNG')
+
+
+if __name__ == '__main__':
+    main(sys.stdout)

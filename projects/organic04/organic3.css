@@ -1,0 +1,74 @@
+BODY {
+	background-color: #666;
+	color: #333;
+	font: 11px georgia, palatino, tahoma, verdana;
+}
+DIV#world {
+	overflow: hidden;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	height: 300px;
+	width: 600px;
+	border: 1px solid #333;
+	background-color: #eee;
+}
+DIV#explanation {
+	position: absolute;
+	top: 309px;
+	left: 10px;
+	width: 600px;
+	border: 1px solid #333;
+	background-color: #ccc;
+}
+.pad10 {
+	padding: 10px;
+}
+H5 {
+	font-size: 11px;
+	background-color: #999;
+	color: white;
+	padding: 10px;
+	border-bottom: 1px solid #333;
+	margin: 0px;
+	font-weight: bold;
+	text-align: center;
+}
+A, A:link, A:visited {
+	color: #cc6600;
+	font-weight: bold;
+	text-decoration: none;
+}
+A:hover, A:active {
+	color: #ffffff;
+	text-decoration: none;
+}
+FORM {
+	position: absolute;
+	bottom: 6px;
+	right: 5px;
+	z-index: 100;
+	text-align: right;
+}
+INPUT {
+	border: 1px solid #999;
+	background-color: #ccc;
+	font: 10px verdana;
+}
+SPAN.smaller {
+	font-family: tahoma;
+}
+SPAN#properties {
+	font: 10px verdana;
+	padding: 2px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	margin-right: 2px;
+	visibility: hidden;
+}
+IMG#burst {
+	position: absolute;
+	top: 145px;
+	left: 295px;
+	z-index: 0;
+}

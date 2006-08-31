@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>WE|MUST|FREE|CANADA!</title>
+	
+	<script language="javascript">
+		function flash_me()
+		{
+			document.all['whole'].style.visibility = "visible";
+			
+			if (document.images['at_any_cost'].style.visibility == "visible")
+				document.images['at_any_cost'].style.visibility = "hidden";
+				
+			else
+				document.images['at_any_cost'].style.visibility = "visible";
+				
+			setTimeout("flash_me();",1000);
+			
+		}
+			
+		function unit()
+		{
+			document.all['starter'].style.display = "none";
+			document.all['whole'].style.display = "";
+			flash_me();
+		}
+	</script>
+</head>
+
+<body bgcolor="#ffcc00">
+
+	<div id="starter" align="center" valign="middle" style="font-family:times; font-size:24pt; line-height:65%; font-weight:bold;color:#996600;">
+		FOR YEARS, THE GREAT NATION OF CANADA HAS BEEN UNDER THE CRUEL FIST OF TYRANNY!  THEY HAVE BORNE THEIR BURDEN NOBLY, IN THE FACE
+		OF MANY HARDSHIPS!  THE TIME HAS COME, HOWEVER, FOR THEM TO STRUGGLE OUT FROM UNDER THE YOKE OF ITALIAN FASCISM!  THEIR CHILDREN
+		HAVE BEEN BRAINWASHED FOR THE LAST TIME!  NO MORE OF MOUSSILINI'S INSIDIOUS SLOGANS ("BELIEVE! OBEY! FIGHT!") ARE GOING TO BE
+		SMUGGLED INTO THEIR IMPRESSIONABLE BRAINS.  JOIN WITH ME! JOIN WITH ME TO SAVE CANADA!  WE MUST FIGHT!  REMEMBER, SOME OF YOU WILL
+		DIE, ASSUREDLY.  OTHERS OF YOU WILL PROBABLY BREAK RANKS AND RUN LIKE SISSIES!  BUT THOSE OF YOU WHO COME OUT OF THIS WAR ALIVE,
+		AND NOT HUMILIATED LIKE LITTLE GIRLS, WILL HAVE SOMETHING TO STAND UP FOR, SOMETHING TO BE PROUD ABOUT!  IT IS TIME TO GIVE
+		CANADA HER LIBERTY!  HER LIBERTY, AT ANY COST!  SO, BRETHREN, JOIN WITH ME, SINGING "JOY OF THE JOY OF CANADA AND THEREIN PROVIDING
+		LIBERTY ALL AROUND" AS WE MARCH INTO THE GREAT ICY NORTH TO BESTOW UPON THAT GREAT NATION THE ONE THING THAT SHE MISSES MOST:
+		<A HREF="javascript:unit();" style="color:black;">LIBERTY!</a>
+	</DIV>
+	
+	<div id="whole" align="center" style="display:none;">
+		<img src="liberty.gif">
+		<div style="position:relative; top:-480px; left:0px;">
+			<a href="../this_is/index.html"><img id="at_any_cost" border="0" style="visibility:hidden;" src="at_any_cost.gif"></a>
+		</div>
+	</div>
+	
+
+
+</body>
+</html>

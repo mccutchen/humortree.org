@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>Organic Motion #4 &mdash; EUREKA! &mdash; Humor Tree</title>
+	
+	<script type="text/javascript" src="OrganicUtils.js"></script>
+	<script type="text/javascript" src="OrganicAngle.js"></script>
+	<script type="text/javascript" src="OrganicMover.js"></script>
+	<script type="text/javascript" src="OrganicWorld.js"></script>
+	
+	<script type="text/javascript">
+		// global variables
+		var DELAY = 30;
+		var INITIAL_COUNT = 3;
+		var LOOP = null;
+		var STEP = 5;
+		var World = null;
+		
+		function init() {
+			preload();
+			
+			World = new OrganicWorld("world",600,300);
+			
+			for(var i = 0; i < INITIAL_COUNT; i++)
+				World.add(new OrganicMover("" + i + ""));
+			
+			play();
+		}
+	</script>
+	
+	<link rel="stylesheet" type="text/css" href="organic3.css">
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv= "pragma" CONTENT="no-cache">
+	
+</head>
+
+<body onload="init();">
+
+<div id="world">
+	
+	<img src="burst/b5.gif" id="burst" height="10" width="10" alt="bang!">
+	
+	<form name="f" action="javascript: void(0);">
+		<span id="properties">ID: &ndash;&ndash;&ndash; / Angle: &ndash;&ndash;&ndash;&#0176; / Speed: &ndash; </span>
+		<input type="submit" value="add" onclick="add(); return false;">
+		<input type="submit" value="remove" onclick="remove(); return false;">
+		&nbsp;&nbsp;&nbsp;<input type="submit" name="pause" value="stop" onclick="controller(); return false;">
+	</form>
+</div>
+
+
+<div id="explanation">
+
+<h5>&ldquo;&nbsp;Organic Motion #4&nbsp;&rdquo;</h5>
+<div class="pad10">
+
+<strong>Usage&mdash;</strong>Press the "add" button to add an
+organism to the "world."  Press the "remove" button to remove one organism
+from the world.  I think that it is really interesting looking if you add
+a whole lot of organisms.  And try this: Press stop.  Then, add as many
+organisms as you want (the more the better).  Once you've clicked "add"
+a number of times, press start, and watch the nice effect.
+<br><br>
+<strong>Explanation&mdash;</strong>It was only a matter of time, I
+guess.  I've finally got myself some organic motion that I like.
+It took me three tries, but I don't know if that is good or bad.
+<br><br>
+To review&mdash;
+<ol>
+	<li><a href="../organic01/">Organic01</a>, the first attempt, was
+	a poor model of organic motion.  It was very jerky, because the "organisms"
+	could only move in straight lines.<br><br></li>
+	
+	<li><a href="../raindrops/">raindrops</a> (which is also Organic 2), was a better
+	model of organic motion, but it was very poorly coded, and was thus very slow.<br><br></li>
+	
+	<li><a href="../physics03/">Physics03</a> (which is also Organic 3), was much,
+	much smoother, because it was based on some pseudo-physics involving 
+	friction, elasticity, and repulsion.  It was still a poor model, because
+	it required a lot of extraneous code to function.  It was not neat.</li>
+</ol>
+This project, Organic 4, uses some very basic Trigonometry to dictate
+the motion of the "organisms."  This is the way I should have done it
+from the beginning, but this idea didn't even occur to me until recently.
+<br>
+<br>
+&laquo;&nbsp;&nbsp;<a href="../../">back to Humor Tree</a>
+<br><br>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+
+<head>
+	<title> </title>
+	
+	<script>
+		function swap(what, state) {
+			var i = Math.floor(Math.random() * 3);
+			document.images[i].src = what + "_" + state + ".gif";
+		}
+		
+		function preLoad() {
+		  		this_ = new Array();
+        		
+				this_[0] = new Image();
+        		this_[0].src = "1_1_on.gif";
+		      
+				this_[1] = new Image();
+  		      this_[1].src = "1_2__on.gif"; 
+       	  
+	         this_[2] = new Image();
+    	      this_[2].src = "1_3_on.gif";      
+ 		}
+		
+	</script>
+	
+	<style type="text/css">
+		
+	</style>
+	
+</head>
+
+<body bgcolor="#ffffff" onLoad="preLoad();">
+
+<table border="0" cellpadding="0" cellspacing="0" align="right" height="100%">
+<tr>
+
+<td height="100%" valign="bottom"><a href="../circles/index.html" target="_top" onMouseOver="swap('1_1','on');" onMouseOut="swap('1_1','off');"><img name="1_1" src="1_1_off.gif" width="70" height="135" border="0" alt="love"></a></td>
+<td valign="bottom"><a href="../circles/index.html" target="_top" onMouseOver="swap('1_2','on');" onMouseOut="swap('1_2','off');"><img name="1_2" src="1_2_off.gif" width="61" height="135" border="0" alt="love"></a></td>
+<td valign="bottom"><a href="../circles/index.html" target="_top" onMouseOver="swap('1_3','on');" onMouseOut="swap('1_3','off');"><img name="1_3" src="1_3_off.gif" width="78" height="135" border="0" alt="love"></a></td>	
+</tr>
+</table>
+</body>
+
+</html>

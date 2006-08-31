@@ -1,0 +1,566 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+
+<!-- 
+
+How:
+  
+	all of the images were created in photoshop 
+	using only the gradient tool, Bitmap Mode,  
+	and, on a few, one of the "distort" filters.
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+	<title>humor tree - interim edition - gradients</title>
+	<script type="text/javascript">
+		var totalGradients=25;
+		var currentGradient=1;
+		var current = status = null;
+		
+		function next ()
+		{
+			currentGradient++;
+			if (currentGradient > totalGradients)
+				currentGradient=1;
+			swap();
+		}
+		
+		function swap ()
+		{
+			var leadingZero = (currentGradient < 10) ? "0" : "";
+			var imgString = "img/gradient" + leadingZero + currentGradient + ".gif";
+			current.src = imgString;
+			document.getElementById("status").innerHTML = leadingZero + currentGradient + "&nbsp;&nbsp;/&nbsp;&nbsp;" + totalGradients;
+		}
+		
+		function previous ()
+		{
+			currentGradient--;
+			if (currentGradient < 1)
+				currentGradient = totalGradients;
+			swap();
+		}
+		
+		function init ()
+		{
+			if(document.getElementById)
+			{
+				current = document.getElementById("current");
+				status = document.getElementById("status");
+			}
+			
+			else
+				window.location="http://www.webstandards.org/upgrade/";
+		}
+	</script>
+	
+	<style type="text/css">
+		BODY {
+			text-align:center;
+			margin:0px;
+			padding:0px;
+			background-color:white;
+		}
+		.arrow {
+			font:11px verdana,arial,sans-serif;
+			font-weight:bold;
+		}
+		a:link,a:visited {
+			color:#cccccc;
+			text-decoration:none;
+		}
+		a:hover,a:active {
+			color:#cc6600;
+			text-decoration:none;
+		}
+		#status {
+			font:11px georgia,verdana,arial,sans-serif;
+			color:#cccccc;
+		}
+		#left {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			height: 400px;
+			width: 390px;
+			font:11px/20px georgia,verdana,arial,sans-serif;
+			color:#cccccc;
+			text-align: left;
+		}
+		#bottom {
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 390px;
+		}
+		IMG.gradient {
+			border:1px solid #dddddd;
+		}
+		
+	</style>
+</head>
+
+
+
+<body onload="init();">
+
+	<div id="left">
+		<a href="../../" target="_parent"><img src="img/logoB.gif" alt="humor tree" border="0"></a>
+		<br>
+		&nbsp;graphics / <strong>"GRADIENTS"</strong>
+		<br>
+		&nbsp;12 July 2001
+	</div>
+	
+	<div id="bottom">
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td align="left" class="arrow"><a href="javascript:previous();" onclick="this.blur();">&laquo;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+			
+			<td align="center">
+				<div id="status">
+				01&nbsp;&nbsp;/&nbsp;&nbsp;<script type="text/javascript"> document.write (totalGradients); </script>
+				</div>
+			</td>
+			
+			<td align="right" class="arrow"><a href="javascript:next();" onclick="this.blur();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;</a></td>
+		</tr>
+		</table>
+	</div>
+	
+	
+	<div id="gradient" style="position: absolute; top:0px; left:0px; height:400px; width:1200px; clip:rect(0px 801px 402px 400px);">
+		<div style="position:absolute; top:0px; left:0px; width:400px; height:400px;">
+			<img id="previous" src="img/gradient22.gif" alt="gradients" height="400" width="400" class="gradient">
+		</div>
+		<div style="position:absolute; top:0px; left:400px; width:400px; height:400px;">
+			<img id="current" src="img/gradient01.gif" alt="gradients" height="400" width="400" class="gradient">
+		</div>
+		<div style="position:absolute; top:0px; left:800px; width:400px; height:400px;">
+			<img id="next" src="img/gradient02.gif" alt="gradients" height="400" width="400" class="gradient">
+		</div>
+	</div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- a portrait of the author, circa 1999:
+
+
+                                  ;3E@MMM@@@H8.                                                     
+                             RMMMMMMMMMMMMMMMMMMMMMME;                                              
+                           MMMMMMMMMMMMMMMMMMMMMMMMMMMMN                                            
+                          MMMMMMMMMMMMMMo N,MMMMMMMMMMMMMN                                          
+                         MMMMMMMM  R          MMMMMMMMMMMMM.                                        
+                        ZMM MMEM              MMMMMMMMMMMMMMA                                       
+                         M                     MMMMMMMMMMMMMM                                       
+                         o             oHMMA    3MMMMMMMMMMMM                                       
+                                 ZMuMMMNM  MME   .MMMMMMMMMMM                                       
+                         3MMMM       ;MM RM    ;  MMMMM:   M                                        
+                         EM MM M    b UZ         8MMMMM  ,MM                                        
+                          EuMo       .           ,RMM      M                                        
+                                                 MMMM  .  MM                                        
+                                                 :MMMM  MMM                                         
+                                  ;;            MMMMMM, MM                                          
+                                                 8MMMM MMb                                          
+                                 MMMMMMMH     ,M  AMMM MMM                                          
+                                 b           7. ,MMMM  MM                                           
+                                              ,MMMM    :MU                                          
+                                            8MMMMMM     MM                                          
+                                         ZMMMM:         :MMMMMMR                                    
+                                 oMMMMMMMMM:             MMMMMMMM                                   
+                                MMMMA                      ,MMMMMM                                  
+                              3MMMMMM                        NMMMMMu                                
+                             MMMMMMMM                         MMMMMMM                               
+                           MMMMM MMM2                       MMMMMMMMMMMMMA                          
+                      3MMMMMMMMMMMMMMMMMM            ,UMMMMMMMMMMMMMMMMMMMMMMM                      
+                 ;MMMMMMMMMMMMMMMMMMMMM8MMM        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo                 
+              8MMMMMMMMMMMMMMMMMMMMMMMMMMMMM     AMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMME              
+            8MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMU  MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM            
+           MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM2 ,MbMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM           
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.         
+          MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM         
+         MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM7;MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM        
+         MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMbMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM        
+        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM       
+        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMU      
+       .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM      
+       MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM     
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM     
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM    
+     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   
+    8MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMR  
+    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  
+   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 
+  MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM3 
+   uMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMZ@M       
+         UMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMu.     MM       
+                .8bEUMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  M         , MM       
+                     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  M           MM       
+                     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   M           EMM      
+                     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   M8           MM      
+                    NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM    ME            EM     
+                    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN    MM            oM     
+                    MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM    UM            UM     
+     7.             MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM     ;M            EM     
+                   uMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM     ;M            MM     
+                   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM     M;           MM.    
+                   MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM    M            MM     
+                 :MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM@   M7          oMM     
+                 MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMR   M2           MM     
+     .          NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM    MMM        :MMM     
+                2MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  .MM        uMMH     
+     2          UMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   MM        MMM.     
+     ;;        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMo  ,MMH      EMMM      
+      ,        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,  MMM      uMMM      
+      N        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  MMM      MMM2      
+      :        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM MMMM     MMM       
+              MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM MMM   :7MMM8       
+      Z.     oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 7MM    bMMM        
+      ;2     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMA MM8 ,;MMM,        
+      M;     MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   MMMM         
+      A     oMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM.   MMMM         
+      u     UMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM   ,MMMM         
+     ,,      2 UMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMU      MM    MMMMM         
+      b   2oA          ,2M@MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMH2,              MMMMMMMMMMM         
+       7MMZ                      2@MMMMMMMMMMMMMMMMMMMMMMb                  .:  8 ;uNMMMMM          
+      2Z                                                                              MMMM          
+
+			
+
+-->

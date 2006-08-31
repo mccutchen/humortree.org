@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Just a reminder...</title>
+	
+	<script language="javascript">
+		var inc;
+		var counter;
+		var step = 2;
+		function init()
+		{
+			document.images[2].style.display = "";
+			document.all.god.style.display = "none";
+			document.onmousemove = scrollme;
+		}
+		
+		function scrollme()
+		{
+			window.scroll(window.event.clientX + 5,window.event.clientY + 20);
+		}
+		
+		function next()
+		{
+			document.images["spacer"].src = "flash.gif";
+			setTimeout("nextB();",5000);
+		}
+		
+		function nextB()
+		{
+			window.location = "../grid/index.html";
+		}
+		
+	</script>
+</head>
+
+<body bgcolor="#ffffff" background="bus.jpg" onload="init();">
+<div id="god" align="center" style="color:#aaaaaa;">please hold... background image loading...</div>
+<img src="reminder.gif" width="408" height="408" alt="" style="position:absolute; top:400px; left:900px;">
+
+<img src="spacer.gif" style="position:absolute; top:940px; left:784px;" height="36" width="16" id="spacer">
+
+<img id="stripe" src="CMYKstripe.gif" width="1500" height="10" border="0" usemap="#m_CMYKstripe" style="position:absolute; top:973px; left:0px; display:none;">
+<map name="m_CMYKstripe">
+<area shape="rect" coords="785,0,799,10" href="javascript:next();" title="consider yourself reminded" alt="consider yourself warned" >
+</map>
+<img src="flash.gif" style="visibility:hidden;">
+</body>
+</html>

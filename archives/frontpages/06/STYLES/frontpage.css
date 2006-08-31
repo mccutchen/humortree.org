@@ -1,0 +1,55 @@
+BODY {
+	background-color: #eeeeee;
+	color: #999;
+	margin: 10px;
+	font: 11px tahoma, verdana, arial, sans-serif;
+}
+DIV {
+	background-color: white;
+	color: #999;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-bottom: 10px;
+}
+DIV#logo {
+	height: 50px;
+}
+.floatLeft {
+	float: left;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+.marginRight {
+	margin-right: 10px;
+}
+DIV.clear {
+	clear: both;
+	border: none;
+	padding: 0px;
+	margin: 10px 0px 0px 0px;
+}
+DIV.fixedWidth {
+	margin-top: 10px;
+	border: none;
+	padding: 0px;
+	margin: 10px 0px 0px 0px;
+}
+H1 {
+	font-size: 10px;
+	font-weight: bold;
+	display: inline;
+}
+A, A:link, A:visited {
+	color: #666;
+	background-color: transparent;
+	text-decoration: none;
+}
+A:hover {
+	color: #39f;
+	background-color: transparent;
+}
+A:active {
+	color: #f90;
+	background-color: transparent;
+}

@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>w-i-l-l</title>
+	<script language="javascript">
+		var count = 0;
+		var xx, pre, post;
+		function init()
+		{
+			//////////// cross-browser stuff///////////////////
+			// ie = document.all.tags('div')[which].style.left
+			// ns = document.layers[which].left
+			//////////////////////////////////////////////////
+			if(document.all)
+			{
+				pre = "document.all.tags('div')[";
+				post = "].style";
+				xx = document.body.clientWidth - 300;
+			}
+			
+			else if(document.layers)
+			{
+				pre = "document.layers[";
+				post = "]";
+				xx = window.screen.availWidth - 300;
+			}
+			//alert(xx);
+		}
+		
+		function show_part(which)
+		{	
+			if (which == 1) // left eye
+			{
+				count++;
+				eval(pre + which + post + ".left = 20;");
+			}
+							
+			if (which == 2) // right eye
+			{
+				count++;
+				eval(pre + which + post + ".left = 230;");
+			}
+				
+			if (which == 3) // nose
+				eval(pre + which + post + ".left = 135;");
+				
+			if (which == 4) // face
+			{
+				if(count < 2)
+				{} // do nothing
+				else
+					eval(pre + which + post + ".left = " + xx + ";");
+			}
+		}
+	</script>
+</head>
+
+<body bgcolor="#aaaaaa" background="bg.gif" onload="init();">
+
+<div style="position:absolute; top:0px; left:0px;"><img src="logo.gif"></div>
+	
+<div style="position:absolute; top:175px; left:-300px; width:185px;"><img src="left_eye.jpg"></div>
+
+<div style="position:absolute; top:140px; left:-300px; width:185px;"><img src="right_eye.jpg"></div>							 
+	
+<div style="position:absolute; top:290px; left:-300px; width:185px;"><a href="javascript:show_part(4);"><img src="nose.jpg" border="0"></a></div>			
+	
+<div style="position:absolute; top:40px; left:-300px; z-index:5; width:174px;"><a href="../no/index.html"><img src="face.jpg" border="0"></a></div>
+
+<div align="right"><img id="will" src="will01.gif" usemap="#my_map" border="0"></div>
+<map name="my_map">
+<area alt="" shape="poly" coords="88,78,94,66,105,68,113,75,112,82,98,92" href="#" onClick="show_part(1);">
+<area alt="" shape="poly" coords="128,76,127,61,150,55,159,62,152,74,133,83" href="#" onClick="show_part(2);">
+<area alt="" shape="poly" coords="115,75,106,105,110,109,118,111,127,109,128,102,125,98,121,98,121,72" href="#" onClick="show_part(3);">
+</map>
+
+	
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+	<title>R-a-i-n-d-r-o-p-s rolling down a window</title>
+	<style>
+		BODY {
+			background-color: #eee;
+		}
+		SPAN {
+			font: 11px tahoma;
+		}
+		DIV.container {
+			background-color: white;
+			border: 1px solid #ccc;
+		}
+		DIV#explanation {
+			position: absolute;
+			top: 10px;
+			left: 520px;
+			font: 11px tahoma, verdana, arial, sans-serif;
+			color: #999;
+			padding:10px;
+		}
+	</style>
+	<script type="text/javascript" src="HTLIB.js"></script>
+	<script type="text/javascript" src="raindrops.js"></script>
+</head>
+
+<body bgcolor="white" onload="init();">
+
+<div id="surface" class="container" style="position:absolute; top:10px; left:10px; height:500px; width:500px; overflow:hidden;">
+
+</div>
+
+<div id="explanation" class="container">
+	<strong>RAINDROPS - organic motion #2</strong>
+	<br>
+	<br>
+	<br>
+	This is another experiment that attempts to simulate Organic Motion,
+	much like "organic1."  This one, however, tries to simulate raindrops
+	rolling down a surface, like a window.<br><br>
+	The whole thing is based on sine waves.  Each "raindrop" is started
+	at a random place on the "surface" to the left, and runs down it,
+	with its horizontal position dictated by an equation for a sine
+	wave.  The equation is different for each raindrop.  Also, for
+	each raindrop, the equation is changed after it has run through
+	one whole period (the period of the equation <strong>y&nbsp;=&nbsp;sin&nbsp;x</strong>
+	is 2PI).<br><br>
+	I don't know how much sense that made.<br><br>
+	This is <strong>very</strong> processor intensive, so your computer
+	may get quite sluggish while looking at this.  This is the reason
+	that I am letting you decide how many raindrops to look at, to the
+	left.<br><br>
+	It looks very nice on Windows NT/2000, and might look decent on a Mac.
+	If you happen to be using Windows 9x/ME, just imagine that the raindrops
+	are all rolling smoothly down the surface to the left, instead of skipping
+	slowly down it.
+</div>
+
+</body>
+</html>

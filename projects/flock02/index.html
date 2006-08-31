@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Flock02 (Organic05) - Humor Tree</title>
+	<link rel="stylesheet" type="text/css" href="flock02.css" />
+</head>
+
+<body>
+
+	<div id="applet"><applet code="FlockApplet" archive="flock02.jar" width="100%" height="600">
+            
+            <param name="world_initial_count" value="60" />
+			
+			<param name="applet_play" value="true" />
+			<param name="applet_draw_status" value="true" />
+			<param name="applet_draw_logo" value="true" />
+			<param name="applet_logo_path" value="logo.gif" />
+			<param name="applet_delay" value="30" />
+
+            <param name="bird_vector_min" value="-2" />
+            <param name="bird_vector_max" value="2" />
+            <param name="bird_min_speed" value="0" />
+            <param name="bird_max_speed_min" value="4" />
+            <param name="bird_max_speed_max" value="8" />
+            <param name="bird_min_accel" value="0" />
+            <param name="bird_max_accel_min" value="2" />
+            <param name="bird_max_accel_max" value="5" />
+            <param name="bird_vision_min" value="80" />
+            <param name="bird_vision_max" value="100" />
+            <param name="bird_friendliness_min" value="20" />
+            <param name="bird_friendliness_max" value="40" />
+
+            <param name="rules_cohesion_weight" value="50" />
+            <param name="rules_separation_weight" value="100" />
+            <param name="rules_alignment_weight" value="50" />
+            <param name="rules_inertia" value="200" />
+
+            <param name="artist_draw_body" value="true" />
+            <param name="artist_draw_velocity" value="true" />
+            <param name="artist_draw_steering" value="true" />
+            <param name="artist_draw_vision" value="false" />
+            <param name="artist_draw_friendliness" value="false" />
+            <param name="artist_draw_fill" value="false" />
+
+                Get Java, you bastard.
+        </applet></div>
+	
+	<p id="quickInfo">
+		<strong>Quick info</strong>:  Spacebar adds birds, 'P' pauses&nbsp;&nbsp;/&nbsp;&nbsp;<strong>Source code</strong>: <a href="flock02.jar" title="Remember, JAR files are really ZIP files!">flock02.jar</a>
+	</p>
+	
+	<div id="instructions">
+		<strong>Instructions:</strong>
+		<ol>
+			<li><strong>'Spacebar'</strong> and <strong>'+'</strong> (or '=') keys add birds.  Hold them down for a nice effect.</li>
+			<li><strong>1</strong> toggles the Cohesion flocking behavior</li>
+			<li><strong>2</strong> toggles the Separation flocking behavior</li>
+			<li><strong>3</strong> toggles the Alignment flocking behavior</li>
+			<li><strong>Q</strong> toggles the display of the gray 'vision' circle</li>
+			<li><strong>W</strong> toggles the display of the green 'friendliness circle</li>
+			<li><strong>E</strong> toggles the display of the light green 'steering' vector</li>
+			<li><strong>F</strong> toggles whether or not the circles are filled.  <em>Note:</em> this looks nice, but it is s-l-o-w</li>
+			<li><strong>P</strong> pauses the simulation</li>
+			<li><strong>'&gt;'</strong> (the right arrow key) updates the simulation by one step (when it's paused)</li>
+		</ol>
+	</div>
+	
+	<p><span class="intro">An explanation</span> of what you're seeing might be in order.  This is
+	my first successful implementation of Craig W. Reynolds' <a href="http://red3d.com/cwr/boids/">Flocking Behavior</a>.
+	It is not a very good implementation, but I'm extremely pleased with it.</p>
+	
+	<p>What you should be seeing above this text is a lot of little brown dots swimming around.  If
+	you watch them, you should notice that they are forming and maintaining flocks.  The flocks are
+	formed based on three simple steering rules: <em>Cohesion</em>, <em>Separation</em> and <em>Alignment</em>.</p>
+	
+	<p>In the model above, you can enable or disable the three steering rules by pressing the number keys
+	1, 2 and 3.  Some interesting behavior emerges if you only have combinations of the three on.  You can
+	also turn on and off the drawing of the birds vision, friendliness and steering vector by pressing the keys
+	Q, W and E.</p>
+	
+	<p>If you have turned on the drawing of vision (Q) you should see a lot of gray circles around the birds.  The
+	birds can only see other birds that are inside that circle, so they will only react to (and flock with) those
+	birds.  If you have turned on the drawing of friendliness (W), you should see a lot of green circles around the
+	birds.  That is each bird's comfort zone, so if any other birds get too close, evasive action is taken.</p>
+	
+	<p>I don't really want to explain it any more... I think I've already made this relatively simple idea
+	pretty murky.  If you want to know more, visit <a href="http://red3d.com/cwr/boids/">the aforementioned web site</a>.</p>
+	
+	<p>A quick rundown of my past run-ins with what I call "organic motion":</p>
+	<ol>
+		<li><a href="../organic01/">Organic01</a> - not good</li>
+		<li><a href="../raindrops/">Raindrops</a> - good idea, horribly programmed</li>
+		<li><a href="../physics03/">Physics03</a> - weird, but better than the previous</li>
+		<li><a href="../organic04/">Organic04</a> - really good, and an original idea, but not up to my standards (the organisms were unaware of each other,
+			so it was really just random motion, like the others, even though it looks fairly organic)</li>
+	</ol>
+	
+	<p>As always... <span class="intro"><a href="../../">Back to Humor Tree!</a></span></p>
+</body>
+</html>
