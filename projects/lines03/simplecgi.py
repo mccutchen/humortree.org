@@ -19,8 +19,8 @@ try:
 except KeyError:
     querystring = ''
 
-# parse the querystring into a list of key, value pairs
-args = cgi.parse_qsl(querystring)
+# parse the querystring args into a dict
+args = dict(cgi.parse_qsl(querystring))
 
 def arg(key, func=str):
     if key in args:
