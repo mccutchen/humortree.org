@@ -19,19 +19,14 @@ try:
 except KeyError:
     querystring = ''
 
-
 # parse the querystring into a list of key, value pairs
 args = cgi.parse_qsl(querystring)
 
 def arg(key, func=str):
-    for k, v in args:
-        if key == k:
-            try:
-                return func(v)
-            except:
-                return v
-    return None
-
+    if key in args:
+        return func(args[key])
+    else:
+        return None
 
 def debug(msg):
     global debugfile
@@ -40,17 +35,13 @@ def debug(msg):
         print >> debugfile, '--- %s ---' % time.strftime('%Y/%m/%d @ %H:%M:%S')
     print >> debugfile, msg
 
-
 def header(name, value):
     """Print the named header to the output stream."""
     debug("Adding header '%s: %s'" % (name, value))
     print '%s: %s\n' % (name, value)
 
-
 def init(content_type='text/html'):
-    """
-    Print the required Content-type header.  This
-    method should be called before any output is
-    sent to the browser.
-    """
+    """Print the required Content-type header.  This
+    method should be called before any output is sent
+    to the browser."""
     header('Content-type', content_type)

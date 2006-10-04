@@ -1,10 +1,7 @@
-#!/usr/bin/env python
-# $Id: lines.py 30 2006-03-21 17:09:06Z mccutchen $
+#!/usr/bin/python
 
-"""
-Generates an image composed of randomly-colored
-vertical lines.
-"""
+"""Generates an image composed of randomly-colored
+vertical lines."""
 
 import os, random, sys
 import Image, ImageDraw
