@@ -37,7 +37,6 @@ def debug(msg):
 
 def header(name, value):
     """Print the named header to the output stream."""
-    debug("Adding header '%s: %s'" % (name, value))
     print '%s: %s\n' % (name, value)
 
 def init(content_type='text/html'):
