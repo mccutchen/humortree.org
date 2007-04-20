@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /projects/lines03/
+
+RewriteRule wallpaper/(\d+) lines.py?width=$1&height=$1
+RewriteRule wallpaper/(\d+)/(\d+) lines.py?width=$1&height=$2
