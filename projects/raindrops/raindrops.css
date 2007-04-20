@@ -58,6 +58,7 @@ div#explanation {
 div#explanation img {
 	padding-right: 10px;
 	padding-bottom: 10px;
+	float: left;
 }
 
 h1 {

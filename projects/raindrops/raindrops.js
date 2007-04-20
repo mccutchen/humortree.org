@@ -9,7 +9,7 @@ var Utils = {
     },
     randChoice: function(array) {
         return array[Utils.randInt(array.length - 1)]
-    },
+    }
 }
 
 
@@ -25,13 +25,14 @@ var Raindrops = {
     delay: 40,
     timer: null,
     
-    t_steps: [1, .5, Math.PI/6, Math.PI/4, 1.5],
+    t_step_min: 0.5,
+    t_step_max: 3,
     slope_min: -1,
     slope_max: 1,
     t_mod_min: 1,
     t_mod_max: 6,
     sine_mod_min: 1,
-    sine_mod_max: 6,
+    sine_mod_max: 10,
     
     drop_left: 'img/drop_left.gif',
     drop_right: 'img/drop_right.gif',
@@ -49,7 +50,6 @@ var Raindrops = {
             return false
         })
         $('#add_drops').click(function() {
-            console.debug('Adding %d raindrops', $('#drops').attr('value'))
             Raindrops.add(parseInt($('#drops').attr('value')))
             return false
         })
@@ -107,7 +107,7 @@ var Raindrop = function(el) {
         this.top = Utils.randInt(Raindrops.container.height() / 2)
         this.el.css({
             left: this.left,
-            top: this.top,
+            top: this.top
         })
         this.reset()
 	}
@@ -115,7 +115,7 @@ var Raindrop = function(el) {
 	this.reset = function() {
 	    this.t = 0
 		this.slope = Utils.randFloat(Raindrops.slope_min, Raindrops.slope_max)
-		this.t_step = Utils.randChoice(Raindrops.t_steps)
+		this.t_step = Utils.randFloat(Raindrops.t_step_min, Raindrops.t_step_max)
 		this.t_mod = Utils.randInt(Raindrops.t_mod_min, Raindrops.t_mod_max)
 	    this.sine_mod = Utils.randInt(Raindrops.sine_mod_min, Raindrops.sine_mod_max)
 		this.period  = this.t_mod * 2 * Math.PI
@@ -141,7 +141,7 @@ var Raindrop = function(el) {
 		
 		this.el.css({
 		    left: this.left,
-		    top: this.top,
+		    top: this.top
 		})
 		
 		if (this.left < oldleft)
