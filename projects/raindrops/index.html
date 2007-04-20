@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+		<title>R-a-i-n-d-r-o-p-s rolling down a window</title>
+		<link rel="stylesheet" type="text/css" href="raindrops.css">
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="raindrops.js"></script>
+	</head>
+
+	<body>
+		
+		<div id="explanation" class="container">
+			<h1>RAINDROPS - organic motion #2</h1>
+
+			<p><img src="drop_large.gif" height="120" width="60" alt="splash" align="left">
+			This is another experiment that attempts to simulate Organic Motion,
+			much like "<a href="/projects/organic1/">organic1</a>."  This one, however, tries to simulate raindrops
+			rolling down a surface, like a window.</p>
+	
+			<p>The whole thing is based on sine waves.  Each "raindrop" is started
+			at a random place on the "surface" to the left, and runs down it,
+			with its horizontal position dictated by an equation for a sine
+			wave.  The equation is different for each raindrop.  Also, for
+			each raindrop, the equation is changed after it has run through
+			one whole period (the period of the equation <strong>y&nbsp;=&nbsp;sin&nbsp;x</strong>
+			is <strong>2&#960;</strong>).</p>
+	
+			<p>I don't know how much sense that made.</p>
+	
+			<p>This is <strong>very</strong> processor intensive, so your computer
+			may get quite sluggish while looking at this.  This is the reason
+			that I am letting you decide how many raindrops to look at, to the
+			left.</p>
+	
+			<p>It looks very nice on Windows NT/2000, and might look decent on a Mac.
+			If you happen to be using Windows 9x/ME, just imagine that the raindrops
+			are all rolling smoothly down the surface to the left, instead of skipping
+			slowly down it.</p>
+	
+			<p><strong>&laquo; <a href="/">back to Humor Tree</a></strong></p>
+		</div>
+
+		<div id="surface" class="container">
+	
+			<!-- raindrops will be inserted here -->
+	
+			<div class="choose">
+				<form action="">
+					<img src="drop_left.gif" alt="raindrops"><img src="drop_center.gif" alt="raindrops"><img src="drop_right.gif" alt="raindrops">
+					<input id="drops" type="text" class="input" name="drops" value="10">
+					<input id="add_drops" type="submit" class="button" value="Add raindrops">
+					<input id="start_pause" type="submit" class="button" value="Pause">
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
