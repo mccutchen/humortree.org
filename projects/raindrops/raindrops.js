@@ -14,17 +14,22 @@ var Utils = {
 
 
 var Raindrops = {
+    // Array to hold the individual Raindrop objects
     raindrops: [],
     
+    // The HTML element that will contain the Raindrops
     container_id: 'surface',
     container: null,
     container_width: 0,
     container_height: 0,
     
+    // Some basic settings
     initial_count: 15,
     delay: 40,
     timer: null,
     
+    // Bounds on the various values for Raindrop objects.  The values for
+    // each Raindrop will be randomly-chosen numbers between these bounds.
     t_step_min: 0.5,
     t_step_max: 3,
     slope_min: -1,
@@ -34,21 +39,22 @@ var Raindrops = {
     sine_mod_min: 1,
     sine_mod_max: 10,
     
+    // Paths to the images used for the Raindrops
     drop_left: 'img/drop_left.gif',
     drop_right: 'img/drop_right.gif',
     drop_center: 'img/drop_center.gif',
     
     init: function() {
+        // Initialize the container object
         Raindrops.container = $('#' + Raindrops.container_id)
         Raindrops.container_width = Raindrops.container.width()
         Raindrops.container_height = Raindrops.container.height()
         
+        // Create the initial set of Raindrops and start animating them
         Raindrops.add(Raindrops.initial_count)
         Raindrops.start()
         
-        $('form').submit(function () {
-            return false
-        })
+        // Hook up events so the user can control the Raindrops
         $('#add_drops').click(function() {
             Raindrops.add(parseInt($('#drops').attr('value')))
             return false
@@ -63,15 +69,16 @@ var Raindrops = {
             }
             return false
         })
+        $('form').submit(function () {
+            return false
+        })
     },
     
     add: function(count) {
         count = count || 1
         for (var i = 0; i < count; i++) {
             var el = $('<img src="drop_center.gif" class="raindrop" alt="">').appendTo(Raindrops.container)
-            var drop = new Raindrop(el)
-            drop.init()
-            Raindrops.raindrops.push(drop)
+            Raindrops.raindrops.push(new Raindrop(el))
         }
     },
     
@@ -95,6 +102,7 @@ var Raindrop = function(el) {
     this.left = 0
     this.top = 0
     
+    // Math values affecting the animation
     this.t = 0
 	this.slope = 0
 	this.t_step = 0
@@ -103,12 +111,15 @@ var Raindrop = function(el) {
 	this.period  = 0
     
     this.init = function() {
+        // Give this Raindrop a random starting position
         this.left = Utils.randInt(Raindrops.container.width())
         this.top = Utils.randInt(Raindrops.container.height() / 2)
         this.el.css({
             left: this.left,
             top: this.top
         })
+        
+        // Reset the math values
         this.reset()
 	}
 	
@@ -123,27 +134,31 @@ var Raindrop = function(el) {
 	
 	this.update = function() {
 	    if (this.top > Raindrops.container_height) {
+	        // This Raindrop has moved off of the bottom of the container,
+	        // so we recreate it and skip the rest of this function
 	        this.init()
 	        return true
 	    }
 	    
 	    if (this.t > this.period) {
+	        // This Raindrop has completed one period of animation, so we
+	        // give it new math values to change its movement
 	        this.reset();
         }
         
-        this.t += this.t_step;
+        this.t += this.t_step
         
         var oldleft = this.left
         var oldtop = this.top
 		
-		this.left = Math.round(Math.sin(this.t / this.t_mod) * this.sine_mod + this.left + this.slope)
+		this.left += Math.round(Math.sin(this.t / this.t_mod) * this.sine_mod +  this.slope)
 		this.top += Math.round(this.t_step)
-		
 		this.el.css({
 		    left: this.left,
 		    top: this.top
 		})
 		
+		// Figure out which image to use for this Raindrop
 		if (this.left < oldleft)
 		    this.el.attr('src', Raindrops.drop_left)
 		else if (this.left > oldleft)
@@ -151,7 +166,10 @@ var Raindrop = function(el) {
 		else
 		    this.el.attr('src', Raindrops.drop_center)
     }
+    
+    // Initialize this Raindrop on construction
+    this.init()
 }
 
-// hook up events
+// Initialize the Raindrops when the DOM is ready
 $(Raindrops.init)
