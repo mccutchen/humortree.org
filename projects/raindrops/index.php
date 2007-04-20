@@ -63,8 +63,8 @@
 
 <div id="surface" class="container" style="position:absolute; top:10px; left:10px; height:500px; width:500px; overflow:hidden;">
 	<?php
-		if (isset ($drops)) {
-			for ($i = 0; $i < $drops; $i++) {
+		if (isset ($_GET['drops'])) {
+			for ($i = 0; $i < $_GET['drops']; $i++) {
 	?>
 	<div class="drop" style="position:absolute; top:-20px; left:-20px; padding:0px; margin:0px;"><img src="drop_center.gif" alt=""></div>
 	<?php
