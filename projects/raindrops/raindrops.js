@@ -104,11 +104,11 @@ var Raindrop = function(el) {
     
     // Math values affecting the animation
     this.t = 0
-	this.slope = 0
-	this.t_step = 0
-	this.t_mod = 0
-	this.sine_mod = 0
-	this.period  = 0
+    this.slope = 0
+    this.t_step = 0
+    this.t_mod = 0
+    this.sine_mod = 0
+    this.period  = 0
     
     this.init = function() {
         // Give this Raindrop a random starting position
@@ -121,50 +121,50 @@ var Raindrop = function(el) {
         
         // Reset the math values
         this.reset()
-	}
-	
-	this.reset = function() {
-	    this.t = 0
-		this.slope = Utils.randFloat(Raindrops.slope_min, Raindrops.slope_max)
-		this.t_step = Utils.randFloat(Raindrops.t_step_min, Raindrops.t_step_max)
-		this.t_mod = Utils.randInt(Raindrops.t_mod_min, Raindrops.t_mod_max)
-	    this.sine_mod = Utils.randInt(Raindrops.sine_mod_min, Raindrops.sine_mod_max)
-		this.period  = this.t_mod * 2 * Math.PI
-	}
-	
-	this.update = function() {
-	    if (this.top > Raindrops.container_height) {
-	        // This Raindrop has moved off of the bottom of the container,
-	        // so we recreate it and skip the rest of this function
-	        this.init()
-	        return true
-	    }
-	    
-	    if (this.t > this.period) {
-	        // This Raindrop has completed one period of animation, so we
-	        // give it new math values to change its movement
-	        this.reset();
+    }
+    
+    this.reset = function() {
+        this.t = 0
+        this.slope = Utils.randFloat(Raindrops.slope_min, Raindrops.slope_max)
+        this.t_step = Utils.randFloat(Raindrops.t_step_min, Raindrops.t_step_max)
+        this.t_mod = Utils.randInt(Raindrops.t_mod_min, Raindrops.t_mod_max)
+        this.sine_mod = Utils.randInt(Raindrops.sine_mod_min, Raindrops.sine_mod_max)
+        this.period  = this.t_mod * 2 * Math.PI
+    }
+    
+    this.update = function() {
+        if (this.top > Raindrops.container_height) {
+            // This Raindrop has moved off of the bottom of the container,
+            // so we recreate it and skip the rest of this function
+            this.init()
+            return true
+        }
+        
+        if (this.t > this.period) {
+            // This Raindrop has completed one period of animation, so we
+            // give it new math values to change its movement
+            this.reset();
         }
         
         this.t += this.t_step
         
         var oldleft = this.left
         var oldtop = this.top
-		
-		this.left += Math.round(Math.sin(this.t / this.t_mod) * this.sine_mod +  this.slope)
-		this.top += Math.round(this.t_step)
-		this.el.css({
-		    left: this.left,
-		    top: this.top
-		})
-		
-		// Figure out which image to use for this Raindrop
-		if (this.left < oldleft)
-		    this.el.attr('src', Raindrops.drop_left)
-		else if (this.left > oldleft)
-		    this.el.attr('src', Raindrops.drop_right)
-		else
-		    this.el.attr('src', Raindrops.drop_center)
+        
+        this.left += Math.round(Math.sin(this.t / this.t_mod) * this.sine_mod +  this.slope)
+        this.top += Math.round(this.t_step)
+        this.el.css({
+            left: this.left,
+            top: this.top
+        })
+        
+        // Figure out which image to use for this Raindrop
+        if (this.left < oldleft)
+            this.el.attr('src', Raindrops.drop_left)
+        else if (this.left > oldleft)
+            this.el.attr('src', Raindrops.drop_right)
+        else
+            this.el.attr('src', Raindrops.drop_center)
     }
     
     // Initialize this Raindrop on construction

@@ -1,15 +1,15 @@
 body {
-	background-color: #eee;
-	margin: 0;
-	padding: 10px;
-	
-	font: 11px tahoma, verdana, arial, sans-serif;
-	color: #999;
+    background-color: #eee;
+    margin: 0;
+    padding: 10px;
+    
+    font: 11px tahoma, verdana, arial, sans-serif;
+    color: #999;
 }
 
 div.container {
-	background-color: #fff;
-	border: 1px solid #ccc;
+    background-color: #fff;
+    border: 1px solid #ccc;
 }
 
 div#surface {
@@ -29,25 +29,25 @@ img.raindrop {
 }
 
 div.choose {
-	padding:10px;
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	z-index: 2;
+    padding:10px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2;
 }
 .input {
-	border: 1px solid #ccc;
-	background-color: #eee;
-	font: 11px tahoma, verdana, arial, sans-serif;
-	color: #999;
-	width: 20px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    font: 11px tahoma, verdana, arial, sans-serif;
+    color: #999;
+    width: 20px;
 }
 .button {
-	border: 2px solid #999;
-	background-color: #ccc;
-	font: 11px tahoma, verdana, arial, sans-serif;
-	color: #666;
-	margin-top:5px;
+    border: 2px solid #999;
+    background-color: #ccc;
+    font: 11px tahoma, verdana, arial, sans-serif;
+    color: #666;
+    margin-top:5px;
 }
 
 
@@ -56,9 +56,9 @@ div#explanation {
     padding: 10px;
 }
 div#explanation img {
-	padding-right: 10px;
-	padding-bottom: 10px;
-	float: left;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    float: left;
 }
 
 h1 {
@@ -70,10 +70,10 @@ h1 {
 }
 
 a:link, a:visited, a {
-	color: #666;
-	text-decoration: none;
+    color: #666;
+    text-decoration: none;
 }
 a:hover, a:active {
-	color: #3399ff;
-	text-decoration: underline;
+    color: #3399ff;
+    text-decoration: underline;
 }
