@@ -28,15 +28,41 @@
 <div id="content">
     <p class="hint"><strong>Hint:</strong>  Reload the page for a new set of lines.</p>
 
-    <h2>Briefly &#8230;</h2>
-    <ol>
-        <li>Pick a random color.</li>
-        <li>Draw a line with that color.</li>
-        <li>Pick a new random color a limited "distance" from the first.</li>
-        <li>Return to step 2.</li>
-    </ol>
-
-    <p>&larr; <a href="/">Return to Humor Tree</a></p>
+	<div class="columns">
+    	<div class="column">
+			<h2>Explanation</h2>
+			<p>The image you see above, which is hopefully a very nice-looking series of colors,
+			is generated automagically by the server every time you visit (or reload) this
+			page.  Try hitting the "Refresh" or "Reload" button on your web browser to get a
+			brand new image.</p>
+			<p>This builds on previous work here at Humor Tree.  It is basically just a refinement
+			of the <a href="/projects/lines02/">Lines 02</a> project.</p>
+		</div>
+	
+		<div class="column">
+			<h2>Wallpaper</h2>
+			<p>If you would like one of these images as a desktop background or wallpaper, Enter your
+			screen resolution in the form below.  If you don't like the image you get at first,
+			just refresh the page until you find one you like.</p>
+			
+			<form action="lines.png" method="GET">
+				<input type="text" id="width" name="width" value="1024" size="4">&nbsp;x&nbsp;<input type="text" id="height" name="height" value="768" size="4">	
+				<input type="submit" value="Make wallpaper!">
+			</form>
+		</div>
+	
+		<div class="column">
+			<h2>How the colors are chosen</h2>
+		    <ol>
+		        <li>Pick a random color</li>
+		        <li>Draw a line with that color</li>
+		        <li>Pick a new random color a limited "distance" from the first</li>
+		        <li>Return to step 2</li>
+		    </ol>
+		</div>
+	</div>
+	
+    <p class="retourner">&larr; <a href="/">Return to Humor Tree</a></p>
 </div>
 
 

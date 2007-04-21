@@ -46,37 +46,67 @@ div#content {
 	background: transparent url(backgrounds/stripe.gif) top left repeat-x;
 }
 
-
-/* fix the padding of the contents */
-h1, h2, p {
-	padding: 0 15px;
+div#header h1, div#header h2 {
+    padding: 0 10px;
 }
 
+
+h1, h2, h3 {
+    font-weight: bold;
+}
 h1 {
 	font-size: 2em;
-	font-weight: bold;
 }
 h2 {
 	font-size: 1.25em;
-	font-weight: bold;
+}
+h3 {
+    font-size: 1.1em;
 }
 
-.hint {
+#content div.columns {
+    border-top: 1px solid #eee;
+    padding: 10px 0;
+    min-width: 915px;
+}
+#content div.column {
+    float: left;
+    width: 275px;
+    margin-right: 10px;
+    padding: 0 10px;
+}
+
+p {
+    margin-bottom: 1em;
+    clear: both;
+}
+p.hint {
 	padding: 5px 15px;
 	margin-top: -10px;
+	margin-bottom: 0;
     background-color: #f5f5f5;
     border-bottom: 1px solid #ccc;
     text-align: right;
 }
-#content h2 {
-    margin-top: 0;
-    padding-top: 10px;
-    border-top: 1px solid #eee;
+p.retourner {
+    padding: 10px;
+    font-size: 1.25em;
+    font-weight: bold;
 }
 
 ol {
-	margin-top: .5em;
+	margin-top: 0;
 }
-p {
-	clear: both;
+
+input {
+    font-size: 11px;
+    border-width: 1px;
+}
+input#width, input#height {
+    background-color: #eee;
+    border-color: #666;
+}
+input {
+    border-color: #333;
+    background-color: #ccc;
 }
