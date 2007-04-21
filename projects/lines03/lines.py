@@ -7,7 +7,11 @@ import os, random, sys
 import Image, ImageDraw
 import simplecgi
 
+# the valid directions
 directions = ('horizontal','vertical','slanted')
+
+# maximum image size (so people can't DOS my server)
+max_size = 3000
 
 # make sure we have a direction we can work with
 direction = simplecgi.arg('direction')
@@ -32,6 +36,12 @@ else:
 # set up the width and height of the image to generate
 width = simplecgi.arg('width', int) or default_width
 height = simplecgi.arg('height', int) or default_height
+
+# ensure the image isn't too big
+if width > max_size:
+    width = default_width
+if height > max_size:
+    height = default_height
 
 # store the larger dimension, for use in generating
 # slanted images
