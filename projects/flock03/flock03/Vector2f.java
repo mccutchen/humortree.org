@@ -1,6 +1,6 @@
-package org.humortree.projects.flock03;
+package flock03;
 
-import org.humortree.projects.flock03.util.MathUtils;
+import flock03.util.MathUtils;
 import java.util.Collection;
 
 public class Vector2f {
@@ -82,5 +82,9 @@ public class Vector2f {
     }
     public static float quickDistanceBetween(Vector2f v1, Vector2f v2) {
         return (float)Math.pow(v1.x - v2.x, 2) + (float)Math.pow(v1.y - v2.y, 2);
+    }
+    
+    public String toString() {
+        return "(" + x + ", " + y + ")";
     }
 }

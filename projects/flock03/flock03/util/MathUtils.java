@@ -1,4 +1,4 @@
-package org.humortree.projects.flock03.util;
+package flock03.util;
 
 public class MathUtils {    
     private static java.util.Random generator = new java.util.Random(new java.util.Date().getTime());

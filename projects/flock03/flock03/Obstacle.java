@@ -1,4 +1,4 @@
-package org.humortree.projects.flock03;
+package flock03;
 
 public class Obstacle extends Boid {
 	public Vector2f position;
