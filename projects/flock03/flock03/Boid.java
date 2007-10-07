@@ -9,6 +9,7 @@ public class Boid {
 	public Vector2f position;
 	public Vector2f velocity;
 	public Color color;
+	public Vector2f[] tail;
 	
 	public float MINIMUM_DISTANCE = 40.0f;
 	public float NEIGHBORHOOD_RADIUS = 100.0f;
@@ -17,6 +18,12 @@ public class Boid {
 	    position = new Vector2f(MathUtils.rand(0f, World.width), MathUtils.rand(0f, World.height));
 	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
 	    color = new Color(MathUtils.rand(0, 255), MathUtils.rand(0, 255), MathUtils.rand(0, 255));
+	    
+	    // Initialize the tail
+	    tail = new Vector2f[3];
+	    tail[0] = new Vector2f(position);
+	    tail[1] = new Vector2f(position);
+	    tail[2] = new Vector2f(position);
 	}
 	public Boid(Vector2f position, Vector2f velocity) {
 		this.position = position;
@@ -30,6 +37,13 @@ public class Boid {
 		velocity.add(newSteering);
 		limitVelocity(velocity);
 		
+		// Update the tail
+		for (int i = tail.length - 1; i > 0; i--) {
+		    tail[i] = new Vector2f(tail[i-1]);
+		}
+		tail[0] = new Vector2f(position);
+		
+		// Update the position
 		position.add(velocity);
 	}
 	

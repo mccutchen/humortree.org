@@ -16,14 +16,26 @@ public class Renderer {
 		    render(b, g);
 		}
 	}
-	public static void render(Boid b, Graphics g) {
-	    g.setColor(b.color);
+	public static void render(Boid b, Graphics g) {	    
+	    // Draw the tail pieces
+	    g.setColor(b.color.brighter());
+	    for (Vector2f tailPiece : b.tail) {
+	        g.fillOval(
+    	        (int)tailPiece.x - (Settings.BOID_RADIUS / 2),
+    	        (int)tailPiece.y - (Settings.BOID_RADIUS / 2),
+    	        Settings.BOID_SIZE / 2,
+    	        Settings.BOID_SIZE / 2
+    	    );
+	    }
+	    
+	    // Draw the head
+	    g.setColor(b.color);        
 		g.fillOval(
 		    (int)b.position.x - Settings.BOID_RADIUS,
 		    (int)b.position.y - Settings.BOID_RADIUS,
 		    Settings.BOID_SIZE,
 		    Settings.BOID_SIZE
-		);		
+		);
 	}
 	public static void render(Obstacle o, Graphics g) {
 		// pass
