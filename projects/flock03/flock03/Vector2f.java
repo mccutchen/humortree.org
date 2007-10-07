@@ -17,6 +17,10 @@ public class Vector2f {
 		this.x = x;
 		this.y = y;
 	}
+	public Vector2f(Vector2f other) {
+	    this.x = other.x;
+	    this.y = other.y;
+	}
 	
 	// utility constructors
 	public static Vector2f randomVector(float xrange, float yrange) {
