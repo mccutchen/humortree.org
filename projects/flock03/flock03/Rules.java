@@ -5,28 +5,31 @@ import java.util.ArrayList;
 import flock03.util.MathUtils;
 
 public class Rules {
-    //static ArrayList<Rule> rules = new ArrayList<Rule>();
     static Rule[] rules = {
-        new Alignment(),
-        new Separation(),
-        new Cohesion(),
-        new Boundaries(),
-        new Wander(),
+        new Alignment(1.0f),
+        new Separation(50.0f),
+        new Cohesion(2.0f),
+        new Boundaries(100.0f),
+        new Wander(1.0f),
     };
     
     public static Vector2f apply(Boid b, Collection<Boid> neighborhood) {    
         Vector2f v = new Vector2f(0, 0);
         for (Rule rule : rules) {
             Vector2f result = rule.apply(b, neighborhood);
+            result.scale(rule.weight);
             //System.out.println("Rule " + rule + ": " + result);
             v.add(result);
         }
         return v;
-        //return new Vector2f(MathUtils.rand(-1f, 1f), MathUtils.rand(-1f, 1f));
     }
 }
 
 abstract class Rule {
+    public float weight;
+    
+    public Rule(float weight) { this.weight = weight; }
+    
     public abstract Vector2f apply(Boid b, Collection<Boid> neighborhood);
     
     public String toString() {
@@ -35,10 +38,9 @@ abstract class Rule {
 }
 
 class Alignment extends Rule {
-	float weight = 0.25f;
+    
+    public Alignment(float weight) { super(weight); }
 	
-	public Alignment() {}
-
 	public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
 	    if (neighborhood.size() == 0)
 	        return new Vector2f(0,0);
@@ -54,10 +56,9 @@ class Alignment extends Rule {
 
 		// I'm not sure
 		//perceivedVelocity.subtract(b.velocity);
-
-		// apply this rule's weight
-		perceivedVelocity.scale(weight);
-
+        
+        perceivedVelocity.scale(weight);
+        
 		return perceivedVelocity;
 	}
 }
@@ -67,8 +68,8 @@ class Cohesion extends Rule {
 	 * The cohesion rule tries to steer a given Boid toward
 	 * the center of its neighbors
 	 */
-
-	float weight = 0.5f;
+	 
+	public Cohesion(float weight) { super(weight); }
 
 	public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
 	    if (neighborhood.size() == 0)
@@ -84,16 +85,16 @@ class Cohesion extends Rule {
 	    
 		// is this helpful or necessary?
 		localCenter.subtract(b.position);
-
-		// apply this rule's weight
-		localCenter.scale(weight);
-
+        
+        localCenter.scale(weight);
 		return localCenter;
 	}
 }
 
 class Separation extends Rule {
-	float weight = 2.0f;
+    
+    public Separation(float weight) { super(weight); }
+    
 	public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
 	    if (neighborhood.size() == 0)
             return new Vector2f(0,0);
@@ -105,25 +106,36 @@ class Separation extends Rule {
 				newVelocity.add(offset);
 			}
 		}
+		
 		newVelocity.scale(weight);
 		return newVelocity;
 	}
 }
 
 class Boundaries extends Rule {
-    float weight = 50;
+    
+    public Boundaries(float weight) { super(weight); }
+    
     public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
         Vector2f bounds = new Vector2f(0,0);
+        
+        // Handle the X coordinates
         if (b.position.x - b.MINIMUM_DISTANCE < 0) bounds.x = 1;
         else if (b.position.x + b.MINIMUM_DISTANCE > World.width) bounds.x = -1;
+        
+        // Handle the Y coordinates
         if (b.position.y - b.MINIMUM_DISTANCE < 0) bounds.y = 1;
         else if (b.position.y + b.MINIMUM_DISTANCE > World.height) bounds.y = -1;
+        
         bounds.scale(weight);
         return bounds;
     }
 }
 
 class Wander extends Rule {
+    
+    public Wander(float weight) { super(weight); }
+    
     public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
         if (neighborhood.size() == 0) {
             return new Vector2f(
