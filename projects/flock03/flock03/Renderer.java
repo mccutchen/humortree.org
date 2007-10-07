@@ -5,7 +5,6 @@ import java.awt.*;
 public class Renderer {
     
     static Color backgroundColor = Color.WHITE;
-    static Color boidColor = Color.BLACK;
     
 	public static void render(Graphics g) {
 	    // fill in the background
@@ -18,7 +17,7 @@ public class Renderer {
 		}
 	}
 	public static void render(Boid b, Graphics g) {
-	    g.setColor(boidColor);
+	    g.setColor(b.color);
 		g.fillOval(
 		    (int)b.position.x - Settings.BOID_RADIUS,
 		    (int)b.position.y - Settings.BOID_RADIUS,

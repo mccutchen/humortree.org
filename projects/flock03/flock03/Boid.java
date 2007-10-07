@@ -1,19 +1,22 @@
 package flock03;
 
 import java.util.Collection;
+import java.awt.Color;
 
 import flock03.util.MathUtils;
 
 public class Boid {
 	public Vector2f position;
 	public Vector2f velocity;
+	public Color color;
 	
-	public float MINIMUM_DISTANCE = 20.0f;
+	public float MINIMUM_DISTANCE = 40.0f;
 	public float NEIGHBORHOOD_RADIUS = 100.0f;
 	
 	public Boid() {
 	    position = new Vector2f(MathUtils.rand(0f, World.width), MathUtils.rand(0f, World.height));
 	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
+	    color = new Color(MathUtils.rand(0, 255), MathUtils.rand(0, 255), MathUtils.rand(0, 255));
 	}
 	public Boid(Vector2f position, Vector2f velocity) {
 		this.position = position;
