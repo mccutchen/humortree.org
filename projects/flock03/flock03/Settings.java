@@ -20,7 +20,7 @@ public class Settings {
     public static int BOID_MAXIMUM_VISION = 200;
     
     public static float MAX_ACCELERATION = 1;
-    public static float MAX_VELOCITY = 4;
+    public static float MAX_VELOCITY = 3;
     public static float WANDER_SIZE = 2;
     
     // Obstacle settings

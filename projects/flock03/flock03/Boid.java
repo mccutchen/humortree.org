@@ -15,8 +15,8 @@ public class Boid extends FlockObject {
 	    // Put it in a random position
 	    position = World.randomPosition();
 	    
-	    // Give it a random starting velocity
-	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
+	    // Start it going nowhere
+	    velocity = new Vector2f(0, 0);
 	    
 	    // Assign a radius (static, for now)
 	    radius = Settings.BOID_RADIUS;
