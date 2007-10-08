@@ -17,9 +17,6 @@ public class FlockApplet extends Applet {
 	
     public boolean play = true;
     
-    // this is to suppress the warnings about serialization
-    private static final long serialVersionUID = 976810895685979471L;
-	
     public void init() {
         size = getSize();
         buffer = createImage(size.width, size.height);
@@ -27,8 +24,6 @@ public class FlockApplet extends Applet {
         
         // initialize the World with this applet's size
         World.init(size.width, size.height);
-        
-        //Rules.init();
 	}
     
     public void start() {
