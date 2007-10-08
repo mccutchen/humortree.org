@@ -152,14 +152,13 @@ class Obstacles extends Rule {
     public Obstacles(float weight) { super(weight); }
     
     public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
-        if (neighborhood.size() == 0)
-            return new Vector2f(0,0);
-        
-        for (Boid b2: neighborhood) {
-            if (b2 instanceof Obstacle && b.getBounds().intersects(b2.getBounds())) {
-                System.out.println(b + " encountered obstacle!");
+        for (Boid x: World.boids) {
+            if (x instanceof Obstacle) {
+                if (x.getBounds().intersects(b.getBounds())) {
+                    System.out.println(b + " encountered obstacle!");
+                }
             }
         }
-        return new Vector2f(0,0);
+        return new Vector2f();
     }
 }

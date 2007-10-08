@@ -1,10 +1,10 @@
 package flock03;
 
 public class Settings {
-    public static int ANIMATION_DELAY = 30;
+    public static int ANIMATION_DELAY = 100;
     public static int UPDATE_DELAY = ANIMATION_DELAY;
     
-    public static int INITIAL_BOID_COUNT = 100;
+    public static int INITIAL_BOID_COUNT = 1;
     public static int BOID_SIZE = 12;
     public static int BOID_RADIUS = BOID_SIZE / 2;
     public static int BOID_TAIL_SIZE = 3;

@@ -39,6 +39,7 @@ public class Renderer {
 		    Settings.BOID_SIZE,
 		    Settings.BOID_SIZE
 		);
+		renderBounds(b.getBounds(), g);
 	}
 	public static void render(Obstacle o, Graphics g) {
 		g.setColor(Color.BLACK);
@@ -48,5 +49,11 @@ public class Renderer {
 		    (int)o.radius * 2,
 		    (int)o.radius * 2
 		);
+		renderBounds(o.getBounds(), g);
+	}
+	
+	public static void renderBounds(Rectangle bounds, Graphics g) {
+	    g.setColor(Color.RED);
+	    g.drawRect(bounds.x, bounds.y, bounds.width, bounds.height);
 	}
 }
