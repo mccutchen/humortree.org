@@ -17,7 +17,7 @@ public class World {
 		height = h;
 		
 		boids = new ArrayList<Boid>();
-		baseColor = ColorUtils.randomColor();
+		baseColor = ColorUtils.randomColor(50, 200);
 		
 		for (int i = 0; i < Settings.INITIAL_BOID_COUNT; i++) {
 		    boids.add(new Boid());
