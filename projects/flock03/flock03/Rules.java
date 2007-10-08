@@ -1,8 +1,7 @@
 package flock03;
+import flock03.util.MathUtils;
 
 import java.util.Collection;
-import java.util.ArrayList;
-import flock03.util.MathUtils;
 
 public class Rules {
     static Rule[] rules = {
@@ -166,8 +165,6 @@ class Obstacles extends Rule {
                 if (b.position.y < o.position.y) escapeRoute.y -= 1;
                 // or higher
                 else escapeRoute.y += 1;
-                
-                //System.out.println(b + " encountered obstacle!");
             }
         }
         escapeRoute.scale(weight);

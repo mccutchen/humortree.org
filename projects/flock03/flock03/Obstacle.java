@@ -1,9 +1,7 @@
 package flock03;
+import flock03.util.*;
 
 import java.util.Collection;
-import java.awt.*;
-
-import flock03.util.*;
 
 public class Obstacle extends FlockObject {	
 	public Obstacle() {

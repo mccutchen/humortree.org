@@ -16,6 +16,7 @@ public class Renderer {
 		    render(b, g);
 		}
 		
+		// render each obstacle
 		for (Obstacle o: World.obstacles) {
 		    render(o, g);
 		}
