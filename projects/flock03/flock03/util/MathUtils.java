@@ -9,4 +9,8 @@ public class MathUtils {
     public static int rand(int lo, int hi) { return generator.nextInt(hi - lo) + lo; }
     public static float rand(float lo, float hi) { return (generator.nextFloat() * (hi - lo)) + lo; }
     public static double rand(double lo, double hi) { return (generator.nextDouble() * (hi - lo)) + lo; }
+    
+    public static int wrap(int n, int at) {
+    	return (n >= 0 && n < at) ? n : (n < 0) ? at + n : n - at;
+    }
 }
