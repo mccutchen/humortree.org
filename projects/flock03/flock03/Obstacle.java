@@ -11,6 +11,11 @@ public class Obstacle extends FlockObject {
 		color = ColorUtils.fudge(World.obstacleColor, 1, 8);
 	}
 	
+	public Obstacle(int x, int y) {
+	    this();
+	    position = new Vector2f(x, y);
+	}
+	
 	public void update(Collection<FlockObject> neighborhood) {
 		// do nothing... obstacles don't move
 	}

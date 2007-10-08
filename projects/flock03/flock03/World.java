@@ -50,6 +50,24 @@ public class World {
 		return neighborhood;
 	}
 	
+	public static void addBoids(int count) {
+	    try {
+	        for (int i = 0; i < count; i++) {
+    	        boids.add(new Boid());
+    	    }
+    	} catch (java.util.ConcurrentModificationException e) {
+    	    System.out.println("Error adding boids.");
+    	}
+	}
+	
+	public static void addObstacle(int x, int y) {
+	    try {
+	        obstacles.add(new Obstacle(x, y));
+	    } catch (java.util.ConcurrentModificationException e) {
+            System.out.println("Error adding obstacle.");
+        }
+	}
+	
 	public static Vector2f randomPosition() {
 	    return new Vector2f(MathUtils.rand(0, width), MathUtils.rand(0, height));
 	}
