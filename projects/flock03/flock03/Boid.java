@@ -3,7 +3,7 @@ package flock03;
 import java.util.Collection;
 import java.awt.Color;
 
-import flock03.util.MathUtils;
+import flock03.util.*;
 
 public class Boid {
 	public Vector2f position;
@@ -11,19 +11,19 @@ public class Boid {
 	public Color color;
 	public Vector2f[] tail;
 	
-	public float MINIMUM_DISTANCE = 40.0f;
-	public float NEIGHBORHOOD_RADIUS = 100.0f;
+	public float MINIMUM_DISTANCE = 20;
+	public float NEIGHBORHOOD_RADIUS = 50;
 	
 	public Boid() {
 	    position = new Vector2f(MathUtils.rand(0f, World.width), MathUtils.rand(0f, World.height));
 	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
-	    color = new Color(MathUtils.rand(0, 255), MathUtils.rand(0, 255), MathUtils.rand(0, 255));
+	    color = ColorUtils.fudge(World.baseColor, 2, 10);
 	    
 	    // Initialize the tail
-	    tail = new Vector2f[3];
-	    tail[0] = new Vector2f(position);
-	    tail[1] = new Vector2f(position);
-	    tail[2] = new Vector2f(position);
+	    tail = new Vector2f[Settings.BOID_TAIL_SIZE];
+	    for (int i = 0; i < Settings.BOID_TAIL_SIZE; i++) {
+	        tail[i] = new Vector2f(position);
+	    }
 	}
 	public Boid(Vector2f position, Vector2f velocity) {
 		this.position = position;
@@ -45,6 +45,9 @@ public class Boid {
 		
 		// Update the position
 		position.add(velocity);
+		
+		// Fudge the color a little bit
+		//color = ColorUtils.fudge(color, 1, 5);
 	}
 	
 	void limitAcceleration(Vector2f accel) {
