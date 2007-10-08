@@ -5,6 +5,7 @@ import flock03.*;
 public class AnimationThread extends Thread {
     FlockApplet parent;
     public AnimationThread(FlockApplet parent) {
+        super("AnimationThread");
         this.parent = parent;
     }
 	public void run() {

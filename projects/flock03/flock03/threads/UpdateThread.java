@@ -5,6 +5,7 @@ import flock03.*;
 public class UpdateThread extends Thread {
     FlockApplet parent;
     public UpdateThread(FlockApplet parent) {
+        super("UpdateThread");
         this.parent = parent;
     }
     
