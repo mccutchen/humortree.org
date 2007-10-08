@@ -43,7 +43,7 @@ public class Renderer {
 		//renderBounds(b.getBounds(), g);
 	}
 	public static void render(Obstacle o, Graphics g) {
-		g.setColor(Color.BLACK);
+		g.setColor(o.color);
 		g.fillOval(
 		    (int)(o.position.x - o.radius),
 		    (int)(o.position.y - o.radius),

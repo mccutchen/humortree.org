@@ -15,7 +15,7 @@ public class Boid extends FlockObject {
 	    position = World.randomPosition();
 	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
 	    radius = Settings.BOID_RADIUS;
-	    color = ColorUtils.fudge(World.baseColor, 2, 10);
+	    color = ColorUtils.fudge(World.boidColor, 2, 10);
 	    
 	    // Initialize the tail
 	    tail = new Vector2f[Settings.BOID_TAIL_SIZE];

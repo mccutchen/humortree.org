@@ -11,7 +11,9 @@ public class World {
 	
 	public static ArrayList<Boid> boids;
 	public static ArrayList<Obstacle> obstacles;
-	public static Color baseColor;
+	
+	public static Color boidColor;
+	public static Color obstacleColor;
 	
 	public static void init(int w, int h) {
 		width = w;
@@ -19,7 +21,9 @@ public class World {
 		
 		boids = new ArrayList<Boid>();
 		obstacles = new ArrayList<Obstacle>();
-		baseColor = ColorUtils.randomColor(50, 200);
+		
+		boidColor = ColorUtils.randomColor(50, 200);
+		obstacleColor = ColorUtils.randomColor(0, 50);
 		
 		for (int i = 0; i < Settings.INITIAL_BOID_COUNT; i++) {
 		    boids.add(new Boid());

@@ -6,7 +6,7 @@ public class Settings {
     public static int UPDATE_DELAY = ANIMATION_DELAY;
     
     // World settings
-    public static int INITIAL_BOID_COUNT = 50;
+    public static int INITIAL_BOID_COUNT = 100;
     
     // Boid settings
     public static int BOID_SIZE = 12;

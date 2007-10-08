@@ -10,7 +10,7 @@ public class Obstacle extends FlockObject {
 		position = World.randomPosition();
 		velocity = null;
 		radius = MathUtils.rand(20, 50);
-		color = ColorUtils.randomColor(0, 100);
+		color = ColorUtils.fudge(World.obstacleColor, 1, 8);
 	}
 	
 	public void update(Collection<FlockObject> neighborhood) {
