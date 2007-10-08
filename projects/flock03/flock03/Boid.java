@@ -1,21 +1,29 @@
 package flock03;
+import flock03.util.*;
 
 import java.util.Collection;
-import java.awt.*;
-
-import flock03.util.*;
+import java.awt.Color;
 
 public class Boid extends FlockObject {
 	public Vector2f[] tail;
+	public Color tailColor;
 	
 	public float MINIMUM_DISTANCE = 20;
 	public float NEIGHBORHOOD_RADIUS = 50;
 	
 	public Boid() {
+	    // Put it in a random position
 	    position = World.randomPosition();
+	    
+	    // Give it a random starting velocity
 	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
+	    
+	    // Assign a radius (static, for now)
 	    radius = Settings.BOID_RADIUS;
+	    
+	    // Generate a color like the base Boid color
 	    color = ColorUtils.fudge(World.boidColor, 2, 10);
+	    tailColor = color.brighter();
 	    
 	    // Initialize the tail
 	    tail = new Vector2f[Settings.BOID_TAIL_SIZE];
@@ -29,13 +37,17 @@ public class Boid extends FlockObject {
 	}
 	
 	public void update(Collection<FlockObject> neighborhood) {
+	    // Calculate a new steering vector
 	    Vector2f newSteering = Rules.apply(this, neighborhood);
+	    
+	    // Dampen the acceleration of the new steering vector
 	    limitAcceleration(newSteering);
 	    
+	    // Add it to the velocity and limit the total velocity
 		velocity.add(newSteering);
 		limitVelocity(velocity);
 		
-		// Update the tail
+		// Update the tail's position(s)
 		for (int i = tail.length - 1; i > 0; i--) {
 		    tail[i] = new Vector2f(tail[i-1]);
 		}
