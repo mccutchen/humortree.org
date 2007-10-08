@@ -11,14 +11,14 @@ public class Renderer {
 		g.setColor(backgroundColor);
 		g.fillRect(0,0, World.width, World.height);
 		
-		// render each boid
-		for (Boid b : World.boids) {
-		    render(b, g);
-		}
-		
 		// render each obstacle
 		for (Obstacle o: World.obstacles) {
 		    render(o, g);
+		}
+		
+		// render each boid
+		for (Boid b : World.boids) {
+		    render(b, g);
 		}
 	}
 	public static void render(Boid b, Graphics g) {	    
