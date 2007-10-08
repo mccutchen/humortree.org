@@ -18,7 +18,6 @@ public class Rules {
         for (Rule rule : rules) {
             Vector2f result = rule.apply(b, neighborhood);
             result.scale(rule.weight);
-            //System.out.println("Rule " + rule + ": " + result);
             v.add(result);
         }
         return v;
@@ -54,11 +53,10 @@ class Alignment extends Rule {
 		// average the total velocities
 		perceivedVelocity.scale(neighborhood.size());
 
-		// I'm not sure
-		//perceivedVelocity.subtract(b.velocity);
+		// Remove this Boid's velocity
+		perceivedVelocity.subtract(b.velocity);
         
         perceivedVelocity.scale(weight);
-        
 		return perceivedVelocity;
 	}
 }
