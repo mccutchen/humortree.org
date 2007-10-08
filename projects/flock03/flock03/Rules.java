@@ -14,7 +14,7 @@ public class Rules {
         new Obstacles(100.0f)
     };
     
-    public static Vector2f apply(Boid b, Collection<Boid> neighborhood) {    
+    public static Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {    
         Vector2f v = new Vector2f(0, 0);
         for (Rule rule : rules) {
             Vector2f result = rule.apply(b, neighborhood);
@@ -30,7 +30,7 @@ abstract class Rule {
     
     public Rule(float weight) { this.weight = weight; }
     
-    public abstract Vector2f apply(Boid b, Collection<Boid> neighborhood);
+    public abstract Vector2f apply(Boid b, Collection<FlockObject> neighborhood);
     
     public String toString() {
         return "<Rule \"" + getClass().getName() + "\">";
@@ -41,13 +41,13 @@ class Alignment extends Rule {
     
     public Alignment(float weight) { super(weight); }
 	
-	public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
+	public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
 	    if (neighborhood.size() == 0)
 	        return new Vector2f(0,0);
 
 		Vector2f perceivedVelocity = new Vector2f();
 
-		for (Boid b2 : neighborhood) {
+		for (FlockObject b2 : neighborhood) {
 			perceivedVelocity.add(b2.velocity);
 		}
 
@@ -70,12 +70,12 @@ class Cohesion extends Rule {
 	 
 	public Cohesion(float weight) { super(weight); }
 
-	public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
+	public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
 	    if (neighborhood.size() == 0)
             return new Vector2f(0,0);
 
 		Vector2f localCenter = new Vector2f();
-		for (Boid b2 : neighborhood) {
+		for (FlockObject b2 : neighborhood) {
 			localCenter.add(b2.position);
 		}
 
@@ -94,12 +94,12 @@ class Separation extends Rule {
     
     public Separation(float weight) { super(weight); }
     
-	public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
+	public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
 	    if (neighborhood.size() == 0)
             return new Vector2f(0,0);
 
 		Vector2f newVelocity = new Vector2f();
-		for (Boid b2 : neighborhood) {
+		for (FlockObject b2 : neighborhood) {
 			if (Vector2f.distanceBetween(b.position, b2.position) < b.MINIMUM_DISTANCE) {
 				Vector2f offset = Vector2f.subtract(b.position, b2.position);
 				newVelocity.add(offset);
@@ -115,7 +115,7 @@ class Boundaries extends Rule {
     
     public Boundaries(float weight) { super(weight); }
     
-    public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
+    public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
         Vector2f bounds = new Vector2f(0,0);
         
         // Handle the X coordinates
@@ -135,7 +135,7 @@ class Wander extends Rule {
     
     public Wander(float weight) { super(weight); }
     
-    public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
+    public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
         if (neighborhood.size() == 0) {
             return new Vector2f(
                 MathUtils.rand(-Settings.WANDER_SIZE, Settings.WANDER_SIZE),
@@ -151,14 +151,26 @@ class Obstacles extends Rule {
     
     public Obstacles(float weight) { super(weight); }
     
-    public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
-        for (Boid x: World.boids) {
-            if (x instanceof Obstacle) {
-                if (x.getBounds().intersects(b.getBounds())) {
-                    System.out.println(b + " encountered obstacle!");
-                }
+    public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
+        Vector2f escapeRoute = new Vector2f(0, 0);
+        
+        for (Obstacle o: World.obstacles) {
+            if (o.getBounds().intersects(b.getBounds())) {
+                
+                // b is to the left of o
+                if (b.position.x < o.position.x) escapeRoute.x -= 1;
+                // or to the right
+                else escapeRoute.x += 1;
+                
+                // be is lower than o
+                if (b.position.y < o.position.y) escapeRoute.y -= 1;
+                // or higher
+                else escapeRoute.y += 1;
+                
+                //System.out.println(b + " encountered obstacle!");
             }
         }
-        return new Vector2f();
+        escapeRoute.scale(weight);
+        return escapeRoute;
     }
 }

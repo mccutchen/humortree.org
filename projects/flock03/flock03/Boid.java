@@ -5,18 +5,16 @@ import java.awt.*;
 
 import flock03.util.*;
 
-public class Boid {
-	public Vector2f position;
-	public Vector2f velocity;
-	public Color color;
+public class Boid extends FlockObject {
 	public Vector2f[] tail;
 	
 	public float MINIMUM_DISTANCE = 20;
 	public float NEIGHBORHOOD_RADIUS = 50;
 	
 	public Boid() {
-	    position = new Vector2f(MathUtils.rand(0f, World.width), MathUtils.rand(0f, World.height));
+	    position = World.randomPosition();
 	    velocity = new Vector2f(MathUtils.rand(-2f, 2f), MathUtils.rand(-2f, 2f));
+	    radius = Settings.BOID_RADIUS;
 	    color = ColorUtils.fudge(World.baseColor, 2, 10);
 	    
 	    // Initialize the tail
@@ -30,7 +28,7 @@ public class Boid {
 		this.velocity = velocity;
 	}
 	
-	void update(Collection<Boid> neighborhood) {
+	public void update(Collection<FlockObject> neighborhood) {
 	    Vector2f newSteering = Rules.apply(this, neighborhood);
 	    limitAcceleration(newSteering);
 	    
@@ -45,9 +43,6 @@ public class Boid {
 		
 		// Update the position
 		position.add(velocity);
-		
-		// Fudge the color a little bit
-		//color = ColorUtils.fudge(color, 1, 5);
 	}
 	
 	void limitAcceleration(Vector2f accel) {
@@ -63,17 +58,7 @@ public class Boid {
 	        v.normalize();
 	        v.scale(max);
 	    }
-	}
-	
-	public Rectangle getBounds() {
-	    return new Rectangle(
-	        (int)position.x - Settings.BOID_RADIUS,
-	        (int)position.y - Settings.BOID_RADIUS,
-	        Settings.BOID_SIZE,
-	        Settings.BOID_SIZE
-	    );
-	}
-	
+	}	
 	
 	public String toString() {
 	    return "<Boid position=" + position + " velocity=" + velocity + ">";

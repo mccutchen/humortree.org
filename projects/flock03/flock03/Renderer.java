@@ -13,10 +13,11 @@ public class Renderer {
 		
 		// render each boid
 		for (Boid b : World.boids) {
-		    if (b instanceof Obstacle)
-		        render((Obstacle)b, g);
-		    else
-		        render(b, g);
+		    render(b, g);
+		}
+		
+		for (Obstacle o: World.obstacles) {
+		    render(o, g);
 		}
 	}
 	public static void render(Boid b, Graphics g) {	    
@@ -39,7 +40,7 @@ public class Renderer {
 		    Settings.BOID_SIZE,
 		    Settings.BOID_SIZE
 		);
-		renderBounds(b.getBounds(), g);
+		//renderBounds(b.getBounds(), g);
 	}
 	public static void render(Obstacle o, Graphics g) {
 		g.setColor(Color.BLACK);
@@ -49,7 +50,7 @@ public class Renderer {
 		    (int)o.radius * 2,
 		    (int)o.radius * 2
 		);
-		renderBounds(o.getBounds(), g);
+		//renderBounds(o.getBounds(), g);
 	}
 	
 	public static void renderBounds(Rectangle bounds, Graphics g) {

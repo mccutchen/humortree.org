@@ -10,6 +10,7 @@ public class World {
 	public static int height;
 	
 	public static ArrayList<Boid> boids;
+	public static ArrayList<Obstacle> obstacles;
 	public static Color baseColor;
 	
 	public static void init(int w, int h) {
@@ -17,13 +18,16 @@ public class World {
 		height = h;
 		
 		boids = new ArrayList<Boid>();
+		obstacles = new ArrayList<Obstacle>();
 		baseColor = ColorUtils.randomColor(50, 200);
 		
 		for (int i = 0; i < Settings.INITIAL_BOID_COUNT; i++) {
 		    boids.add(new Boid());
 	    }
 	    
-	    boids.add(new Obstacle());
+	    for (int i = 0; i < Settings.OBSTACLE_COUNT; i++) {
+ 	        obstacles.add(new Obstacle());
+	    }
 	}
 	
 	public static void update() {
@@ -32,13 +36,17 @@ public class World {
 		}
 	}
 	
-	public static ArrayList<Boid> getNeighborhood(Boid b) {
-		ArrayList<Boid> neighborhood = new ArrayList<Boid>();
+	public static ArrayList<FlockObject> getNeighborhood(Boid b) {
+		ArrayList<FlockObject> neighborhood = new ArrayList<FlockObject>();
 		for (Boid b2 : boids) {
 			if ((b2 != b) && (Vector2f.quickDistanceBetween(b.position, b2.position) < b.NEIGHBORHOOD_RADIUS * b.NEIGHBORHOOD_RADIUS)) {
 				neighborhood.add(b2);
 			}
 		}
 		return neighborhood;
+	}
+	
+	public static Vector2f randomPosition() {
+	    return new Vector2f(MathUtils.rand(0, width), MathUtils.rand(0, height));
 	}
 }
