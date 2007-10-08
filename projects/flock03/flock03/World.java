@@ -22,6 +22,8 @@ public class World {
 		for (int i = 0; i < Settings.INITIAL_BOID_COUNT; i++) {
 		    boids.add(new Boid());
 	    }
+	    
+	    boids.add(new Obstacle());
 	}
 	
 	public static void update() {

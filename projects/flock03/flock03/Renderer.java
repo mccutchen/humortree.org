@@ -13,7 +13,10 @@ public class Renderer {
 		
 		// render each boid
 		for (Boid b : World.boids) {
-		    render(b, g);
+		    if (b instanceof Obstacle)
+		        render((Obstacle)b, g);
+		    else
+		        render(b, g);
 		}
 	}
 	public static void render(Boid b, Graphics g) {	    
@@ -38,6 +41,12 @@ public class Renderer {
 		);
 	}
 	public static void render(Obstacle o, Graphics g) {
-		// pass
+		g.setColor(Color.BLACK);
+		g.fillOval(
+		    (int)(o.position.x - o.radius),
+		    (int)(o.position.y - o.radius),
+		    (int)o.radius * 2,
+		    (int)o.radius * 2
+		);
 	}
 }

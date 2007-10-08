@@ -11,6 +11,7 @@ public class Rules {
         new Cohesion(2.0f),
         new Boundaries(100.0f),
         new Wander(1.0f),
+        new Obstacles(100.0f)
     };
     
     public static Vector2f apply(Boid b, Collection<Boid> neighborhood) {    
@@ -146,3 +147,19 @@ class Wander extends Rule {
     }
 }
 
+class Obstacles extends Rule {
+    
+    public Obstacles(float weight) { super(weight); }
+    
+    public Vector2f apply(Boid b, Collection<Boid> neighborhood) {
+        if (neighborhood.size() == 0)
+            return new Vector2f(0,0);
+        
+        for (Boid b2: neighborhood) {
+            if (b2 instanceof Obstacle && b.getBounds().intersects(b2.getBounds())) {
+                System.out.println(b + " encountered obstacle!");
+            }
+        }
+        return new Vector2f(0,0);
+    }
+}

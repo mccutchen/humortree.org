@@ -1,7 +1,7 @@
 package flock03;
 
 import java.util.Collection;
-import java.awt.Color;
+import java.awt.*;
 
 import flock03.util.*;
 
@@ -63,6 +63,15 @@ public class Boid {
 	        v.normalize();
 	        v.scale(max);
 	    }
+	}
+	
+	public Rectangle getBounds() {
+	    return new Rectangle(
+	        (int)position.x - Settings.BOID_RADIUS,
+	        (int)position.y - Settings.BOID_RADIUS,
+	        Settings.BOID_SIZE,
+	        Settings.BOID_SIZE
+	    );
 	}
 	
 	
