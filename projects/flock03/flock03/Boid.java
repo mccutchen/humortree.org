@@ -5,11 +5,15 @@ import java.util.Collection;
 import java.awt.Color;
 
 public class Boid extends FlockObject {
+    // The tail will just be a list of previous positions
 	public Vector2f[] tail;
 	public Color tailColor;
 	
-	public float MINIMUM_DISTANCE = 20;
-	public float NEIGHBORHOOD_RADIUS = 50;
+	// How close does this Boid want to let other objects get?
+	public float friendliness;
+	
+	// How far can this Boid see?
+	public float vision;
 	
 	public Boid() {
 	    // Put it in a random position
@@ -25,6 +29,15 @@ public class Boid extends FlockObject {
 	    color = ColorUtils.fudge(World.boidColor, 2, 10);
 	    tailColor = color.brighter();
 	    
+	    friendliness = MathUtils.rand(
+    	    Settings.BOID_MIN_FRIENDLINESS,
+    	    Settings.BOID_MAX_FRIENDLINESS
+    	);
+    	vision = MathUtils.rand(
+    	    Settings.BOID_MIN_VISION,
+    	    Settings.BOID_MAX_VISION
+    	);
+	    
 	    // Initialize the tail
 	    tail = new Vector2f[Settings.BOID_TAIL_SIZE];
 	    for (int i = 0; i < Settings.BOID_TAIL_SIZE; i++) {
@@ -32,6 +45,7 @@ public class Boid extends FlockObject {
 	    }
 	}
 	public Boid(Vector2f position, Vector2f velocity) {
+	    this();
 		this.position = position;
 		this.velocity = velocity;
 	}

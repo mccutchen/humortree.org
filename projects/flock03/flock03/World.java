@@ -29,7 +29,7 @@ public class World {
 		    boids.add(new Boid());
 	    }
 	    
-	    for (int i = 0; i < Settings.OBSTACLE_COUNT; i++) {
+	    for (int i = 0; i < Settings.INITIAL_OBSTACLE_COUNT; i++) {
  	        obstacles.add(new Obstacle());
 	    }
 	}
@@ -43,7 +43,7 @@ public class World {
 	public static ArrayList<FlockObject> getNeighborhood(Boid b) {
 		ArrayList<FlockObject> neighborhood = new ArrayList<FlockObject>();
 		for (Boid b2 : boids) {
-			if ((b2 != b) && (Vector2f.quickDistanceBetween(b.position, b2.position) < b.NEIGHBORHOOD_RADIUS * b.NEIGHBORHOOD_RADIUS)) {
+			if ((b2 != b) && (Vector2f.quickDistanceBetween(b.position, b2.position) < b.vision * b.vision)) {
 				neighborhood.add(b2);
 			}
 		}

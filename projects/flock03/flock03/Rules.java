@@ -99,7 +99,7 @@ class Separation extends Rule {
 
 		Vector2f newVelocity = new Vector2f();
 		for (FlockObject b2 : neighborhood) {
-			if (Vector2f.distanceBetween(b.position, b2.position) < b.MINIMUM_DISTANCE) {
+			if (Vector2f.distanceBetween(b.position, b2.position) < b.friendliness) {
 				Vector2f offset = Vector2f.subtract(b.position, b2.position);
 				newVelocity.add(offset);
 			}
@@ -118,12 +118,12 @@ class Boundaries extends Rule {
         Vector2f bounds = new Vector2f(0,0);
         
         // Handle the X coordinates
-        if (b.position.x - b.MINIMUM_DISTANCE < 0) bounds.x = 1;
-        else if (b.position.x + b.MINIMUM_DISTANCE > World.width) bounds.x = -1;
+        if (b.position.x - b.friendliness < 0) bounds.x = 1;
+        else if (b.position.x + b.friendliness > World.width) bounds.x = -1;
         
         // Handle the Y coordinates
-        if (b.position.y - b.MINIMUM_DISTANCE < 0) bounds.y = 1;
-        else if (b.position.y + b.MINIMUM_DISTANCE > World.height) bounds.y = -1;
+        if (b.position.y - b.friendliness < 0) bounds.y = 1;
+        else if (b.position.y + b.friendliness > World.height) bounds.y = -1;
         
         bounds.scale(weight);
         return bounds;
