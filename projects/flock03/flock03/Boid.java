@@ -70,7 +70,26 @@ public class Boid extends FlockObject {
 	        v.normalize();
 	        v.scale(max);
 	    }
-	}	
+	}
+	
+	public boolean trajectoryHitsObstacle(Obstacle o) {
+        int x1 = (int)position.x;
+        int y1 = (int)position.y;
+
+        Vector2f v = new Vector2f(velocity);
+        v.normalize();
+        v.scale(100);
+        int x2 = x1 - (int)v.x;
+        int y2 = y1 - (int)v.y;
+        
+        int cx = (int)o.position.x;
+        int cy = (int)o.position.y;
+        
+        return MathUtils.lineIntersectsCircle(
+            x1, y1, x2, y2,
+            cx, cy, (int)o.radius
+        );
+    }
 	
 	public String toString() {
 	    return "<Boid position=" + position + " velocity=" + velocity + ">";
