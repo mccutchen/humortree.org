@@ -43,7 +43,7 @@ public class World {
 	public static ArrayList<FlockObject> getNeighborhood(Boid b) {
 		ArrayList<FlockObject> neighborhood = new ArrayList<FlockObject>();
 		for (Boid b2 : boids) {
-			if ((b2 != b) && (Vector2f.quickDistanceBetween(b.position, b2.position) < b.vision * b.vision)) {
+			if ((b2 != b) && (Vector2f.distanceBetween(b.position, b2.position) < b.vision)) {
 				neighborhood.add(b2);
 			}
 		}
