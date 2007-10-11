@@ -5,12 +5,12 @@ import java.util.Collection;
 
 public class Rules {
     static Rule[] rules = {
-        new Alignment(1.0f),
-        new Separation(50.0f),
-        new Cohesion(2.0f),
-        new Boundaries(100.0f),
-        new Wander(1.0f),
-        new Obstacles(100.0f)
+        new Alignment(3),
+        new Separation(5),
+        new Cohesion(1),
+        new Boundaries(10),
+        new Wander(1),
+        new Obstacles(10)
     };
     
     public static Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {    
@@ -94,17 +94,13 @@ class Separation extends Rule {
     public Separation(float weight) { super(weight); }
     
 	public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
-	    if (neighborhood.size() == 0)
-            return new Vector2f(0,0);
-
-		Vector2f newVelocity = new Vector2f();
+	    Vector2f newVelocity = new Vector2f(0,0);
 		for (FlockObject b2 : neighborhood) {
 			if (Vector2f.distanceBetween(b.position, b2.position) < b.friendliness) {
 				Vector2f offset = Vector2f.subtract(b.position, b2.position);
 				newVelocity.add(offset);
 			}
 		}
-		
 		newVelocity.scale(weight);
 		return newVelocity;
 	}
@@ -152,21 +148,19 @@ class Obstacles extends Rule {
     
     public Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {
         Vector2f escapeRoute = new Vector2f(0, 0);
-        
+        weight = 0;
         for (Obstacle o: World.obstacles) {
-            if (o.getBounds().intersects(b.getBounds())) {
-                
-                // b is to the left of o
-                if (b.position.x < o.position.x) escapeRoute.x -= 1;
-                // or to the right
-                else escapeRoute.x += 1;
-                
-                // be is lower than o
-                if (b.position.y < o.position.y) escapeRoute.y -= 1;
-                // or higher
-                else escapeRoute.y += 1;
+            float distance = Vector2f.distanceBetween(b.position, o.position);
+            if (distance < b.vision + o.radius) {
+                // Try to weight the avoidance vector according to this Boid's
+                // distance from the obstacle
+                weight += (1/(distance*distance)) * 100000;
+                Vector2f offset = Vector2f.subtract(b.position, o.position);
+                //System.out.println("Weight: " + weight);
+                escapeRoute.add(offset);
             }
         }
+        escapeRoute.normalize();
         escapeRoute.scale(weight);
         return escapeRoute;
     }
