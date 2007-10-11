@@ -10,8 +10,10 @@ public class UpdateThread extends Thread {
     }
     
     public void run() {
-		while (parent.play) {
-			World.update();
+        while (true) {
+		    if (parent.play) {
+    			World.update();
+    		}
 			try {
 				sleep(Settings.UPDATE_DELAY);
 			} catch (InterruptedException e) { ; }

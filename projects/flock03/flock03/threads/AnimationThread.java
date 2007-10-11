@@ -9,9 +9,11 @@ public class AnimationThread extends Thread {
         this.parent = parent;
     }
 	public void run() {
-		while (parent.play) {
-		    Renderer.render(parent.bufferGraphics);
-			parent.repaint();
+		while (true) {
+		    if (parent.play) {
+		        Renderer.render(parent.bufferGraphics);
+    			parent.repaint();
+			}
 			try {
 				sleep(Settings.ANIMATION_DELAY);
 			} catch (InterruptedException e) { ; }
