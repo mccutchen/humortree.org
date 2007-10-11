@@ -41,6 +41,7 @@ public class Renderer {
 		    Settings.BOID_SIZE,
 		    Settings.BOID_SIZE
 		);
+		//renderVision(b, g);
 		//renderBounds(b.getBounds(), g);
 	}
 	public static void render(Obstacle o, Graphics g) {
@@ -52,6 +53,16 @@ public class Renderer {
 		    (int)o.radius * 2
 		);
 		//renderBounds(o.getBounds(), g);
+	}
+	
+	public static void renderVision(Boid b, Graphics g) {
+	    g.setColor(Color.GRAY);
+	    g.drawOval(
+	        (int)(b.position.x - b.vision),
+	        (int)(b.position.y - b.vision),
+	        (int)(b.vision * 2),
+	        (int)(b.vision * 2)
+	    );
 	}
 	
 	public static void renderBounds(Rectangle bounds, Graphics g) {
