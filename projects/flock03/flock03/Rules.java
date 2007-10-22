@@ -5,12 +5,12 @@ import java.util.Collection;
 
 public class Rules {
     static Rule[] rules = {
-        new Alignment(3),
+        new Alignment(5),
         new Separation(5),
         new Cohesion(1),
-        new Boundaries(10),
-        new Wander(1),
-        new Obstacles(10)
+        new Boundaries(20),
+        new Wander(0.5f),
+        new Obstacles(20)
     };
     
     public static Vector2f apply(Boid b, Collection<FlockObject> neighborhood) {    
