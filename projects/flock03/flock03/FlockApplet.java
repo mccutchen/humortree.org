@@ -28,8 +28,8 @@ public class FlockApplet extends Applet implements KeyListener, MouseListener {
         World.init(size.width, size.height);
         
         // Add event listeners
-        //addKeyListener(this);
-        //addMouseListener(this);
+        addKeyListener(this);
+        addMouseListener(this);
 	}
     
     public void start() {
