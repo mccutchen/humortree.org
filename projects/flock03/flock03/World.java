@@ -52,21 +52,12 @@ public class World {
 	}
 	
 	public static void addBoids(int count) {
-	    try {
-	        for (int i = 0; i < count; i++) {
-    	        boids.add(new Boid());
-    	    }
-    	} catch (java.util.ConcurrentModificationException e) {
-    	    System.out.println("Error adding boids.");
-    	}
+	    for (int i = 0; i < count; i++)
+	        boids.add(new Boid());
 	}
 	
 	public static void addObstacle(int x, int y) {
-	    try {
-	        obstacles.add(new Obstacle(x, y));
-	    } catch (java.util.ConcurrentModificationException e) {
-            System.out.println("Error adding obstacle.");
-        }
+	    obstacles.add(new Obstacle(x, y));
 	}
 	
 	public static Vector2f randomPosition() {
