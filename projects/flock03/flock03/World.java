@@ -1,6 +1,7 @@
 package flock03;
 
 import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.awt.Color;
 
 import flock03.util.*;
@@ -9,8 +10,8 @@ public class World {
 	public static int width;
 	public static int height;
 	
-	public static ArrayList<Boid> boids;
-	public static ArrayList<Obstacle> obstacles;
+	public static CopyOnWriteArrayList<Boid> boids;
+	public static CopyOnWriteArrayList<Obstacle> obstacles;
 	
 	public static Color boidColor;
 	public static Color obstacleColor;
@@ -19,8 +20,8 @@ public class World {
 		width = w;
 		height = h;
 		
-		boids = new ArrayList<Boid>();
-		obstacles = new ArrayList<Obstacle>();
+		boids = new CopyOnWriteArrayList<Boid>();
+		obstacles = new CopyOnWriteArrayList<Obstacle>();
 		
 		boidColor = ColorUtils.randomColor(50, 200);
 		obstacleColor = ColorUtils.randomColor(0, 50);
@@ -40,8 +41,8 @@ public class World {
 		}
 	}
 	
-	public static ArrayList<FlockObject> getNeighborhood(Boid b) {
-		ArrayList<FlockObject> neighborhood = new ArrayList<FlockObject>();
+	public static CopyOnWriteArrayList<FlockObject> getNeighborhood(Boid b) {
+		CopyOnWriteArrayList<FlockObject> neighborhood = new CopyOnWriteArrayList<FlockObject>();
 		for (Boid b2 : boids) {
 			if ((b2 != b) && (Vector2f.distanceBetween(b.position, b2.position) < b.vision)) {
 				neighborhood.add(b2);
