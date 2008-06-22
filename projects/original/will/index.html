@@ -2,15 +2,29 @@
 <html>
     <head>
     	<title>w-i-l-l</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     	<script type="text/javascript">
-    		
+    	    unhiddencount = 0;
+    	    function unhide(id) {
+    	        $('#' + id).css('visibility', 'visible');
+    	        if (++unhiddencount > 2)
+    	            $('.facepiece')
+    	                .filter(function(el) { return !$(el).hasClass('final'); })
+    	                .css('cursor', 'pointer')
+    	                .click(function() { $('#face').css('visibility', 'visible'); });
+    	    }
+    		$(document).ready(function() {
+    		    $('#lefteyelink').click(function() { unhide('lefteye'); });
+    		    $('#righteyelink').click(function() { unhide('righteye'); });
+    		    $('#noselink').click(function() { unhide('nose'); });
+    		});
     	</script>
 	
     	<style type="text/css">
     	    body {
     	        background: #aaa url(bg.gif);
     	    }
-    	    #logo, .facepiece {
+    	    div {
     	        position: absolute;
     	    }
     	    #logo {
@@ -30,16 +44,16 @@
     <body>
         <div id="logo"><img src="logo.gif"></div>	
     
-        <div class="facepiece" style="top:175px; left:20px;"><img src="left_eye.jpg"></div>
-        <div class="facepiece" style="top:140px; left:230px;"><img src="right_eye.jpg"></div>							 
-        <div class="facepiece" style="top:290px; left:135px;"><a href="javascript:show_part(4);"><img src="nose.jpg"></a></div>			
-        <div class="final facepiece" style="top:40px; right:126px; z-index:5;"><a href="../no/"><img src="face.jpg"></a></div>
+        <div id="lefteye" class="facepiece" style="top:175px; left:20px;"><img src="left_eye.jpg"></div>
+        <div id="righteye" class="facepiece" style="top:140px; left:230px;"><img src="right_eye.jpg"></div>							 
+        <div id="nose" class="facepiece" style="top:290px; left:135px;"><img src="nose.jpg"></div>			
+        <div id="face" class="final facepiece" style="top:40px; right:126px; z-index:5;"><a href="../no/"><img src="face.jpg"></a></div>
 
-        <div align="right"><img id="will" src="will01.gif" usemap="#my_map"></div>
+        <div style="top: 10px; right: 10px;"><img id="will" src="will01.gif" usemap="#my_map"></div>
         <map name="my_map">
-            <area alt="" shape="poly" coords="88,78,94,66,105,68,113,75,112,82,98,92" href="#" onClick="show_part(1);">
-            <area alt="" shape="poly" coords="128,76,127,61,150,55,159,62,152,74,133,83" href="#" onClick="show_part(2);">
-            <area alt="" shape="poly" coords="115,75,106,105,110,109,118,111,127,109,128,102,125,98,121,98,121,72" href="#" onClick="show_part(3);">
+            <area id="lefteyelink" alt="" shape="poly" coords="88,78,94,66,105,68,113,75,112,82,98,92" href="#">
+            <area id="righteyelink" alt="" shape="poly" coords="128,76,127,61,150,55,159,62,152,74,133,83" href="#">
+            <area id="noselink" alt="" shape="poly" coords="115,75,106,105,110,109,118,111,127,109,128,102,125,98,121,98,121,72" href="#">
         </map>
     </body>
 </html>
