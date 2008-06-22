@@ -1,108 +1,101 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<title>a brief interlude, infidel swine.</title>
+    <head>
+    	<title>a brief interlude, infidel swine.</title>
 	
-	<style type="text/css">
-		.uu
-		{
-			font: 32px arial;
-			font-weight : bold;
-			color : #ffffff;
-			
-		}
+    	<script>
+    		var words = new Array("lose","quick","heavy","long","rampant","green","fun","me","smokey","unique","art","the pope","redundant","mean","slow","ripe","dead","heaven","glowing","humor_tree","new","shiny","war","clean","bad","mine","quiet","rocky","jesus","Ford","khysics","J. J. B.","weird","wrong","free","sour","mustard","young","pine-scented","evil","grape-flavored","bottomless","trenchant","soliloquizing","ugly","far-fetched","finished");
+    		var far = 11;
+    		var flag = 0;
+    		var in_progress = 0;
 		
-		table
-		{
-			position: absolute;
-			top: 220 px;
-			left: 0 px;
-			width: 100 %;
-		}
-	</style>
-	
-	<script>
+    		function handler()
+    		{
+    			if(in_progress != 1)
+    				play(0);
+    		}
 		
-		var words = new Array("lose","quick","heavy","long","rampant","green","fun","me","smokey","unique","art","the pope","redundant","mean","slow","ripe","dead","heaven","glowing","humor_tree","new","shiny","war","clean","bad","mine","quiet","rocky","jesus","Ford","khysics","J. J. B.","weird","wrong","free","sour","mustard","young","pine-scented","evil","grape-flavored","bottomless","trenchant","soliloquizing","ugly","far-fetched","finished");
-		var far = 11;
-		var flag = 0;
-		var in_progress = 0;
-		
-		function handler()
-		{
-			if(in_progress != 1)
-				play(0);
-		}
-		
-		function play(i)
-		{
-			in_progress = 1;
-			i = parseInt(i);
-			var xx = words[i];
-			if (flag != 1)
-			{
-				if (xx != "art" && xx != "humor_tree" && xx != "jesus" && xx != "mustard" && xx != "finished")
-				{
+    		function play(i)
+    		{
+    			in_progress = 1;
+    			i = parseInt(i);
+    			var xx = words[i];
+    			if (flag != 1)
+    			{
+    				if (xx != "art" && xx != "humor_tree" && xx != "jesus" && xx != "mustard" && xx != "finished")
+    				{
 				
-					document.images['pic'].src = "blank.gif";
-					document.all['me'].innerHTML = xx;
-					i++;
-					setTimeout("play('" + i + "');",100);
-				}
+    					document.images['pic'].src = "blank.gif";
+    					document.all['me'].innerHTML = xx;
+    					i++;
+    					setTimeout("play('" + i + "');",100);
+    				}
 				
-				else // it is art or something else
-				{
-					if(xx != "finished")
-					{
-						//alert(xx);
-						document.all['me'].innerHTML = xx;
-						document.images['pic'].src = xx + ".gif";
-						i++;
-						setTimeout("play('" + i + "');",3000);
-					}
+    				else // it is art or something else
+    				{
+    					if(xx != "finished")
+    					{
+    						//alert(xx);
+    						document.all['me'].innerHTML = xx;
+    						document.images['pic'].src = xx + ".gif";
+    						i++;
+    						setTimeout("play('" + i + "');",3000);
+    					}
 					
-					else // xx == finished
-					{
-						document.images['pic'].src = xx + ".gif";
-						document.all['me'].innerHTML = xx;
-						flag = 1;
-						setTimeout("next();",5000);
+    					else // xx == finished
+    					{
+    						document.images['pic'].src = xx + ".gif";
+    						document.all['me'].innerHTML = xx;
+    						flag = 1;
+    						setTimeout("next();",5000);
 						
-					}
-				}
+    					}
+    				}
 				
 				
-			}
-		}
-		function next()
-		{
-			window.location = "../kid/index.html";
-		}
-	</script>
+    			}
+    		}
+    		function next()
+    		{
+    			window.location = "../kid/";
+    		}
+    	</script>
 	
-</head>
+    	<style type="text/css">		
+    		body {
+    		    background: #ccc url(bg.jpg);
+    		    color: #fff;
+    		    font: 32px helvetica, arial, sans-serif;
+    		    font-weight: bold;
+    		}
+    		#description, #illoholder {
+    		    position: absolute;
+    		    top: 300px;
+    		}
+    		#description {
+    		    left: 20px;
+    		}
+    		#illoholder {
+    		    right: 20px;
+    		    margin-top: -60px;
+    		}
+    		#illustration {
+    		    height: 185px;
+    		}
+    	</style>
+    </head>
 
-<body bgcolor="#ffffff" background="bg.jpg">
-
-<table border="0" width="100%">
-	<tr>
-		<td align="left" valign="middle" width="50%">
-			<div class="uu" onClick="handler();" style="cursor:hand;">
-				<span id="pre">This is</span> <span id="me">waiting</span><span id="punctuation">.</span>
-			</div>
-		</td>
-		<td align="right" valign="middle" width="50%">
-			<img id="pic" src="blank.gif" height="185">
-		</td>
-	</tr>
-</table>
-
-<div style="display:none">
-<img src="art.gif">
-<img src="humor_tree.gif">
-<img src="jesus.gif">
-<img src="mustard.gif">
-<img src="finished.gif">
-</div>
-
-</body>
+    <body>
+        <p id="description">This is <span id="what">waiting</span>.</p>
+        <div id="illoholder"><img id="illustration" src="blank.gif"></div>
+    
+        <!-- preload images -->
+        <div style="display:none">
+            <img src="art.gif">
+            <img src="humor_tree.gif">
+            <img src="jesus.gif">
+            <img src="mustard.gif">
+            <img src="finished.gif">
+        </div>
+    </body>
 </html>
