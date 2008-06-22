@@ -21,13 +21,13 @@
 
 <?php
     $rows = 6;
-    $cols = 8;
+    $cols = 20;
     $colors = array("aaa", "ccc", "ddd", "777", "999", "000");
 ?>
 
 <body onload="kill();">
     <div id="container">
-    	<table>
+    	<table cellspacing="0">
     	    <?php for ($j = 0; $j < $rows; $j++) { ?>
     	    <tr>
     	        <?php for ($i = 0; $i < $cols; $i++) { ?>
