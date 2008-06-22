@@ -2,6 +2,34 @@
 <html>
     <head>
     	<title>know knour khysics</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    	<script type="text/javascript">
+    		var words = [
+    		    "no!","no!","i","am","tired","of","tak-", "ing",
+    		    "ord-","ers","from","you,","you,","god","damn","it!"
+    		];
+
+    		function flash() {
+    			window.scroll(0,0);
+    			if (words.length > 0) {
+                    $('#kill').text(words.shift());
+                    setTimeout(flash, 500);
+                }
+                else {
+                    setTimeout(function() {
+                        window.location = '../liberty/';
+                    }, 1000);
+                }
+    		}
+    		
+    		$(document).ready(function() {
+    		    setTimeout(function() {
+    		        $('body').css('background-color', '#222');
+    		        flash();
+    		    }, 15000);
+    		});
+    	</script>
+    	
     	<style type="text/css">
     	    body {
     	        background-color: #fff;
@@ -25,40 +53,6 @@
     			color: black;
     		}
     	</style>
-	
-    	<script language="text/javascript">
-    		var words = [
-    		    "blank","no!","no!","i","am","tired","of","tak-", "ing",
-    		    "ord-","ers","from","you,","you,","god","damn","it!"
-    		];
-    		var counter = 0;
-    		var me,him,next;
-		
-    		function flash(which)
-    		{
-    			window.scroll(0,0);
-    			if(document.bgColor != "#222222")
-    				document.bgColor = "#222222";
-    			if(which < divs.length)
-    			{
-    				//alert(divs[which]);
-    				document.all.kill.innerHTML = divs[which];
-    				which++;
-    				setTimeout("flash('" + which + "');",500);
-    			}
-    			else
-    				setTimeout("next();",1000);
-    		}
-		
-    		function next()
-    		{
-    			window.location = "../liberty/";
-    		}
-    		function init()
-    		{
-    			setTimeout('flash(1)',19000);
-    		}
-    	</script>
     </head>
 
     <body>
@@ -66,7 +60,7 @@
 
         <table border="0" align="center" cellpadding="10" cellspacing="0" width="500">
             <tr>
-            	<td colspan="2" align="center"><img src="notes_heading.gif"></td>
+            	<td colspan="2" align="center"><img src="notes_heading.gif" alt="Notes on Life: An Essay on Basic Human Decency, by Simon Lovejoy"></td>
             </tr>
             <tr>
             	<td align="left" width="250" class="text">
