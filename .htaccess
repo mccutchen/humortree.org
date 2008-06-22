@@ -1,1 +1,7 @@
+# Remove www. from hostname
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.humortree.org$ [NC]
+RewriteRule ^(.*)$ http://humortree.org/$1 [R=301,L]
+
+# Execute Python files as CGI scripts
 AddHandler cgi-script .py
