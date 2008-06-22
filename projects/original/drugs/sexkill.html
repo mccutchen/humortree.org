@@ -1,80 +1,89 @@
 <html>
-<head>
-	<title>sexkillsexkillsexkillsexkillsexkillsexkill... </title>
-	
-	<script>
-		var colors = new Array("#000000","#ffffff");
-		var x;
-		var font1,font2,left1,left2,top1,top2,xmax,ymax;
-		var delay;
-		var pre,post;
+    <head>
+    	<title>sexkillsexkillsexkillsexkillsexkillsexkill... </title>
+    	
+    	<script>
+    		var colors = new Array("#000000","#ffffff");
+    		var x;
+    		var font1,font2,left1,left2,top1,top2,xmax,ymax;
+    		var delay;
+    		var pre,post;
 		
-		function init()
-		{
-			if(document.all) // ie 4+
-			{
-			//document.all.tags("div")[0].style.____ = ___;
-				pre = "document.all.tags('div')[";
-				post = "].style.";
-				xmax = document.body.clientWidth - 30;
-				ymax = document.body.clientHeight - 30;
-			}
+    		function init()
+    		{
+    			if(document.all) // ie 4+
+    			{
+    			//document.all.tags("div")[0].style.____ = ___;
+    				pre = "document.all.tags('div')[";
+    				post = "].style.";
+    				xmax = document.body.clientWidth - 30;
+    				ymax = document.body.clientHeight - 30;
+    			}
 			
-			else if(document.layers) // ns 4.x
-			{
-			//document.layers[0].____ = ___;
-				pre = "document.layers[";
-				post = "].";
-				xmax = window.screen.width - 30;
-				ymax = window.screen.height - 30;
-			}
+    			else if(document.layers) // ns 4.x
+    			{
+    			//document.layers[0].____ = ___;
+    				pre = "document.layers[";
+    				post = "].";
+    				xmax = window.screen.width - 30;
+    				ymax = window.screen.height - 30;
+    			}
 			
-			setTimeout("flash();",2000);
-		}
+    			setTimeout("flash();",2000);
+    		}
 		
-		function flash()
-		{
-			font0 = Math.floor(Math.random() * 400) + 10;
-			font1 = Math.floor(Math.random() * 400) + 10;
-			left0 = Math.floor(Math.random() * xmax);
-			left1 = Math.floor(Math.random() * xmax);
-			top0 = Math.floor(Math.random() * ymax);
-			top1 = Math.floor(Math.random() * ymax);
-			delay = Math.floor(Math.random() * 100);
+    		function flash()
+    		{
+    			font0 = Math.floor(Math.random() * 400) + 10;
+    			font1 = Math.floor(Math.random() * 400) + 10;
+    			left0 = Math.floor(Math.random() * xmax);
+    			left1 = Math.floor(Math.random() * xmax);
+    			top0 = Math.floor(Math.random() * ymax);
+    			top1 = Math.floor(Math.random() * ymax);
+    			delay = Math.floor(Math.random() * 100);
 
-//			eval(pre + 0 + post + "fontSize = " + font0);
-//			eval(pre + 1 + post + "fontSize = " + font1);
-			eval(pre + 0 + post + "left = " + left0);
-			eval(pre + 1 + post + "left = " + left1);
-			eval(pre + 0 + post + "top = " + top0);
-			eval(pre + 1 + post + "top = " + top1);
+    //			eval(pre + 0 + post + "fontSize = " + font0);
+    //			eval(pre + 1 + post + "fontSize = " + font1);
+    			eval(pre + 0 + post + "left = " + left0);
+    			eval(pre + 1 + post + "left = " + left1);
+    			eval(pre + 0 + post + "top = " + top0);
+    			eval(pre + 1 + post + "top = " + top1);
 			
-			setTimeout("flash()",delay);
-		}
-	</script>
-	<style type="text/css">
-		a:link,a:visited,a:hover
-		{
-			text-decoration: none;
-			color: #666666;
-		}
-	</style>
-</head>
+    			setTimeout("flash()",delay);
+    		}
+    	</script>
+    	
+    	<style type="text/css">
+    	    body {
+    	        background-color: #aaa;
+    	        font: 10px "Times New Roman", times, serif;
+    		    font-style: italic;
+    		    color: #666;
+    	    }
+    		div {
+    		    position: absolute;
+    		}
+    		#sex, #kill {
+    		    top: 50%;
+    		    left: 50%;
+    		}
+    		#sex {
+    		    left: 55%;
+    		}
+    		#exit {
+    		    top: 0px;
+    		    left: 0px;
+    		}
+    		a:link,a:visited,a:hover {
+    			text-decoration: none;
+    			color: #666;
+    		}
+    	</style>
+    </head>
 
-<body bgcolor="#aaaaaa" onload="init();">
-
-	<div style="position:absolute; top:50%; left:50%; font-family:times; font-size:10px; font-style:italic; color:#666666;">
-	kill
-	</div>
-	
-	<div style="position:absolute; top:50%; left:55%; font-family:times; font-size:10px; font-style:italic; font-weight:bold; color:#666666;">
-	sex
-	</div>
-	
-	<div style="position: absolute; top:0px; left: 0px;">
-	<a href="../nipples/index.html">***</a>
-	</div>
-	
-</body>
-
+    <body onload="init();">
+    	<div id="kill">kill</div>
+    	<div id="sex">sex</div>
+    	<div id="exit"><a href="../nipples/">***</a></div>
+    </body>
 </html>
