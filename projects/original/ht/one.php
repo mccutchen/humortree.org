@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<?php
+    $rows = 6;
+    $cols = 20;
+    $colors = array("aaa", "ccc", "ddd", "777", "999", "000");
+?>
 <html>
 <head>
 	<title></title>
@@ -11,19 +17,20 @@
 		}		
 	</script>
 	<style type="text/css">
-	    body { background-color: #000; }
+	    body {
+	        background-color: #000;
+	        margin: 0;
+	        padding: 0;
+	    }
+	    table {
+	        width: <?php echo $cols * 100; ?>px;
+	    }
 	    td {
 	        width: 100px;
 	        height: 100px;
 	    }
     </style>
 </head>
-
-<?php
-    $rows = 6;
-    $cols = 20;
-    $colors = array("aaa", "ccc", "ddd", "777", "999", "000");
-?>
 
 <body onload="kill();">
     <div id="container">
