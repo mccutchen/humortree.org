@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """Generates an image composed of randomly-colored
 vertical lines."""
