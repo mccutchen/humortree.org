@@ -23,17 +23,6 @@
 	<style type="text/css">
 	</style>
 </head>
-
 <body style="cursor:hand" bgcolor="#ffffff" onLoad="bgColorChange();" onMouseOver="changeArray('on');" onMouseOut="changeArray('off');" onClick="next_page();">
-	<layer id="layer1" height="100%" width="100%" onmouseover="changeArray('on');" onmouseout="changeArray('off');" onMouseDown="alert();">
-	<script>
-	// wacky work-around for Netscape, because it doesnt support onclick for body...
-	if(document.layers)
-	{
-		layer1.captureEvents(Event.MOUSEDOWN);
-		layer1.onmousedown = next_page;
-	}
-	</script>
-	</layer>
 </body>
 </html>
