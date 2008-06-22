@@ -19,13 +19,19 @@
     </style>
 </head>
 
+<?php
+    $rows = 6;
+    $cols = 8;
+    $colors = array("aaa", "ccc", "ddd", "777", "999", "000");
+?>
+
 <body onload="kill();">
     <div id="container">
     	<table>
     	    <?php for ($j = 0; $j < $rows; $j++) { ?>
     	    <tr>
     	        <?php for ($i = 0; $i < $cols; $i++) { ?>
-	            <td style="background-color: <?php echo $colors[array_rand($colors)]; ?>;"></td>
+	            <td style="background-color: #<?php echo $colors[array_rand($colors)]; ?>;"></td>
     	        <?php } ?>    	        
     	    </tr>
     	    <?php } ?>
