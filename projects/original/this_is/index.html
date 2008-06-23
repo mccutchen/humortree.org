@@ -2,63 +2,50 @@
 <html>
     <head>
     	<title>a brief interlude, infidel swine.</title>
-	
+	    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     	<script>
-    		var words = new Array("lose","quick","heavy","long","rampant","green","fun","me","smokey","unique","art","the pope","redundant","mean","slow","ripe","dead","heaven","glowing","humor_tree","new","shiny","war","clean","bad","mine","quiet","rocky","jesus","Ford","khysics","J. J. B.","weird","wrong","free","sour","mustard","young","pine-scented","evil","grape-flavored","bottomless","trenchant","soliloquizing","ugly","far-fetched","finished");
-    		var far = 11;
-    		var flag = 0;
-    		var in_progress = 0;
-		
-    		function handler()
-    		{
-    			if(in_progress != 1)
-    				play(0);
+    		var words = [
+    		    "lose","quick","heavy","long","rampant","green","fun","me",
+    		    "smokey","unique","art","the pope","redundant","mean","slow",
+    		    "ripe","dead","heaven","glowing","humor_tree","new","shiny",
+    		    "war","clean","bad","mine","quiet","rocky","jesus","Ford",
+    		    "khysics","J. J. B.","weird","wrong","free","sour","mustard",
+    		    "young","pine-scented","evil","grape-flavored","bottomless",
+    		    "trenchant","soliloquizing","ugly","far-fetched","finished"
+    		];
+    		var keywords = [
+    		    "art", "humor_tree", "jesus", "mustard", "finished"
+    		];
+    		
+    		var illustration, what;
+    		
+    		function play() {
+    		    var word = words.shift();
+    		    what.text(word);
+    		    if ($.inArray(word, keywords) == -1) {
+    		        illustration.src = 'blank.gif';
+    		        setTimeout(play, 100);
+    		    } else {
+    		        illustration.src = word + '.gif';
+    		        if (word != 'finished')
+    		            setTimeout(play, 3000);
+    		        else
+    		            $('#illoholder')
+    		                .css('cursor', 'pointer')
+    		                .click(function() {
+    		                    window.location = '../kid/';
+    		                });    		            
+    		    }
     		}
-		
-    		function play(i)
-    		{
-    			in_progress = 1;
-    			i = parseInt(i);
-    			var xx = words[i];
-    			if (flag != 1)
-    			{
-    				if (xx != "art" && xx != "humor_tree" && xx != "jesus" && xx != "mustard" && xx != "finished")
-    				{
-				
-    					document.images['pic'].src = "blank.gif";
-    					document.all['me'].innerHTML = xx;
-    					i++;
-    					setTimeout("play('" + i + "');",100);
-    				}
-				
-    				else // it is art or something else
-    				{
-    					if(xx != "finished")
-    					{
-    						//alert(xx);
-    						document.all['me'].innerHTML = xx;
-    						document.images['pic'].src = xx + ".gif";
-    						i++;
-    						setTimeout("play('" + i + "');",3000);
-    					}
-					
-    					else // xx == finished
-    					{
-    						document.images['pic'].src = xx + ".gif";
-    						document.all['me'].innerHTML = xx;
-    						flag = 1;
-    						setTimeout("next();",5000);
-						
-    					}
-    				}
-				
-				
-    			}
-    		}
-    		function next()
-    		{
-    			window.location = "../kid/";
-    		}
+    		
+    		$(document).ready(function() {
+    		    illustration = document.images['illustration'];
+    		    what = $('#what');
+    		    $('#description').one('click', function() {
+    		        play();
+    		        $(this).css('cursor', 'default');
+    		    });
+    		});
     	</script>
 	
     	<style type="text/css">		
@@ -74,6 +61,7 @@
     		}
     		#description {
     		    left: 20px;
+    		    cursor: pointer;
     		}
     		#illoholder {
     		    right: 20px;
