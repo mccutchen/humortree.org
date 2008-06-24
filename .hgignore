@@ -1,0 +1,7 @@
+(^|/)\.bzr($|/)
+(^|/)\.hg($|/)
+(^|/)\.hgtags($|/)
+^project.log$
+^tailor.state$
+^tailor.state.old$
+^tailor.state.journal$
