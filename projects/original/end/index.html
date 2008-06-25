@@ -1,72 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
+<!DOCTYPE html>
 <html>
-<head>
-	<title>about_the_work</title>
-	<style type="text/css">
-		body,td,div
-		{
-			font-family: arial;
-			font-size: 11px;
-			color: white;
-		}
-		
-		a:link,a:visited;
-		{
-			color: white;
-			text-decoration: none;
-		}
-		
-		a:hover
-		{
-			color: black;
-		}
-		
-		.text
-		{
-			border: solid 1px black;
-						
-			position: absolute;
-			top: 78px;
-			left: 231px;
-		}
-		
-		.bit
-		{
-			position: absolute;
-			top: 474px;
-			left: 598px;
-		}
-	</style>
-	<script language="javascript">
-		function preload()
-		{
-			var xx = new Image();
-			xx.src = "bit3.jpg";
-		}
-		
-		function swap(to)
-		{
-			if(document.all)
-				document.images[1].src = to;
-			
-			else if(document.layers) // lots of stupid bullshit with ns on this simple little script
-				document.layers[1].document.images[0].src = to;
-		}
-	</script>
-</head>
-
-<body background="sky2.jpg" onload="preload()">
-
-<div style="position:absolute; top:100px; left:100px;">
-<a href="/" onMouseOver="swap('bit3.jpg');" onMouseOut="swap('blank.gif');">
-<img src="end.gif" border="0">
-</a></div>
-
-<div class="bit">
-<img id="bit" src="blank.gif" height="69" width="170" border="0">
-</div>
-
-
-</body>
+    <head>
+    	<title>end</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    	<script type="text/javascript">
+    		$(function() {
+    		    $('#end').mouseover(function() {
+    		        $('#bit').css('background-image', 'url(bit3.jpg)');
+    		    }).mouseout(function() {
+    		        $('#bit').css('background-image', 'none');
+    		    });
+    		});
+    	</script>
+    	<style type="text/css">
+    	    body {
+    	        background: #fff url(sky2.jpg);
+    	    }
+    	    img {
+    	        border: none;
+	        }
+    	    #end {
+    	        position: absolute;
+    	        top: 100px;
+    	        left: 100px;
+    	    }
+    		#bit {
+    			position: absolute;
+    			top: 474px;
+    			left: 598px;
+    			height: 69px;
+    			width: 170px;
+    		}
+    	</style>
+    </head>
+    <body>
+        <a id ="end" href="/"><img src="end.gif" alt="end"></a>
+        <div id="bit"></div>
+    </body>
 </html>
