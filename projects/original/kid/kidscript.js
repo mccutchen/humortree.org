@@ -1,15 +1,28 @@
 var xx = 0;
 var xpos = 0;
 var step = 10;
-var inc = 16;
+var inc = 1;
 var flag = 2;
 var init_flag = 0;
-		
-function init() {
-	flag++;
-	if(flag == 3)
-		ani1(10);
-}
+
+var width;
+
+PhysicsModel = {
+    position: 0,
+    friction: 6,
+    elasticity: 1.2,
+    velocity: 0,
+    target: 0,
+    timer: null,
+    callback: 'function() { return; }',
+    
+    step: function() {
+        var dx = this.target - this.position;
+        this.velocity = (this.velocity + (dx / this.friction)) / this.elasticity;
+        this.position += this.velocity;
+        this.callback.call(position);
+    }
+};
 
 function ani1(step) {
 	var delay = 3500;
@@ -21,10 +34,10 @@ function ani1(step) {
 			step = -1;
 			delay = 7500;
 		}
-		if(xx == 1024 || xx == 2048 || xx == 3072)
+		if(xx == width || xx == width*2 || xx == width*3)
 			setTimeout("ani1('" + step + "');",delay);				
 		else
-			setTimeout("ani1('" + step + "');",75);
+			setTimeout("ani1('" + step + "');",0);
 	}	
 	else
 		ani2('left',16);
@@ -58,3 +71,19 @@ function ani2(dir,inc) {
 		document.bgColor="#000000";
 	}			
 }
+
+$(function() {
+    width = $('#intro').width();
+    PhysicsModel.target = width;
+    PhysicsModel.callback = function(position) {
+        window.scroll(position, 0);
+    }
+    PhysicsModel.callback = 'sex';
+    
+    alert("About to animate");
+    setInterval(PhysicsModel.step, 20);
+    
+    // flag++;
+    //  if(flag == 3)
+    //      ani1(1);
+});
