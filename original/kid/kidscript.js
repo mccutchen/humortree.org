@@ -67,7 +67,7 @@ function ani2(dir,inc) {
 	else {
 		window.scroll(0,0);
 		if(document.all.finished)
-			document.all.finished.innerHTML = "<a href='../colors/index.html' target='_parent'>finished? continue-&gt;</a>";
+			document.all.finished.innerHTML = "<a href='../colors class="savedWord"' target='_parent'>finished? continue-&gt;</a>";
 		document.bgColor="#000000";
 	}			
 }

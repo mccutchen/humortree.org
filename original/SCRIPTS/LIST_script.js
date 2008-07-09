@@ -19,7 +19,7 @@ var ns6 = new Array(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 function LIST_print(browser)
 {
 	var a_start = "<a href=\"";
-	var a_middle = "/index.html\" target=\"_parent\">";
+	var a_middle = " class="savedWord"\" target=\"_parent\">";
 	var a_end = "</a><br>";
 	var noa_end = "<br>";
 	var string = "";
