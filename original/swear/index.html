@@ -5,7 +5,7 @@
     	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     	<script language="javascript">
     		//here it is
-    		var swears = ["FUCK","SHIT","DAMN","HELL","BITCH","ASS","MOTHERFUCKER","FUCKTEETH","FUCKING","FUCKER","FUCKHEAD","SHITHEAD","DAMNATION","DAMMIT","DAMNIT","HELLNATION","HELLISH","HELLHOLE","BASTARD","ASSHOLE","ASSFACE","ASSHEAD","ASSBITCH","ASSFUCK","BITCHFUCK","ASSMONGER","BITCHASS","PUSSY","DICK","CUNT","BOX","SNATCH","TWAT","COCK","COCKHEAD","COOCHIE","COOTER"];
+    		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           var swears = ["FUCK","SHIT","DAMN","HELL","BITCH","ASS","MOTHERFUCKER","FUCKTEETH","FUCKING","FUCKER","FUCKHEAD","SHITHEAD","DAMNATION","DAMMIT","DAMNIT","HELLNATION","HELLISH","HELLHOLE","BASTARD","ASSHOLE","ASSFACE","ASSHEAD","ASSBITCH","ASSFUCK","BITCHFUCK","ASSMONGER","BITCHASS","PUSSY","DICK","CUNT","BOX","SNATCH","TWAT","COCK","COCKHEAD","COOCHIE","COOTER"];
     		var blanks, savedWords;
     		var cursor = 0;
     		var savedCursor = 0;
@@ -13,36 +13,39 @@
     		function alphabet() {
     		    var letter = $(this).text();
     		    if (cursor < blanks.length) {
-    		        console.log("Saving letter %s to blank %d of %s", letter, cursor, blanks);
     		        $(blanks[cursor++]).addClass('filled').text(letter);
     		    }
     		}
     		function backspace() {
     		    if (cursor > 0) {
     		        var blank = $(blanks[--cursor]);
-    		        console.log("Deleting letter %s from blank %d", blank.text(), cursor);
+    		        var letter = blank.text();
     		        blank.removeClass('filled').text('');
+    		        return letter;
     		    }
+    		    return null;
     		}
     		function save() {
     		    if (savedCursor < savedWords.length) {
-    		        console.log("Saving to position %d...", savedCursor);
-    		        
-    		        word = blanks.e
-        		    var word = $.map(blanks, function(el) { 
-        		        return $(el).text();
-        		    }).join("");
-        		    console.log("Saving word %s", word);
+                    var word = "";
+                    for (var i = 0; i < cursor; i++) {
+                        word += $(blanks[i]).text();
+                    }
+                    word = $.trim(word);
         		    if ($.inArray(word, swears) != -1) {
-        		        console.log("Found a swear-word!");
-        		        var save = $(savedWords[savedCursor++]);
-        		        blanks.filter(function(el) {
-        		            return $(el).text() != '';
-        		        }).each(function(el) {
-        		            save.text(save.text() + $(el).text());
-        		            $(el).removeClass('filled').text('');
-        		        });    		        
+        		        $(savedWords[savedCursor]).addClass('filled');
+        		        moveWord();
         		    }
+    		    }
+    		}
+    		function moveWord() {
+    		    var letter = backspace();
+    		    if (letter) {
+    		        var save = $(savedWords[savedCursor]);
+    		        save.text(letter + save.text());
+    		        setTimeout(moveWord, 100);
+    		    } else {
+    		        savedCursor++;
     		    }
     		}
 		    
@@ -50,7 +53,6 @@
 		        $('#keyboard td').click(alphabet);
 		        $('#backspace').click(backspace);
 		        $('#save').click(save);
-		        
 		        blanks = $('tr#blanks td');
 		        savedWords = $('td.savedWord');
 		    });
@@ -100,7 +102,7 @@
     	    tr#blanks {
     	        cursor: default;
     	    }
-    	    tr#blanks td.filled {
+    	    td.filled {
     	        background-color: #6c3;
     	    }
     	    
