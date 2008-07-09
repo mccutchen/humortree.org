@@ -2,111 +2,58 @@
 <html>
     <head>
     	<title>swear-o-matic</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     	<script language="javascript">
-    		function highlight()
-    		{
-    			window.event.srcElement.bgColor = "#66cc33";
-    		}
-		
-    		function lowlight()
-    		{
-    			window.event.srcElement.bgColor = "#99cc99";
-    		}
-    		/////////////////////////////////////////////////////
-    		/////////////////////////////////////////////////////
-    		/////////////////////////////////////////////////////
-    		var blanks = new Array(20); // array containing indexes of blank <TD>s for use in document.all.tags{td} or whatnot
-    		var currentPos = 0; // current position in blanks[]
-    		var TDs = document.all.tags("td"); // makes an array of td tags
-    		var currentSave = 0; // position in saves[]
-    		var saves = new Array(51,53,55,57,59,61); // array containing indexes of <TD>s to be saved to
-    		var canisave = 1; // 1 for yes, 0 for no.
     		//here it is
-    																																																																																																																																																																																						var swears = new Array("FUCK","SHIT","DAMN","HELL","BITCH","ASS","MOTHERFUCKER","FUCKTEETH","FUCKING","FUCKER","FUCKHEAD","SHITHEAD","DAMNATION","DAMMIT","DAMNIT","HELLNATION","HELLISH","HELLHOLE","BASTARD","ASSHOLE","ASSFACE","ASSHEAD","ASSBITCH","ASSFUCK","BITCHFUCK","ASSMONGER","BITCHASS","PUSSY","DICK","CUNT","BOX","SNATCH","TWAT","COCK","COCKHEAD","COOCHIE","COOTER");
-		
-    		// initialize blanks array
-    		for(var i = 0; i < blanks.length; i++)
-    		{
-    			blanks[i] = 28 + i;
+    		var swears = ["FUCK","SHIT","DAMN","HELL","BITCH","ASS","MOTHERFUCKER","FUCKTEETH","FUCKING","FUCKER","FUCKHEAD","SHITHEAD","DAMNATION","DAMMIT","DAMNIT","HELLNATION","HELLISH","HELLHOLE","BASTARD","ASSHOLE","ASSFACE","ASSHEAD","ASSBITCH","ASSFUCK","BITCHFUCK","ASSMONGER","BITCHASS","PUSSY","DICK","CUNT","BOX","SNATCH","TWAT","COCK","COCKHEAD","COOCHIE","COOTER"];
+    		var blanks, savedWords;
+    		var cursor = 0;
+    		var savedCursor = 0;
+    		
+    		function alphabet() {
+    		    var letter = $(this).text();
+    		    if (cursor < blanks.length) {
+    		        console.log("Saving letter %s to blank %d of %s", letter, cursor, blanks);
+    		        $(blanks[cursor++]).addClass('filled').text(letter);
+    		    }
     		}
-				
-    		function sel() // function called whenever user clicks on a letter
-    		{
-    			var letter  = window.event.srcElement.innerHTML; // get letter clicked on...
-			
-    			if(letter == "(backspace)") // handle backspace by decreasing currentPos by 1 and changing bgColor and innerHTML back to normal
-    			{
-    				if(currentPos == 0)  // does not allow space as first character
-    					return;
-				
-    				else
-    				{
-    					currentPos--; // decreases "cursor" and changes background color and innerHTML of that space back to normal
-    					TDs[blanks[currentPos]].innerHTML = "&nbsp;";
-    					TDs[blanks[currentPos]].bgColor = "#99cc99";
-    				}
-    			}
-			
-    			else if(currentPos < blanks.length) // letter was not backspace
-    			{
-    				TDs[blanks[currentPos]].innerHTML = letter; //fill space of currentPos with letter selected
-    				TDs[blanks[currentPos]].bgColor = "#66cc33"; // and change background color of that cell
-    				currentPos++; // increment "cursor"
-    			}
-			
-    			if(currentPos >= blanks.length)
-    				currentPos = 0; // if they have typed too far, set currentPos back to zero... let them solve their own mess
+    		function backspace() {
+    		    if (cursor > 0) {
+    		        var blank = $(blanks[--cursor]);
+    		        console.log("Deleting letter %s from blank %d", blank.text(), cursor);
+    		        blank.removeClass('filled').text('');
+    		    }
     		}
-		
-    		function initSave() // reset currentPos before saving, get and test swear-word
-    		{
-    			var okay = 0; // set to "1" if the word matches up with a word in the array of swears
-    			var word = "";
-			
-    			// get a word to test against bank of curse words
-    			for(var i = 0; i < blanks.length; i++)
-    			{
-    				if(TDs[blanks[i]].innerHTML != "&nbsp;")
-    					word += TDs[blanks[i]].innerHTML;
-    			}
-			
-    			// test to see if that word matches any word in the bank
-    			for(var i = 0; i < swears.length; i++)
-    			{
-    				if(swears[i] == word)
-    					okay = 1;
-    			}
-			
-    			if(canisave != 0 && okay == 1)
-    			{
-    				currentPos = 0;
-    				save();
-    			}
+    		function save() {
+    		    if (savedCursor < savedWords.length) {
+    		        console.log("Saving to position %d...", savedCursor);
+    		        
+    		        word = blanks.e
+        		    var word = $.map(blanks, function(el) { 
+        		        return $(el).text();
+        		    }).join("");
+        		    console.log("Saving word %s", word);
+        		    if ($.inArray(word, swears) != -1) {
+        		        console.log("Found a swear-word!");
+        		        var save = $(savedWords[savedCursor++]);
+        		        blanks.filter(function(el) {
+        		            return $(el).text() != '';
+        		        }).each(function(el) {
+        		            save.text(save.text() + $(el).text());
+        		            $(el).removeClass('filled').text('');
+        		        });    		        
+        		    }
+    		    }
     		}
-		
-    		function save()
-    		{
-			
-    			if(currentPos < blanks.length && TDs[blanks[currentPos]].innerHTML != "&nbsp;")  // make sure currentPos does not exceed limit of characters, and that it does not contain a space... when it hits a space, the loop stops
-    			{
-    				TDs[saves[currentSave]].innerHTML += TDs[blanks[currentPos]].innerHTML;
-    				TDs[blanks[currentPos]].bgColor = "#99cc99";
-    				TDs[blanks[currentPos]].innerHTML = "&nbsp;";
-    				currentPos++;
-    				setTimeout("save();",100);
-    			}
-			
-    			else
-    			{
-    				currentPos = 0;
-    				currentSave++;
-    				if(currentSave >= saves.length)
-    					canisave = 0;
-					
-    				return;
-    			}
-    		}
-		
+		    
+		    $(function() {
+		        $('#keyboard td').click(alphabet);
+		        $('#backspace').click(backspace);
+		        $('#save').click(save);
+		        
+		        blanks = $('tr#blanks td');
+		        savedWords = $('td.savedWord');
+		    });
     	</script>
     	<style type="text/css">
     	    body {
@@ -141,6 +88,7 @@
     	    }
     	    	    
     	    tr#keyboard td,
+    	    tr#blanks td,
     	    td.button {
     	        font-family: monospace;
     	        cursor: pointer;
@@ -151,6 +99,9 @@
     	    }
     	    tr#blanks {
     	        cursor: default;
+    	    }
+    	    tr#blanks td.filled {
+    	        background-color: #6c3;
     	    }
     	    
     	    td.explanation {
@@ -165,35 +116,35 @@
             	<th colspan="26"><h1>Make your own swear-words</h1></th>
             </tr>
             <tr id="keyboard">
-            	<td><a class="letter">A</a></td>
-            	<td><a class="letter">B</a></td>
-            	<td><a class="letter">C</a></td>
-            	<td><a class="letter">D</a></td>
-            	<td><a class="letter">E</a></td>
-            	<td><a class="letter">F</a></td>
-            	<td><a class="letter">G</a></td>
-            	<td><a class="letter">H</a></td>
-            	<td><a class="letter">I</a></td>
-            	<td><a class="letter">J</a></td>
-            	<td><a class="letter">K</a></td>
-            	<td><a class="letter">L</a></td>
-            	<td><a class="letter">M</a></td>
-            	<td><a class="letter">N</a></td>
-            	<td><a class="letter">O</a></td>
-            	<td><a class="letter">P</a></td>
-            	<td><a class="letter">Q</a></td>
-            	<td><a class="letter">R</a></td>
-            	<td><a class="letter">S</a></td>
-            	<td><a class="letter">T</a></td>
-            	<td><a class="letter">U</a></td>
-            	<td><a class="letter">V</a></td>
-            	<td><a class="letter">W</a></td>
-            	<td><a class="letter">X</a></td>
-            	<td><a class="letter">Y</a></td>
-            	<td><a class="letter">Z</a></td>
+            	<td>A</td>
+            	<td>B</td>
+            	<td>C</td>
+            	<td>D</td>
+            	<td>E</td>
+            	<td>F</td>
+            	<td>G</td>
+            	<td>H</td>
+            	<td>I</td>
+            	<td>J</td>
+            	<td>K</td>
+            	<td>L</td>
+            	<td>M</td>
+            	<td>N</td>
+            	<td>O</td>
+            	<td>P</td>
+            	<td>Q</td>
+            	<td>R</td>
+            	<td>S</td>
+            	<td>T</td>
+            	<td>U</td>
+            	<td>V</td>
+            	<td>W</td>
+            	<td>X</td>
+            	<td>Y</td>
+            	<td>Z</td>
             </tr>
             <tr>
-            	<td class="button" colspan="28">(backspace)</td>
+            	<td id="backspace" class="button" colspan="28">(backspace)</td>
             </tr>
             <tr id="blanks">
             	<td>&nbsp;</td>
@@ -221,29 +172,29 @@
             	</th>
             </tr>
             <tr>
-            	<td class="button" colspan="10" onClick="initSave();">Save swear-word //</td>
+            	<td id="save" class="button" colspan="10">Save swear-word //</td>
             	<td class="button" colspan="10"><a href="mailto:will@humortree.org">Suggest swear-word //</a></td>
-            	<td class="slot" colspan="6">&nbsp;</td>
+            	<td class="savedWord" colspan="6">&nbsp;</td>
             </tr>
             <tr>
             	<td colspan="20">&nbsp;</td>
-            	<td class="slot" colspan="6">&nbsp;</td>
+            	<td class="savedWord" colspan="6">&nbsp;</td>
             </tr>
             <tr>
             	<td colspan="20">&nbsp;</td>
-            	<td class="slot" colspan="6">&nbsp;</td>
+            	<td class="savedWord" colspan="6">&nbsp;</td>
             </tr>
             <tr>
             	<td colspan="20">&nbsp;</td>
-            	<td class="slot" colspan="6">&nbsp;</td>
+            	<td class="savedWord" colspan="6">&nbsp;</td>
             </tr>
             <tr>
             	<td colspan="20">&nbsp;</td>
-            	<td class="slot" colspan="6">&nbsp;</td>
+            	<td class="savedWord" colspan="6">&nbsp;</td>
             </tr>
             <tr>
             	<td colspan="20">&nbsp;</td>
-            	<td class="slot" colspan="6">&nbsp;</td>
+            	<td class="savedWord" colspan="6">&nbsp;</td>
             </tr>
             <tr>
             	<td class="explanation" colspan="10">
