@@ -6,6 +6,10 @@
     	<style type="text/css">
     	    body {
     	        background-color: #808080;
+    	        margin: 0;
+    	        padding: 0;
+    	        width: 100%;
+    	        overflow: hidden;
     	    }
     	    img {
     	        display: block;
@@ -47,82 +51,64 @@
     		    border-top: none;
     		    border-bottom: none;
     			top: 0;
-    			left: 0;
+    			left: -297px;
     		}
     	</style>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     	<script language="javascript">
-	
-    		var maxleft = 1024;  // global
-    		var minleft = -297;	 // variables
-    		var count = 0;
-    		var imgs2 = new Array("one.jpg","two.jpg","three.jpg","four.jpg");
-    		var progress = 0; // to determine how many images are loaded
-		
-    		function preLoad() 
-    		{
-    			var yy = document.body.clientHeight;
-    			yy -= 24;
-			
-    			if(document.all)
-    				maxleft = document.body.clientWidth;
+    		var maxleft = 1024;
+    		var minleft = -297;
+    		var minstep = 5;
+    		var maxstep = 15;
+    		var delay = 50;
+    		var photos = [];
+    		var steps = [];
+    		var titlestep = 5;
+    		
+    		function rand(low,hi) {
+    		    return Math.floor(Math.random() * (hi - low)) + low;
+    		}
+    		
+    		function focusMe() {
+    			photos.css('z-index', '1');
+    			$(this).css('z-index', '2');
     		}
 		
-    		function focusMe()
-    		{
-    			var me = window.event.srcElement;
-			
-    			for(var i = 0; i < document.all.length; i++)
-    			{
-    				document.all[i].style.zIndex = 0;
-    				window.event.srcElement.style.zIndex = 1;
-    				document.all.hr1.style.zIndex = 2;
-    				document.all.hr2.style.zIndex = 2;
-    			}
-    		}
+    		$(function() {
+    		    maxleft = $(document).width();
+    		    photos = $('div#photos img');
+    		    steps = photos.map(function () {
+    		        return rand(minstep,maxstep);
+    		    });
+    		    photos.mouseover(focusMe);
+    		    ani();
+    		    
+    		    $('#title').click(function() {
+	                $(this).animate({
+        		        left: maxleft + 'px'
+        		    }, 3000, function() {
+        		        $(this).attr('src', 'finished.gif');
+        		    }).animate({
+    		            marginLeft: '-191px'
+            		}, 2000, function() {
+            		    $(this).click(function() {
+            		        window.location = '../smalltype/';
+            		    })
+            		});
+        		});
+        	});
 		
-    		function init(who)
-    		{
-    			var del = Math.floor(Math.random() * 10) + 5;        // randomly make a del from 5 to 15
-    			var step = Math.floor(Math.random() * 10) + 2;				// randomly make a step from 50 to 80
-    			ani(who,step,del,1,0); // call ani() with stuff
-    		}
-		
-    		/////////////////////////////////////////////////
-    		// function that slides the pictures...
-    		//////////////////////////////////////////////
-    		function ani(which,step,del,dir,count)
-    		{
-    			var newWhich = which; // unsure about necessity of this... seems to help keep which consistent between calls
-			
-    			if(count < 2)  // the function is only active for two passes, one left, then one back to the right, then it will re-call ini()
-    			{
-    				if(dir == 1) // if it needs to go right
-    				{
-    					document.images[newWhich].style.left = parseInt(document.images[which].style.left) + step; // increas style.left by step
-    					if(parseInt(document.images[newWhich].style.left) > maxleft) // if distance from left is greater than maximum left value, change dir to "left"
-    					{
-    						dir = -1;
-    						count = count + 1;
-    					}
-    					setTimeout("ani(" + newWhich + "," + step + "," + del + "," + dir + "," + count + ");",del); // repeat after del milliseconds
-    				}
-			
-    				else if(dir == -1) // if it needs to go left
-    				{
-    					document.images[newWhich].style.left = parseInt(document.images[newWhich].style.left) - step;  // decrease left by step
-    					if(parseInt(document.images[newWhich].style.left) < minleft) // if it is too far left, change dir to right
-    					{
-    						dir = 1;
-    						count = count + 1;
-    					}
-    					setTimeout("ani(" + newWhich + "," + step + "," + del + "," + dir + "," + count + ");",del); //repeat after del miliseconds
-    				}
-    			} // end big if count < 2 if
-			
-    			else
-    				init(newWhich);  // recall init, basically to reset
-    		}
-				
+    		function ani() {
+                photos.each(function(i) {
+                    var left = parseInt($(this).css('left'));
+                    if (left > maxleft)
+                        steps[i] *= -1;
+                    else if (left < minleft)
+                        steps[i] = rand(minstep, maxstep);
+                    $(this).css('left', (left + steps[i]) + 'px');
+                });
+    		    setTimeout(ani, delay);
+    		}				
     	</script>
     </head>
     <body>
