@@ -1,94 +1,102 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
 
 <html>
-<head>
-	<title>two men standing in front of a blue wall.  their names are herman and hector.</title>
-	<style type="text/css">
-		body
-	 	{
-	 		color: #3300ff;
-			font-weight:  bold;
-		}
+    <head>
+    	<title>two men standing in front of a blue wall.  their names are herman and hector.</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    	<script language="javascript">
+    	    var sofar = 0;
+        	var total;
+        	var ready = false;
 	
-	</style>
-	<script language="javascript">
-	//#404040
-	var sofar = 1;
-	var total = "4";
-	var ready = false;
-	
-	function loaded()
-	{
-		sofar++;
-		if(sofar == total)
-		{
-			ready = true;
-			document.getElementById('top').src = "top_on.gif";
-		}
-	}
-	
-	function slideMe(which)
-	{
-		if(ready)
-		{
-			var me = document.getElementById(which);
-			var source = me.src;
-			
-			var him;
-			if(which == "top")
-				him = "bottom";
-			else if(which == "bottom")
-				him = "top";
-				
-			if(source.indexOf("still") != -1 || source.indexOf("off") != -1)// img src is in "still" or "off" state, needs to go "on"
-			{
-				me.src = which + "_on.gif";
-				document.getElementById(him).src = him + "_off.gif";
-			}
-			else if(source.indexOf("on") != -1) // img src is in "on" state, needs to go to off
-			{
-				me.src = which + "_off.gif";
-				document.getElementById(him).src = him + "_on.gif";
-			}
+        	function loaded() {
+        		sofar++;
+        		if(sofar == total) {
+        			ready = true;
+        			document.getElementById('top').src = "top_on.gif";
+        		}
+        	}
+    	
+        	function slideMe() {
+        		if(ready) {
+        			var me = $(this);
+        			var myid = me.attr('id');
+        			var source = me.attr('src');    			
+        			var hisid = (myid == 'top') ? 'bottom' : 'top';
+        			var him = $('#' + hisid);
+    			
+        			if (source.match(/still|off\.gif$/)) {
+        			    me.attr('src', myid + '_on.gif');
+        			    him.attr('src', hisid + '_off.gif');
+        			} else {
+        			    me.attr('src', myid + '_off.gif');
+        			    him.attr('src', hisid + '_on.gif');
+        			}				
+        		}
+        	}
+    	
+        	$(function() {
+        	    total = $('#preloads img').length;
+        	    $('#preloads img').load(loaded);
+        	    $('#top').click(slideMe);
+        	    $('#bottom').click(slideMe);
+        	});
+    	</script>
+    	<style type="text/css">
+    		body {
+    	 		background: #ccc url(bg.gif);
+    		}
+    		img {
+    		    border: none;
+    		    display: block;
+    		}
+    		#structure {
+    		    position: absolute;
+    		    top: 10px;
+    		    left: 50%;
+    		    margin-left: -165px;
+    		    width: 330px;
+    		}
+    		#structure h1 {
+    		    margin: 0;
+    		    padding: 0;
+    		    position: absolute;
+    		    bottom: 18px;
+    		    left: -18px;
+    		}
+            #photo img {
+    		    width: 330px;
+    		}
+    		#top, #bottom {
+    		    cursor: pointer;
+    		}
+    		#structure a {
+    		    display: block;
+    		    float: right;
+    		}
 		
-		}
-		
-		else
-			return;
-	}
-	</script>
-</head>
-<body background="bg.gif">
-
-<table border="0" cellpadding="0" cellspacing="0" width="330" align="center">
-	<tr valign="top">
-		<td rowspan="5" align="right" width="18" height="501" valign="bottom"><img src="banner.gif"></td>
-	 <td><img src="top.gif" width="330" height="131" border="0"></td>
-  </tr>
-  <tr valign="top">
-   <td><a href="javascript:slideMe('top');"><img id="top" src="top_still.gif" width="330" height="41" border="0"></a></td>
-	</tr>
-  <tr valign="top">
-   <td><img name="middle" src="middle.gif" width="330" height="46" border="0"></td>
-	</tr>
-  <tr valign="top">
-   <td><a href="javascript:slideMe('bottom');"><img id="bottom" src="bottom_still.gif" width="330" height="41" border="0"></td>
-	 </tr>
-  <tr valign="top">
-   <td><img src="bottom.gif" width="330" height="242" border="0"></td>
-	</tr>
-	<tr>
-		<td valign="top" align="right" colspan="2"><a href="../reminder/"><img src="continue.gif" border="0"></a></td>
-	</tr>
-</table>
-
-
-<div style="visibility:hidden;">
-<img src="top_on.gif" onload="loaded();">
-<img src="top_off.gif" onload="loaded();">
-<img src="bottom_on.gif" onload="loaded();">
-<img src="bottom_off.gif" onload="loaded();">
-</div>
-
-</body>
+    		#preloads {
+    		    display: none;
+    		}
+    	</style>
+    </head>
+    <body>
+        <div id="structure">
+            <h1><img src="banner.gif" alt="TWO MEN BEFORE BLUE WALL"></h1>
+            <div id="photo">
+                <img src="top.gif">
+                <img id="top" src="top_still.gif">
+                <img src="middle.gif">
+                <img id="bottom" src="bottom_still.gif">
+                <img src="bottom.gif">
+            </div>
+            <a href="../reminder/"><img src="continue.gif" border="0"></a>
+        </div>
+        <div id="preloads">
+            <img src="top_on.gif">
+            <img src="top_off.gif">
+            <img src="bottom_on.gif">
+            <img src="bottom_off.gif">
+        </div>
+    </body>
 </html>
