@@ -19,7 +19,7 @@
                 407,410,411,412,413,416,421,423,425,426,427,428
             ];
     		function light() {
-    		    if (coords) {
+    		    if (coords.length > 0) {
     		        var coord = coords.shift();
     		        console.log('Lighting coord %d', coord);
     		        $($('td').get(coord)).css('background-color', '#fff');
@@ -43,20 +43,21 @@
     	    a#button {
     	        position: absolute;
     	        top: 201px;
-    	        left: 775px; }
+    	        left: 775px;
+    	        display: block; }
     	    a#button img {
-    	        border: none; }
+    	        border: none;
+    	        display: block; }
     	    table {
     	        position: absolute;
     	        top: 200px;
     	        left: 0px; }
-            td {
-                padding: 1px; }
     	    td img {
     	        height: 5px;
     	        width: 5px;
                 display: block;
-    	        border: 1px solid black; }
+    	        border: 1px solid black;
+    	        margin: 1px; }
     	</style>
     </head>
     <body>
