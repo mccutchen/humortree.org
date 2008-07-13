@@ -21,11 +21,12 @@
     		function light() {
     		    if (coords.length > 0) {
     		        var coord = coords.shift();
-    		        console.log('Lighting coord %d', coord);
-    		        $($('td').get(coord)).css('background-color', '#fff');
+    		        $('td').eq(coord)
+    		            .children('img')
+    		            .css('background-color', '#fff');
     		        setTimeout(light, 10);
     		    } else {
-    		        console.log('No coords left: %o', coords);
+    		        $('#button').unbind();
     		        document.images[0].src = 'next.gif';
     		        document.images[0].title = "NEXT://";
     		    }
@@ -33,6 +34,7 @@
             $(function() {
                 $('#button').one('click', function() {
                     light();
+                    $(this).click(function() { return false; });
                     return false;
                 });
             });
@@ -52,12 +54,13 @@
     	        position: absolute;
     	        top: 200px;
     	        left: 0px; }
+    	    td {
+    	        padding: 1px; }
     	    td img {
     	        height: 5px;
     	        width: 5px;
                 display: block;
-    	        border: 1px solid black;
-    	        margin: 1px; }
+    	        border: 1px solid black; }
     	</style>
     </head>
     <body>
