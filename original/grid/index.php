@@ -19,7 +19,8 @@
                 407,410,411,412,413,416,421,423,425,426,427,428
             ];
     		function light() {
-    		    if (coord = coords.shift()) {
+    		    if (coords) {
+    		        var coord = coords.shift();
     		        console.log('Lighting coord %d', coord);
     		        $($('td').get(coord)).css('background-color', '#fff');
     		        setTimeout(light, 10);
