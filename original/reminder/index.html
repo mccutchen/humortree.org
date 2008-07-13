@@ -1,49 +1,58 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
 
 <html>
-<head>
-	<title>Just a reminder...</title>
-	
-	<script language="javascript">
-		var inc;
-		var counter;
-		var step = 2;
-		function init()
-		{
-			document.images[2].style.display = "";
-			document.all.god.style.display = "none";
-			document.onmousemove = scrollme;
-		}
-		
-		function scrollme()
-		{
-			window.scroll(window.event.clientX + 5,window.event.clientY + 20);
-		}
-		
-		function next()
-		{
-			document.images["spacer"].src = "flash.gif";
-			setTimeout("nextB();",5000);
-		}
-		
-		function nextB()
-		{
-			window.location = "../grid/";
-		}
-		
-	</script>
-</head>
+    <head>
+        <title>Just a reminder...</title>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+        <script language="javascript">
+            $(function() {
+                $(document).mousemove(function(e) {
+                    window.scroll(e.clientX - 20, e.clientY - 20);
+                });
+                
+                $('#map area:first-child').click(function() {
+                    $('#spacer').attr('src', 'flash.gif');
+                    var next = $(this).attr('href');
+                    setTimeout(function() {
+                        window.location = next;
+                    }, 5000);
+                    return false;
+                });
+            });     
+        </script>
+        <style type="text/css">
+            body {
+                background: #fff url(bus.jpg) no-repeat; }
+            img {
+                border: none;
+                display: block; }
+            img#spacer {
+                position: absolute;
+                top: 940px;
+                left: 784px;
+                width: 16px;
+                height: 36px; }
+            img#stripe {
+                position: absolute;
+                top: 973px;
+                left: 0px;
+                width: 1500px;
+                height: 10px; }
+            img#reminder {
+                position: absolute;
+                top: 400px;
+                left: 900px;
+                width: 408px;
+                height: 408px; }
+        </style>
+    </head>
 
-<body bgcolor="#ffffff" background="bus.jpg" onload="init();">
-<div id="god" align="center" style="color:#aaaaaa;">please hold... background image loading...</div>
-<img src="reminder.gif" width="408" height="408" alt="" style="position:absolute; top:400px; left:900px;">
-
-<img src="spacer.gif" style="position:absolute; top:940px; left:784px;" height="36" width="16" id="spacer">
-
-<img id="stripe" src="CMYKstripe.gif" width="1500" height="10" border="0" usemap="#m_CMYKstripe" style="position:absolute; top:973px; left:0px; display:none;">
-<map name="m_CMYKstripe">
-<area shape="rect" coords="785,0,799,10" href="javascript:next();" title="consider yourself reminded" alt="consider yourself warned" >
-</map>
-<img src="flash.gif" style="visibility:hidden;">
-</body>
+    <body>
+        <img id="reminder" src="reminder.gif">
+        <img id="spacer" src="spacer.gif">
+        <img id="stripe" src="CMYKstripe.gif" usemap="#map">
+        <map id="map" name="map">
+            <area shape="rect" coords="785,0,799,10" href="../grid/" title="consider yourself reminded" alt="consider yourself warned">
+        </map>
+    </body>
 </html>
