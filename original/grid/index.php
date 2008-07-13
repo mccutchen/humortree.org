@@ -20,9 +20,11 @@
             ];
     		function light() {
     		    if (coord = coords.shift()) {
+    		        console.log('Lighting coord %d', coord);
     		        $($('td').get(coord)).css('background-color', '#fff');
     		        setTimeout(light, 10);
     		    } else {
+    		        console.log('No coords left: %o', coords);
     		        document.images[0].src = 'next.gif';
     		        document.images[0].title = "NEXT://";
     		    }
