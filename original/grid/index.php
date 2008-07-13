@@ -77,16 +77,18 @@
     	    table {
     	        position: absolute;
     	        top: 200px;
-    	        left: 0px;
-    	        border: 1px solid black; }
+    	        left: 0px; }
+            td {
+                padding: 1px; }
     	    table img {
     	        height: 5px;
     	        width: 5px;
+                display: block;
     	        border: 1px solid black; }
     	</style>
     </head>
     <body>
-        <table cellspacing="2">
+        <table cellspacing="0">
             <?php for ($j = 0; $j < 5; $j++) { ?>
             <tr>
                 <?php for ($i = 0; $i < 86; $i++) { ?>
