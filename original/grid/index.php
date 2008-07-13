@@ -71,7 +71,7 @@
     	        background-color: #999; }
     	    img#button {
     	        position: absolute;
-    	        top: 200px;
+    	        top: 201px;
     	        left: 777px;
     	        border: none; }
     	    table {
@@ -80,7 +80,7 @@
     	        left: 0px; }
             td {
                 padding: 1px; }
-    	    table img {
+    	    td img {
     	        height: 5px;
     	        width: 5px;
                 display: block;
