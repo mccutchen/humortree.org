@@ -1,21 +1,87 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
 
 <html>
-<head>
-	<title>"FRAMES" BY HUMOR TREE ENJOY!</title>
-</head>
-
-<!-- frames -->
-<frameset  rows="*,40" frameborder="0" framespacing="0" border="no">
-    <frameset  cols="25%,25%,25%,*" frameborder="0" framespacing="0" border="no">>
-    	<frame name="eye" src="eye.html" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" noresize>
-    	<frame name="kids" src="kids.html" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" noresize>
-    	<frame name="man" src="man.html" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" noresize>
-		 	<frame name="woman" src="woman.html" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" noresize>
-		</frameset>
-    
-		<frame name="" src="index2.html" marginwidth="0" marginheight="10" scrolling="no" frameborder="0" noresize>
-		
-</frameset>
-
+    <head>
+    	<title>"FRAMES" BY HUMOR TREE ENJOY!</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    	<script type="text/javascript">
+    	    function parseBackgroundPosition(position) {
+    	        var parts = position.split(/\s+/);
+    	        if (parts.length == 2)
+    	            return [parseInt(parts[0]), parseInt(parts[1])];
+    	        else
+    	            return [0, 0];
+    	    }
+    	    function xpos(position) {
+    	        return parseBackgroundPosition(position)[0];
+    	    }
+    	    function ypos(position) {
+    	        return parseBackgroundPosition(position)[1];
+    	    }
+    	    
+    	    function test() {
+    	        var el = $('#eye');
+    	        var p = el.css('background-position');
+    	        console.log(parseBackgroundPosition(p));
+    	    }
+    	    
+    	    $(test);
+    	</script>
+    	<style type="text/css">
+    	    body {
+    	        background-color: #000;
+    	        width: 100%;
+    	        height: 100%;
+    	        overflow: hidden;
+    	        margin: 0;
+    	        padding: 0;
+    	    }
+    	    
+    	    p {
+    	        background-color: #000;
+    	        color: #fff;
+    	        font: 11px arial, sans-serif;
+    	        text-align: center;
+    	        position: absolute;
+    	        left: 0;
+    	        bottom: 0;
+    	        padding: 10px;
+    	        margin: 0;
+    	        margin-right: -10px;
+    	        width: 100%;
+    	    }
+    	    
+    	    div.frame {
+    	        position: absolute;
+    	        top: 0;
+    	        width: 25%;
+    	        height: 100%;
+    	        background-position: 0px 0px;
+    	    }
+    	    #eye {
+    	        left: 0;
+    	        background: #aaa url(eye.gif) no-repeat;
+    	    }
+    	    #kids {
+    	        left: 25%;
+    	        background: #f69 url(kids.gif) no-repeat;
+    	    }
+    	    #man {
+    	        left: 50%;
+    	        background: #39f url(man.gif) no-repeat;
+	        }
+	        #woman {
+	            left: 75%;
+	            background: #ff9 url(woman.gif) no-repeat;
+	        }
+        </style>
+    </head>
+    <body>
+        <div id="eye" class="frame"></div>
+        <div id="kids" class="frame"></div>
+        <div id="man" class="frame"></div>
+        <div id="woman" class="frame"></div>
+        <p>click on each picture to move it up, down, left or right.
+            <a href="../ill-fated/">// done?</a></p>
+    </body>
 </html>
