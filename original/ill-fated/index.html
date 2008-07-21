@@ -1,128 +1,95 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
+
+<!-- Note:  This was a lot more impressive before jQuery came along
+    and made it dead simple. -->
 
 <html>
-<head>
-	<title>HUMOR TREE // EAT SMALL CHILDREN</title>
-	<script src="move_script.js">
-	</script>
-</head>
-
-<body bgcolor="#aaaaaa" onload="move_init();" style="background: #aaa url(nav_imgs/bg.gif) no-repeat bottom left;">
-
-<div class="navigation" id="nav" style="position:absolute; top:100px; left:400px;">
-
-<table border="0" cellpadding="0" cellspacing="0" width="194">
-
-  <tr valign="top"><!-- row 1 -->
-   <td colspan="18">
-	 	<div class="handle" style="position:absolute; top:-14px; left:0px;"><img src="nav_imgs/handle.gif" width="194" height="15" border="0"></div>
-	 </td>
-  </tr>
-  
-	<tr valign="top"><!-- row 2 -->
-   <td rowspan="6"><img name="leftside" src="nav_imgs/leftside.gif" width="1" height="76" border="0"></td>
-   <td><img name="xxx_ac" src="nav_imgs/xxx_ac.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ad" src="nav_imgs/xxx_ad.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ae" src="nav_imgs/xxx_ae.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_af" src="nav_imgs/xxx_af.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ag" src="nav_imgs/xxx_ag.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ah" src="nav_imgs/xxx_ah.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ai" src="nav_imgs/xxx_ai.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_aj" src="nav_imgs/xxx_aj.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ak" src="nav_imgs/xxx_ak.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_al" src="nav_imgs/xxx_al.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_am" src="nav_imgs/xxx_am.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_an" src="nav_imgs/xxx_an.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ao" src="nav_imgs/xxx_ao.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ap" src="nav_imgs/xxx_ap.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_aq" src="nav_imgs/xxx_aq.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ar" src="nav_imgs/xxx_ar.gif" width="12" height="12" border="0"></td>
-   <td rowspan="6"><img name="rightside" src="nav_imgs/rightside.gif" width="1" height="76" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 3 -->
-   <td><img name="xxx_at" src="nav_imgs/xxx_at.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_au" src="nav_imgs/xxx_au.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_av" src="nav_imgs/xxx_av.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_aw" src="nav_imgs/xxx_aw.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ax" src="nav_imgs/xxx_ax.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ay" src="nav_imgs/xxx_ay.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_az" src="nav_imgs/xxx_az.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ba" src="nav_imgs/xxx_ba.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bb" src="nav_imgs/xxx_bb.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bc" src="nav_imgs/xxx_bc.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bd" src="nav_imgs/xxx_bd.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_be" src="nav_imgs/xxx_be.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bf" src="nav_imgs/xxx_bf.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bg" src="nav_imgs/xxx_bg.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bh" src="nav_imgs/xxx_bh.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bi" src="nav_imgs/xxx_bi.gif" width="12" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 4 -->
-   <td><img name="xxx_bj" src="nav_imgs/xxx_bj.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bk" src="nav_imgs/xxx_bk.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bl" src="nav_imgs/xxx_bl.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bm" src="nav_imgs/xxx_bm.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bn" src="nav_imgs/xxx_bn.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bo" src="nav_imgs/xxx_bo.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bp" src="nav_imgs/xxx_bp.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bq" src="nav_imgs/xxx_bq.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_br" src="nav_imgs/xxx_br.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bs" src="nav_imgs/xxx_bs.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bt" src="nav_imgs/xxx_bt.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bu" src="nav_imgs/xxx_bu.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bv" src="nav_imgs/xxx_bv.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bw" src="nav_imgs/xxx_bw.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_bx" src="nav_imgs/xxx_bx.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_by" src="nav_imgs/xxx_by.gif" width="12" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 5 -->
-   <td><img name="xxx_bz" src="nav_imgs/xxx_bz.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ca" src="nav_imgs/xxx_ca.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cb" src="nav_imgs/xxx_cb.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cc" src="nav_imgs/xxx_cc.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cd" src="nav_imgs/xxx_cd.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ce" src="nav_imgs/xxx_ce.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cf" src="nav_imgs/xxx_cf.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cg" src="nav_imgs/xxx_cg.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ch" src="nav_imgs/xxx_ch.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ci" src="nav_imgs/xxx_ci.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cj" src="nav_imgs/xxx_cj.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ck" src="nav_imgs/xxx_ck.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cl" src="nav_imgs/xxx_cl.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cm" src="nav_imgs/xxx_cm.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cn" src="nav_imgs/xxx_cn.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_co" src="nav_imgs/xxx_co.gif" width="12" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 6 -->
-   <td><img name="xxx_cp" src="nav_imgs/xxx_cp.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cq" src="nav_imgs/xxx_cq.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cr" src="nav_imgs/xxx_cr.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cs" src="nav_imgs/xxx_cs.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_ct" src="nav_imgs/xxx_ct.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cu" src="nav_imgs/xxx_cu.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cv" src="nav_imgs/xxx_cv.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cw" src="nav_imgs/xxx_cw.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cx" src="nav_imgs/xxx_cx.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cy" src="nav_imgs/xxx_cy.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_cz" src="nav_imgs/xxx_cz.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_da" src="nav_imgs/xxx_da.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_db" src="nav_imgs/xxx_db.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_dc" src="nav_imgs/xxx_dc.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_dd" src="nav_imgs/xxx_dd.gif" width="12" height="12" border="0"></td>
-   <td><img name="xxx_de" src="nav_imgs/xxx_de.gif" width="12" height="12" border="0"></td>
-  </tr>
-  <tr valign="top"><!-- row 7 -->
-   <td colspan="5"><img name="open" src="nav_imgs/open.gif" width="60" height="16" border="0"></td>
-   <td colspan="11"><img name="replace" src="nav_imgs/replace.gif" width="132" height="16" border="0"></td>
-   <td><img src="shim.gif" width="1" height="16" border="0"></td>
-  </tr>
-</table>
-
-</div>
-
-<div id="disp" style="position:absolute; top:0px; left:0px; z-index:-1;"><map name="mymap">
-<area alt="let me be" shape="poly" coords="312,372,312,462,332,491,813,491,813,363,658,363,641,337,663,322,636,322,617,296,607,320,584,321,601,335,588,359,500,359,482,327,505,309,477,309,453,277,441,309,414,309,437,325,418,357,329,357,333,340,322,346,320,331,310,347,295,341,300,357,283,368,304,370,304,384" href="../stripes/">
-</map>
-<img src="nav_imgs/bg.gif" border="0" usemap="#mymap"></div>
-
+    <head>
+    	<title>HUMOR TREE // EAT SMALL CHILDREN</title>
+    	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+    	<script type="text/javascript">
+    	    var dragging = false;
+    	    var dx = dy = 0;
+    	    
+    	    function dragStart(e) {
+    	        console.log('dragStart');
+    	        var offset = $('#container').offset();
+    	        dx = e.clientX - offset.left;
+    	        dy = e.clientY - offset.top;
+    	        dragging = true;
+    	        return false;
+    	    }
+    	    function dragStop() {
+    	        console.log('dragStop');
+    	        dragging = false;
+    	        return false;
+    	    }
+    	    function drag(e) {
+    	        if (dragging) {
+    	            $('#container').css({
+    	                left: e.clientX - dx,
+    	                top: e.clientY - dy
+    	            });
+    	            return false;
+    	        }
+    	        return true;
+    	    };
+    	    
+    	    $(function() {
+    	        $('#container').mousedown(dragStart);
+    	        $(document).mouseup(dragStop);
+    	        $(document).mousemove(drag);
+    	    });
+    	</script>
+    	<script src="move_script.js">
+    	</script>
+    	<style type="text/css">
+    	    body {
+    	        background: #aaa;
+    	        margin: 0;
+    	        padding: 0;
+    	    }
+    	    img {
+    	        border: none;
+    	        display: block;
+    	    }
+    	    #sketchy {
+    	        position: absolute;
+    	        bottom: 0;
+    	        left: 0;
+    	        min-height: 742px;
+    	    }
+    	    #logo {
+    	        position: absolute;
+    	        left: 308px;
+    	        bottom: 271px;
+    	    }
+    	    #container {
+    	        position: absolute;
+    	        top: 100px;
+    	        left: 400px;
+    	        width: 194px;
+    	    }
+    	    #handle {
+    	        cursor: pointer;
+    	        width: 75px;
+    	    }
+    	</style>
+    </head>
+    <body>
+        <div id="sketchy">
+            <img src="sketchy-mcsketcherson.gif" alt="Sketchy McSketcherson">
+        </div>
+        <div id="logo">
+            <a href="../stripes/"><img src="logo.gif" alt="let me be"></a>
+        </div>    
+        <div id="container">
+            <div id="handle">
+                <img src="handle.gif" alt="Handle">
+            </div>
+            <div id="palette">
+                <img src="palette.gif">
+            </div>
+        </div>
+    <body>
 </html>
