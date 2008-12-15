@@ -5,6 +5,23 @@
     	<title>"FRAMES" BY HUMOR TREE ENJOY!</title>
     	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
     	<script type="text/javascript">
+    	    var frames = ['eye','kids','man','woman'];
+    	    var xdeltas = {}, ydeltas = {};
+    	    for (frameid in frames) {
+    	        xdeltas[frameid] = ydeltas[frameid] = 0;
+    	    }
+    	    
+    	    function animate() {
+    	        for (frameid in frames) {
+    	            var frame = $('#' + frames[frameid]);
+    	            var position = frame.css('background-position');
+    	            console.log('#%s background position: %s', frameid, position);
+    	            var newx = xpos(position) + xdeltas[frameid];
+    	            var newy = ypos(position) + ydeltas[frameid];
+    	            frame.css('background-position', newx + 'px ' + newy + 'px');
+    	        }
+    	    }
+    	    
     	    function parseBackgroundPosition(position) {
     	        var parts = position.split(/\s+/);
     	        if (parts.length == 2)
@@ -19,13 +36,11 @@
     	        return parseBackgroundPosition(position)[1];
     	    }
     	    
-    	    function test() {
-    	        var el = $('#eye');
-    	        var p = el.css('background-position');
-    	        console.log(parseBackgroundPosition(p));
-    	    }
-    	    
-    	    $(test);
+    	    $(function() {
+    	        xdeltas.eye = -5;
+    	        animate();
+    	        setInterval(animate, 10000);
+    	    });
     	</script>
     	<style type="text/css">
     	    body {
