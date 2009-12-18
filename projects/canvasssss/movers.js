@@ -21,10 +21,11 @@ function Mover(bounds) {
 function RandomMover(bounds) {
     var mover = new Mover(bounds);
     var MAX_DELTA = 10;
+    var MIN_DELTA = 2;
     mover.next = function() {
         return {
-            x: Utils.rand(-MAX_DELTA, MAX_DELTA),
-            y: Utils.rand(-MAX_DELTA, MAX_DELTA)
+            x: Utils.fudge(0, MAX_DELTA, MIN_DELTA),
+            y: Utils.fudge(0, MAX_DELTA, MIN_DELTA)
         }
     };
     return mover;

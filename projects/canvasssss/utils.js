@@ -12,6 +12,11 @@ var Utils = {
         if (n >= 0 && n <= max) return n;
         if (n > max) return max + (max - n);
         return 0 - n;
+    },
+    fudge: function(n, maxdelta, mindelta) {
+        mindelta = mindelta || 0;
+        delta = Utils.rand(maxdelta-mindelta, -(maxdelta-mindelta));
+        return n + ((delta >= 0) ? delta + mindelta : delta - mindelta);
     }
 };
 
