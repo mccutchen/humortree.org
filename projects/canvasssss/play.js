@@ -1,35 +1,13 @@
-var Mover = (function() {
-    var MAX_DELTA = 20;
-    function Mover(x, y, w, h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-    }
-    Mover.prototype.step = function() {
-        var dx = Utils.rand(MAX_DELTA, -MAX_DELTA);
-        var dy = Utils.rand(MAX_DELTA, -MAX_DELTA);
-        // this.x = Utils.wrap(this.x + dx, this.w);
-        //      this.y = Utils.wrap(this.y + dy, this.h);
-        this.x = Utils.bounce(this.x + dx, this.w);
-        this.y = Utils.bounce(this.y + dy, this.h);
-    }
-    return Mover;
-})();
-
 function play() {
     var canvas = document.getElementById('x');
     canvas.width = window.innerWidth - 200;
     canvas.height = window.innerHeight - 200;
+
     var ctx = canvas.getContext('2d');
     ctx.lineCap = 'round';
-    ctx.strokeStyle = '#369';
+    ctx.strokeStyle = '#333';
     
-    var w = canvas.width,
-        h = canvas.height;
-
-    var mover = new Mover(Utils.rand(w), Utils.rand(h), w, h);
-    console.log(mover);
+    var mover = new RandomMover({ x: canvas.width, y: canvas.height });
 
     function draw() {
         var ax = mover.x,
