@@ -1,5 +1,6 @@
 var Utils = {
-    rand: function(low,hi) {
+    rand: function(hi, low) {
+        low = low || 0;
         return Math.floor(Math.random() * (hi - low)) + low;
     },
     wrap: function(n, max) {
@@ -13,10 +14,6 @@ var Utils = {
         return 0 - n;
     }
 };
-
-function Point(x, y) {
-    return { x: x, y: y };
-}
 
 // Dummy console object
 if (typeof console == 'undefined') console = { log: function() {} };

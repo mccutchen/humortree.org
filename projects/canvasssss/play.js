@@ -7,8 +7,8 @@ var Mover = (function() {
         this.h = h;
     }
     Mover.prototype.step = function() {
-        var dx = Utils.rand(-MAX_DELTA, MAX_DELTA);
-        var dy = Utils.rand(-MAX_DELTA, MAX_DELTA);
+        var dx = Utils.rand(MAX_DELTA, -MAX_DELTA);
+        var dy = Utils.rand(MAX_DELTA, -MAX_DELTA);
         // this.x = Utils.wrap(this.x + dx, this.w);
         //      this.y = Utils.wrap(this.y + dy, this.h);
         this.x = Utils.bounce(this.x + dx, this.w);
@@ -27,7 +27,7 @@ function play() {
     var w = canvas.width,
         h = canvas.height;
 
-    var mover = new Mover(w/2, h/2, w, h);
+    var mover = new Mover(Utils.rand(w), Utils.rand(h), w, h);
     console.log(mover);
 
     function draw() {
