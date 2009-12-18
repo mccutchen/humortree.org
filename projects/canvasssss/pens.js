@@ -8,7 +8,7 @@ function Pen(context, mover) {
 function SimplePen(context, mover) {
     var pen = new Pen(context, mover);
     context.lineCap = 'round';
-    context.strokeStyle = '#333';
+    context.strokeStyle = '#111';
     context.lineWidth = 1;
 
     pen.draw = function() {
@@ -55,6 +55,25 @@ function ColorPen(context, mover) {
             changeAfter = Utils.rand(500, 100);
         }
         context.strokeStyle = Utils.rgba(color);
+        oldDraw();
+    }
+    return pen;
+}
+
+function VariablePen(context, mover) {
+    var pen = new ColorPen(context, mover);
+    var MIN_WIDTH = 1;
+    var MAX_WIDTH = 6;
+    var width = Utils.rand(MAX_WIDTH, MIN_WIDTH);
+    var steps = 0;
+    var changeAfter = Utils.rand(100);
+    
+    var oldDraw = pen.draw;
+    pen.draw = function() {
+        if (++steps % changeAfter == 0) {
+            width = Utils.bounce(Utils.fudge(width, 2), MAX_WIDTH, MIN_WIDTH);
+        }
+        context.lineWidth = width;
         oldDraw();
     }
     return pen;
