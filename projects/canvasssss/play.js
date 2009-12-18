@@ -35,6 +35,8 @@ var Mover = (function() {
 
 function play() {
     var canvas = document.getElementById('x');
+    canvas.width = window.innerWidth - 200;
+    canvas.height = window.innerHeight - 200;
     var ctx = canvas.getContext('2d');
     ctx.lineCap = 'round';
     
