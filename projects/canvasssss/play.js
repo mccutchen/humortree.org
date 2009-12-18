@@ -1,19 +1,3 @@
-var Utils = {
-    rand: function(low,hi) {
-        return Math.floor(Math.random() * (hi - low)) + low;
-    },
-    wrap: function(n, max) {
-        if (n >= 0 && n <= max) return n;
-        if (n > max) return n - max;
-        return n + max;
-    },
-    bounce: function(n, max) {
-        if (n >= 0 && n <= max) return n;
-        if (n > max) return max + (max - n);
-        return 0 - n;
-    }
-};
-
 var Mover = (function() {
     var MAX_DELTA = 20;
     function Mover(x, y, w, h) {
@@ -65,6 +49,3 @@ function play() {
 }
 
 window.addEventListener('load', play, false);
-
-if (typeof console == 'undefined')
-    console = { log: function() {} };
