@@ -23,6 +23,7 @@ function play() {
     canvas.height = window.innerHeight - 200;
     var ctx = canvas.getContext('2d');
     ctx.lineCap = 'round';
+    ctx.strokeStyle = '#369';
     
     var w = canvas.width,
         h = canvas.height;
