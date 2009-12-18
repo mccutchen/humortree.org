@@ -17,6 +17,9 @@ var Utils = {
         mindelta = mindelta || 0;
         delta = Utils.rand(maxdelta-mindelta, -(maxdelta-mindelta));
         return n + ((delta >= 0) ? delta + mindelta : delta - mindelta);
+    },
+    rgba: function(c) { 
+        return 'rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + c.a + ')';
     }
 };
 
