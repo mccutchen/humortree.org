@@ -7,7 +7,7 @@ html {
 body {
     background-color: #333;
     margin: 0;
-    padding: 0;
+    padding: 20px 0;
     display: table-cell;
     vertical-align: middle;
 }
@@ -17,6 +17,22 @@ canvas {
     background-color: #fff;
     border: 20px solid #fff;
     margin: 0 auto;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+#gallery {
+    padding: 20px;
+    margin: 0 auto;
+}
+#gallery img {
+    background-color: #fff;
+    width: 20%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    border: 10px solid #fff;
+    display: inline-block;
     -moz-box-shadow: 1px 1px 3px #000;
     -webkit-box-shadow: 1px 1px 3px #000;
     box-shadow: 1px 1px 3px #000;
