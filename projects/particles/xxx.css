@@ -1,0 +1,13 @@
+body {
+    background: #eee;
+    margin: 20px;
+}
+
+canvas {
+    display: block;
+    backgound: #333;
+    width: 800px;
+    height: 400px;
+    box-shadow: 0 0 3px rgba(0,0,0,.5);
+    margin: 0 auto;
+}
