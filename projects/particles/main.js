@@ -5,15 +5,14 @@ function init() {
     canvas.width = window.innerWidth - 200;
     canvas.height = window.innerHeight - 200;
 
-    var sys = new System(canvas.width, canvas.height, 5),
+    var sys = new System(canvas.width, canvas.height, 500),
         renderer = new Renderer(sys, ctx);
-
-    ctx.fillStyle = '#333';
-    ctx.fillRect(0, 0, sys.width, sys.height);
+    
+    sys.step();
     renderer.render();
 
-    setInterval(function() { renderer.render(); }, 1000);
-    setInterval(function() { sys.step(); }, 1000);
+    setInterval(function() { renderer.render(); }, 100);
+    setInterval(function() { sys.step(); }, 100);
 
     console.log(canvas, sys, renderer);
 }

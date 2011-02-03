@@ -10,13 +10,16 @@ Renderer.prototype.render = function render() {
         ctx = this.ctx,
         p;
 
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = '#333';
+    ctx.fillRect(0, 0, sys.width, sys.height);
+
+    ctx.fillStyle = '#eee';
     for (var i = 0; i < ps.length; i++) {
         p = ps[i];
-        r = p.mass * p.vel.magnitude();
+        r = Math.max(1, Math.sqrt(p.mass * p.vel.magnitude()));
+        r = 2;
         ctx.beginPath();
-        ctx.arc(p.loc.x, p.loc.y, r, r, 0, end);
-        ctx.closePath();
+        ctx.arc(p.loc.x, p.loc.y, r, 0, end, true);
         ctx.fill();
     }
 };
