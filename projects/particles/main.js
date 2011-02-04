@@ -11,8 +11,8 @@ function init() {
     sys.step();
     renderer.render();
 
-    setInterval(function() { renderer.render(); }, 100);
-    setInterval(function() { sys.step(); }, 100);
+    setInterval(function() { renderer.render(); }, 50);
+    setInterval(function() { sys.step(); }, 50);
 
     console.log(canvas, sys, renderer);
 }

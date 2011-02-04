@@ -9,66 +9,62 @@ function System(width, height, count) {
             this.add();
         }
     }
+
+    System.FACTOR = 6;
+    System.MIN_DISTANCE = 100;
 }
-
-System.MAX_V = 5;
-System.MIN_V = .5;
-
-System.MAX_A = 2;
-System.MIN_A = 0;
-
-System.MAX_W = 20;
-System.MIN_W = 3;
 
 System.prototype.add = function add(particle) {
     if (particle === undefined) {
         var loc = new Vector(this.center.x, this.center.y),
             vel = new Vector(Utils.rand(-8, 8), Utils.rand(-8, 8)),
-            acc = new Vector(0, 0),
-            mass = 1;
-        console.log(loc, mass, vel, acc);
-        particle = new Particle(loc, mass, vel, acc);
+            acc = new Vector(0, 0);
+        // loc = new Vector(Utils.rand(0, this.width), Utils.rand(0, this.height));
+        console.log(loc, vel, acc);
+        particle = new Particle(loc, vel, acc);
         console.log('Created particle', particle);
     }
     this.particles.push(particle);
 };
 
-System.prototype.constrainA = function constrainA(a) {
-    mag = a.fastMagnitude();
-    if (mag > Math.pow(System.MAX_A, 2)) {
-        a = a.normalize().scale(System.MAX_A);
-    } else if (mag < Math.pow(System.MIN_A, 2)) {
-        a = a.normalize().scale(System.MIN_A);
-    }
-    return a;
-};
-
-
-
 System.prototype.step = function step() {
-    var i, j, p1, p2, f, mag;
     var ps = this.particles,
-        dead = [];
-    for (i = 0; i < ps.length; i++) {
+        count = ps.length,
+        i, j,
+        p1, p2, // each particle we're comparing
+        dv, // vector between positions of p1 and p2
+        d, // distance between p1 and p2
+        dead = []; // dead particle accumulator
+    
+    // n-body acceleration accumulation, from
+    // http://codeflow.org/entries/2010/aug/22/html5-canvas-and-the-flying-dots/
+    //
+    // My understanding is that this slight shortcut allows us to avoid
+    // looping through each particle twice to accumulate accelerations by
+    // taking advantage of the fact that the forces accumulate over the whole
+    // simulation due to, what, the commutative nature of Newtonian physics?
+    for (i = 0; i < count; i++) {
         p1 = ps[i];
-        f = new Vector(0, 0);
-        for (j = 0; j < ps.length; j++) {
-            if (i === j) continue;
+        for (j = i + 1; j < count; j++) {
             p2 = ps[j];
-            f = f.add(p1.attractionTo(p2));
+            dv = p1.loc.sub(p2.loc);
+            d = dv.length();
+
+            // Only apply the calculations to these two vectors if they're
+            // above a minimum distance apart, to avoid accelerations
+            // approaching infinity.
+            if (d > System.MIN_DISTANCE){
+                // Scale the vector based on the inverse of the distance
+                dv = dv.div(Math.pow(d, 3) / System.FACTOR);
+                p1.acc = p1.acc.sub(dv);
+                p2.acc = p2.acc.add(dv);
+            }
         }
-        mag = f.fastMagnitude();
-        if (mag > Math.pow(System.MAX_A, 2)) {
-            f = f.normalize().scale(System.MAX_A);
-        } else if (mag < Math.pow(System.MIN_A, 2)) {
-            f = f.normalize().scale(System.MIN_A);
-        }
-        p1.acc = f;
+        
         p1.step();
 
         if (p1.loc.x > this.width || p1.loc.x < 0 ||
             p1.loc.y > this.height || p1.loc.y < 0) {
-            console.log('Found dead:', p1);
             dead.push(i);
         }
     }
