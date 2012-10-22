@@ -12,49 +12,67 @@
     }
 
     function draw(ctx, step, state) {
-        // state is the last position of the thing
+        // state is an object comprised of vectors for our last position and
+        // velocity.
         if (state === null) {
-            state = { x: w/2, y: h/2};
+            state = {
+                p: Vector.create(w/2, h/2),
+                v: Vector.create(Utils.randFloat(-4, 4), Utils.randFloat(-4, 4))
+            };
+            console.log('Initial state:', state);
         }
 
-        // calculate current position based on last position
-        var pos = {
-            x: Utils.wrap(Utils.fudge(state.x, 8), w),
-            y: Utils.wrap(Utils.fudge(state.y, 8), h)
+        // update position based on current velocity, and (for now) only
+        // update velocity to stay within the bounds of the canvas.
+        var _ = wander(state.p, state.v),
+            p = _[0],
+            v = _[1];
+        if (p.x < 0 || p.x > w) v.x *= -1;
+        if (p.y < 0 || p.y > h) v.y *= -1;
+
+        drawSegment(ctx, state.p, p);
+
+        return {
+            p: p,
+            v: v
         };
+    }
 
-        // draw a curve from the last position to the new position
-        var dx = (pos.x - state.x) / 3,
-            dy = (pos.y - state.y) / 3,
-            cp1x = state.x + dx,
-            cp1y = state.y + dy,
-            cp2x = state.x + 2 * dx,
-            cp2y = state.y + 2 * dy;
-
-        if (step % 60 === 0) {
-            console.log('step %d', step);
-            console.log('(%d, %d) => (%d, %d) by (%d, %d)',
-                        state.x, state.y, pos.x, pos.y, dx, dy);
-            console.log('curve: (%d, %d) => (%d, %d) => (%d, %d) => (%d, %d)',
-                        state.x, state.y, cp1x, cp1y, cp2x, cp2y,
-                        pos.x, pos.y);
+    function wander(p, v) {
+        var a = Vector.create(Utils.randFloat(-2, 2), Utils.randFloat(-2, 2)),
+            newV = Vector.add(v, a),
+            mag = Vector.magnitude(newV);
+        if (mag > 10) {
+            newV = Vector.scale(Vector.normalize(v), 9.5);
+        } else if (mag < 1) {
+            newV = Vector.scale(Vector.normalize(v), 1.5);
         }
+        return [Vector.add(p, newV), newV];
+    }
+
+    function drawSegment(ctx, a, b) {
+        // Draw a line segment from point a to point b. Segments are bezier
+        // curves with control points interpolated evenly between a and b.
+        var dx = (b.x - b.x) / 3,
+            dy = (b.y - b.y) / 3,
+            cp1x = a.x + dx,
+            cp1y = a.y + dy,
+            cp2x = a.x + 2 * dx,
+            cp2y = a.y + 2 * dy;
         
         ctx.lineWidth = 8;
         ctx.strokeStyle = '#333';
         ctx.beginPath();
-        ctx.moveTo(state.x, state.y);
-        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, pos.x, pos.y);
+        ctx.moveTo(a.x, a.y);
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
         ctx.stroke();
 
         ctx.lineWidth = 2;
         ctx.strokeStyle = '#ccc';
         ctx.beginPath();
-        ctx.moveTo(state.x, state.y);
-        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, pos.x, pos.y);
+        ctx.moveTo(a.x, a.y);
+        ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
         ctx.stroke();
-
-        return pos;
     }
 
     document.addEventListener('DOMContentLoaded', init);

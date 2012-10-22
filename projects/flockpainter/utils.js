@@ -1,7 +1,10 @@
 var Utils = {
-    rand: function(hi, low) {
+    randInt: function(hi, low) {
+        return Math.floor(Utils.randFload(hi, low));
+    },
+    randFloat: function(hi, low) {
         low = low || 0;
-        return Math.floor(Math.random() * (hi - low)) + low;
+        return Math.random() * (hi - low) + low;
     },
     wrap: function(n, max) {
         if (n >= 0 && n <= max) return n;
