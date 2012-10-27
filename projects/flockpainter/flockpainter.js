@@ -16,17 +16,14 @@
         // velocity.
         if (state === null) {
             state = {
-                p: Vector.create(w/2, h/2),
-                v: Vector.create(Utils.randFloat(-4, 4), Utils.randFloat(-4, 4))
+                p: new Vector(w/2, h/2),
+                v: new Vector
             };
             console.log('Initial state:', state);
         }
 
-        // update position based on current velocity, and (for now) only
-        // update velocity to stay within the bounds of the canvas.
-        var _ = wander(state.p, state.v),
-            p = _[0],
-            v = _[1];
+        var v = wander(state.v, 1, 10),
+            p = state.p.add(v);
         if (p.x < 0 || p.x > w) v.x *= -1;
         if (p.y < 0 || p.y > h) v.y *= -1;
 
@@ -38,16 +35,16 @@
         };
     }
 
-    function wander(p, v) {
-        var a = Vector.create(Utils.randFloat(-2, 2), Utils.randFloat(-2, 2)),
-            newV = Vector.add(v, a),
-            mag = Vector.magnitude(newV);
-        if (mag > 10) {
-            newV = Vector.scale(Vector.normalize(v), 9.5);
-        } else if (mag < 1) {
-            newV = Vector.scale(Vector.normalize(v), 1.5);
+    function wander(v, minVelocity, maxVelocity) {
+        var a = new Vector(Utils.randFloat(-3, 3), Utils.randFloat(-3, 3)),
+            v2 = v.add(a),
+            mag = v2.magnitude();
+        if (mag > maxVelocity) {
+            v2 = v2.normalize().scale(maxVelocity - 0.5);
+        } else if (mag < minVelocity) {
+            v2 = v2.normalize().scale(minVelocity + 0.5);
         }
-        return [Vector.add(p, newV), newV];
+        return v2;
     }
 
     function drawSegment(ctx, a, b) {
@@ -61,14 +58,14 @@
             cp2y = a.y + 2 * dy;
         
         ctx.lineWidth = 8;
-        ctx.strokeStyle = '#333';
+        ctx.strokeStyle = '#666';
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
         ctx.stroke();
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#ccc';
+        ctx.strokeStyle = '#333';
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
