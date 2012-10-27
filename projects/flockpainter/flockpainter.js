@@ -8,22 +8,20 @@
     function setup(ctx) {
         ctx.canvas.width = w;
         ctx.canvas.height = h;
-        console.log('Setup:', ctx, ctx.canvas);
+
+        // setup returns initial state of the animation, an object comprised
+        // of vectors for our last position and velocity.
+        return {
+            p: new Vector(w/2, h/2),
+            v: new Vector
+        };
     }
 
     function draw(ctx, step, state) {
-        // state is an object comprised of vectors for our last position and
-        // velocity.
-        if (state === null) {
-            state = {
-                p: new Vector(w/2, h/2),
-                v: new Vector
-            };
-            console.log('Initial state:', state);
-        }
-
         var v = wander(state.v, 1, 10),
             p = state.p.add(v);
+
+        // reverse direction when a boundary is hit
         if (p.x < 0 || p.x > w) v.x *= -1;
         if (p.y < 0 || p.y > h) v.y *= -1;
 
@@ -58,14 +56,14 @@
             cp2y = a.y + 2 * dy;
         
         ctx.lineWidth = 8;
-        ctx.strokeStyle = '#666';
+        ctx.strokeStyle = 'rgba(0, 0, 0, .2)';
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
         ctx.stroke();
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = '#333';
+        ctx.strokeStyle = 'rgba(0, 0, 0, .2)';
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);

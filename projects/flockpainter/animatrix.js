@@ -22,15 +22,13 @@ var Animatrix = {
 
         (containerEl || document.body).appendChild(canvas);
         
-        if (setupFn !== undefined){
-            setupFn(ctx);
-        }
+        var initialState = (setupFn !== undefined) ? setupFn(ctx) : null;
 
         (function loop(step, state) {
             window.requestAnimationFrame(function() { 
                 loop(step + 1, drawFn(ctx, step, state));
             }, canvas);
-        })(0, null);
+        })(0, initialState);
     }
 };
 
