@@ -3,35 +3,44 @@ function Vector(x, y) {
     this.y = y || 0;
 }
 
-Vector.prototype.magnitude = function() {
-    return Math.sqrt(this.x * this.x + this.y * this.y);
+Vector.prototype.mag = function() {
+    return Math.sqrt(this.mag2());
 };
-Vector.prototype.toString = function() {
-    return '(' + this.x + ',' + this.y + ')';
+Vector.prototype.mag2 = function() {
+    return this.x * this.x + this.y * this.y;
 };
 
-// Vectors as immutable objects
 Vector.prototype.scale = function(n) {
     return new Vector(this.x * n, this.y * n);
 };
+
 Vector.prototype.add = function(v) {
     return new Vector(this.x + v.x, this.y + v.y);
 };
-Vector.prototype.normalize = function() {
-    var m = this.magnitude();
-    return (m === 0) ? this.scale(0) : this.scale(1/m);
+
+Vector.prototype.normalize = function(m) {
+    // allow magnitude to be passed in, if it was already calculated
+    m = m || this.mag();
+    return (m !== 0) ? this.scale(1/m) : new Vector(0, 0);
 };
 
-// In-place operations
-Vector.prototype.iscale = function(n) {
-    this.x *= n;
-    this.y *= n;
+Vector.prototype.limit = function(min, max) {
+    if (max === undefined)
+        min = 0, max = min;
+    var m = this.mag();
+    if (m < min) {
+        return this.normalize(m).scale(min);
+    } else if (m > max) {
+        return this.normalize(m).scale(max);
+    } else {
+        return this;
+    }
 };
-Vector.prototype.iadd = function(v) {
-    this.x += v.x;
-    this.y += v.y;
+
+Vector.prototype.clone = function() {
+    return new Vector(this.x, this.y);
 };
-Vector.prototype.inormalize = function() {
-    var m = this.magnitude();
-    this.iscale((m === 0) ? 0 : 1/m);
+
+Vector.prototype.toString = function() {
+    return 'Vector(' + this.x + ', ' + this.y + ')';
 };

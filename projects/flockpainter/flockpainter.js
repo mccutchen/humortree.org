@@ -13,18 +13,17 @@
         // of vectors for our last position and velocity.
         return {
             p: new Vector(w/2, h/2),
-            v: new Vector
+            v: new Vector()
         };
     }
 
     function draw(ctx, step, state) {
-        var v = wander(state.v, 1, 10),
-            p = state.p.add(v);
+        var a = accelerate(state),
+            v = state.v.add(a).limit(1, 10),
+            p = bound(state.p.add(v), w, h);
 
-        // reverse direction when a boundary is hit
-        if (p.x < 0 || p.x > w) v.x *= -1;
-        if (p.y < 0 || p.y > h) v.y *= -1;
-
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.002)';
+        ctx.fillRect(0, 0, w, h);
         drawSegment(ctx, state.p, p);
 
         return {
@@ -33,37 +32,42 @@
         };
     }
 
-    function wander(v, minVelocity, maxVelocity) {
-        var a = new Vector(Utils.randFloat(-3, 3), Utils.randFloat(-3, 3)),
-            v2 = v.add(a),
-            mag = v2.magnitude();
-        if (mag > maxVelocity) {
-            v2 = v2.normalize().scale(maxVelocity - 0.5);
-        } else if (mag < minVelocity) {
-            v2 = v2.normalize().scale(minVelocity + 0.5);
-        }
-        return v2;
+    function accelerate(state) {
+        return wander();
     }
 
+    // Add a little random acceleration to the given velocity vector
+    function wander(v) {
+        return new Vector(Utils.randFloat(-3, 3), Utils.randFloat(-3, 3));
+    }
+
+    // Bound the given position vector to the given width and height
+    function bound(p, w, h) {
+        var x = (p.x < 0) ? 0 : (p.x > w) ? w : p.x,
+            y = (p.y < 0) ? 0 : (p.y > h) ? h : p.y;
+        return new Vector(x, y);
+    }
+
+    // Draw a line segment from point a to point b. Segments are bezier curves
+    // with control points interpolated evenly between a and b.
     function drawSegment(ctx, a, b) {
-        // Draw a line segment from point a to point b. Segments are bezier
-        // curves with control points interpolated evenly between a and b.
-        var dx = (b.x - b.x) / 3,
-            dy = (b.y - b.y) / 3,
+        //a = continuize(a, b, w, h);
+        var dx = (b.x - a.x) / 3,
+            dy = (b.y - a.y) / 3,
             cp1x = a.x + dx,
             cp1y = a.y + dy,
             cp2x = a.x + 2 * dx,
             cp2y = a.y + 2 * dy;
         
         ctx.lineWidth = 8;
-        ctx.strokeStyle = 'rgba(0, 0, 0, .2)';
+        ctx.strokeStyle = 'rgba(0, 0, 0, .1)';
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
         ctx.stroke();
 
         ctx.lineWidth = 2;
-        ctx.strokeStyle = 'rgba(0, 0, 0, .2)';
+        ctx.strokeStyle = 'rgba(0, 0, 0, .1)';
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
