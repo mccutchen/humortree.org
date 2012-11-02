@@ -1,6 +1,6 @@
 var Utils = {
     randInt: function(hi, low) {
-        return Math.floor(Utils.randFload(hi, low));
+        return Math.floor(Utils.randFloat(hi, low));
     },
     randFloat: function(hi, low) {
         low = low || 0;

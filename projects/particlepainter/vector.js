@@ -18,21 +18,25 @@ Vector.prototype.add = function(v) {
     return new Vector(this.x + v.x, this.y + v.y);
 };
 
-Vector.prototype.normalize = function() {
-    var m = this.magnitude();
+Vector.prototype.sub = function(v) {
+    return new Vector(this.x - v.x, this.y - v.y);
+};
+
+Vector.prototype.norm = function(m) {
+    m = m || this.mag(); // magnitude may be supplied as an optimization
     return (m !== 0) ? this.scale(1/m) : new Vector(0, 0);
 };
 
 Vector.prototype.limit = function(min, max) {
     if (max === undefined)
         min = 0, max = min;
-    var m = this.magnitude();
+    var m = this.mag();
     if (m < min) {
-        return this.normalize().scale(min);
+        return this.norm(m).scale(min);
     } else if (m > max) {
-        return this.normalize().scale(max);
+        return this.norm(m).scale(max);
     } else {
-        return this;
+        return this.clone();
     }
 };
 
