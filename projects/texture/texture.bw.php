@@ -6,8 +6,8 @@ Header ("Content-type: image/gif"); // tell the browser what sort of image to ex
 
 mt_srand ((double) microtime() * 1000000);
 
-if (!isset ($w)) $w = 10;
-if (!isset ($h)) $h = 10;
+$w = isset($_GET['w']) ? $_GET['w'] : 10;
+$h = isset($_GET['h']) ? $_GET['h'] : 10;
 
 $grayMax = 20;
 $imgWidth = $w;
