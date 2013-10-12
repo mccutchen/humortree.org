@@ -2,10 +2,11 @@ function displace(e) {
     var img = e.currentTarget,
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        w = img.width,
-        h = img.height,
-        sliceWidth = 10,
-        slices;
+        // Pick a size for the canvas that's as close as possible to the input
+        // image size while being divisible by 12.
+        w = Math.floor(img.width / 48) * 48,
+        h = Math.floor(img.height / 48) * 48,
+        sizes = [3, 6, 12, 24, 48];
 
     // Copy the input image to the canvas.
     canvas.width = w;
@@ -15,11 +16,10 @@ function displace(e) {
     // Insert the canvas into the DOM after the source image element.
     img.parentNode.insertBefore(canvas, img.nextSibling);
 
-    // Pull image data slices out of the canvas
-    slices = getSlices(ctx, w, h, sliceWidth);
-
     function step() {
-        var total = slices.length,
+        var size = sizes[rand(sizes.length)],
+            slices = getSlices(ctx, w, h, size),
+            total = slices.length,
             a = rand(total),
             b = rand(total),
             aVal = slices[a],
