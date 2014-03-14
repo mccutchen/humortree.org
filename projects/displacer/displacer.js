@@ -3,7 +3,7 @@ function displace(e) {
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         // Pick a slice width as percentage of largest dimension of source img
-        sliceWidth = Math.round(Math.max(img.width, img.height) * 0.025);
+        sliceWidth = Math.round(Math.max(img.width, img.height) * 0.0125),
         // Pick a size for the canvas that's divisible by the slice width
         w = Math.floor(img.width / sliceWidth) * sliceWidth,
         h = Math.floor(img.height / sliceWidth) * sliceWidth,
@@ -18,14 +18,13 @@ function displace(e) {
     img.parentNode.insertBefore(canvas, img.nextSibling);
 
     slices = getSlices(ctx, w, h, sliceWidth);
+    console.log('Slice:', slices[0]);
 
     function step() {
         var total = slices.length,
             a = rand(total),
-            b = rand(total),
-            aVal = slices[a],
-            bVal = slices[b];
-        slices[a] = bVal, slices[b] = aVal;
+            b = rand(total);
+        swap(slices, a, b);
         drawSlices(ctx, slices);
     }
     setInterval(step, 250);
@@ -45,6 +44,25 @@ function drawSlices(ctx, slices) {
         ctx.putImageData(slice, offset, 0);
         offset += slice.width;
     }
+}
+
+function swap(xs, a, b) {
+    var aVal = xs[a],
+        bVal = xs[b];
+    xs[a] = bVal;
+    xs[b] = aVal;
+}
+
+function sum(xs) {
+    var total = 0;
+    for (var i = 0, length = xs.length; i < length; i++) {
+        total += xs[i];
+    }
+    return total;
+}
+
+function avg(xs) {
+    return sum(xs) / (xs.length || 1);
 }
 
 function rand(hi, low) {
