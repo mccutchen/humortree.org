@@ -11,7 +11,7 @@ import os
 from fabric.api import abort, cd, env, run, task
 
 
-env.hosts = ['overloaded.org']
+env.hosts = ['wrm.io']
 env.use_ssh_config = True
 
 
@@ -20,9 +20,7 @@ def domain():
 
 
 def web_dir():
-    if domain() == 'overloaded.org':
-        return '~/web/public'
-    return '~/domains/{}/web/public'.format(domain())
+    return '/var/www/{}'.format(domain())
 
 
 def git_repo():
@@ -46,8 +44,9 @@ def bootstrap():
     """Ensures that the server has the domain set up and makes a clean
     checkout of the site's source code and moves it into place.
     """
-    check_domain()
-    if dir_exists(os.path.join(web_dir(), '.git')):
+    if not dir_exists(web_dir()):
+        run('mkdir -p {}'.format(web_dir()))
+    elif dir_exists(os.path.join(web_dir(), '.git')):
         abort('Web directory already a git repo: {}'.format(web_dir()))
 
     run('mkdir -p ~/tmp')
