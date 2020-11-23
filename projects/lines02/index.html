@@ -1,59 +1,71 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
+
 <head>
 	<title>lines 02 / humor tree</title>
-	
-	<link rel="stylesheet" type="text/css" href="./lines02.css.php">
+	<link rel="stylesheet" type="text/css" href="lines02.css">
+	<script src="lines02.js"></script>
 </head>
 
 <body>
 
-<div id="quick">
-	<div class="pad105"><em>hint</em>: <a href="index.html?q=123lkj1lj312">reload</a> the page for a new background</div>
-</div>
+	<div id="quick">
+		<div class="pad105"><em>hint</em>: <a href="index.html?q=123lkj1lj312">reload</a> the page for a new background
+		</div>
+	</div>
 
-<div id="main">
-	<table border="0" cellpadding="0" cellspacing="0">
-	<tr>
-		<td>
-			<h3>Lines 02</h3>
-			<p>Another trembling step into the wide, wide
-			world of generative art;  an image that draws
-			itself.</p>
-			
-			<p>Inspired by, among others:</p>
-			<ul>
-				<li>Brent Gustafson, <a href="http://www.vitaflo.com/v8/">Vitaflo</a></li>
-				<li>Glen Murphy, <a href="http://bodytag.org/nav.php?u=compose3/">bodytag</a></li>
-			</ul>
-			
-			<p>Designed to create smoother transitions between the colors
-			than its predecessor, <a href="../lines01/">lines01</a>.  This
-			sometimes works, and sometimes doesn't, as you can probably
-			see above.  An explanation of the process can be found to the
-			left.</p>
-		</td>
-		<td>
-			<h3>Algorithm-in-English</h3>
-			<ol>
-				<li>pick a random color</li>
-				<li>paint the canvas with a line this color</li>
-				<li>pick another color, based on the first, that is a random (but limited) distance away from the first</li>
-				<li>paint the canvas with a line of this new color</li>
-				<li>pick another color, based on the second, that is a random (but limited) distance away from the second</li>
-				<li>paint the canvas with a line of this new color</li>
-				<li>repeat, until you've gone the desired number of steps (in this case, the width of the canvas)</li>
-			</ol>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2" class="center">
-			<h3>&laquo; <a href="../../">return to Humor Tree</a></h3>
-		</td>
-	</tr>
-	</table>
-</div>
+	<div id="main">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+					<h3>Lines 02</h3>
+					<p>Another trembling step into the wide, wide
+						world of generative art; an image that draws
+						itself.</p>
 
+					<p>Inspired by, among others:</p>
+					<ul>
+						<li>Brent Gustafson, <a href="http://www.vitaflo.com/v8/">Vitaflo</a></li>
+						<li>Glen Murphy, <a href="http://bodytag.org/nav.php?u=compose3/">bodytag</a></li>
+					</ul>
+
+					<p>Designed to create smoother transitions between the colors
+						than its predecessor, <a href="../lines01/">lines01</a>. This
+						sometimes works, and sometimes doesn't, as you can probably
+						see above. An explanation of the process can be found to the
+						left.</p>
+				</td>
+				<td>
+					<h3>Algorithm-in-English</h3>
+					<ol>
+						<li>pick a random color</li>
+						<li>paint the canvas with a line this color</li>
+						<li>pick another color, based on the first, that is a random (but limited) distance away from
+							the first</li>
+						<li>paint the canvas with a line of this new color</li>
+						<li>pick another color, based on the second, that is a random (but limited) distance away from
+							the second</li>
+						<li>paint the canvas with a line of this new color</li>
+						<li>repeat, until you've gone the desired number of steps (in this case, the width of the
+							canvas)</li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="center">
+					<h3>&laquo; <a href="../../">return to Humor Tree</a></h3>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<script type="text/javascript">
+		var background = drawLines({
+			phaseCount: 8,
+		});
+		document.body.style.background = 'url(' + background + ')';
+	</script>
 </body>
+
 </html>
