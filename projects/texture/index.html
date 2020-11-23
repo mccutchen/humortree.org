@@ -6,7 +6,6 @@
 	<style type="text/css">
 		BODY {
 			background-color: #ccc;
-			background-image: url("texture.color.php?h=10&w=10");
 			color: #333;
 			margin: 50px 0px;
 		}
@@ -18,12 +17,6 @@
 			height: 400px;
 			width: 400px;
 			border: 1px solid #333333;
-		}
-		#bw {
-			background-image: url("texture.bw.php?h=50&w=50");
-		}
-		#color {
-			background-image: url("texture.color.php?h=50&w=50");
 		}
 		#container {
 			background-color: white;
@@ -44,6 +37,7 @@
 			text-decoration: underline;
 		}
 	</style>
+	<script src="texture.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<meta http-equiv= "pragma" CONTENT="no-cache">
 </head>
@@ -55,15 +49,15 @@
 		T&nbsp;&nbsp;E&nbsp;&nbsp;X&nbsp;&nbsp;<span style="font-size:20px;">T</span>&nbsp;&nbsp;U&nbsp;&nbsp;R&nbsp;&nbsp;E&nbsp;&nbsp;/&nbsp;
 		<span style="font-size:10px;">a pattern generator</span>
 	</div>
-	
+
 	<table border="0" cellpadding="0" cellspacing="0">
 	<tr>
-		<td class="texture" id="bw"><img src="spacer.gif" alt="" border="0" height="400" width="400"></td>
+		<td class="texture" id="bw"></td>
 		<td width="10"></td>
-		<td class="texture" id="color"><img src="spacer.gif" alt="" border="0" height="400" width="400"></td>
+		<td class="texture" id="color"></td>
 	</tr>
 	</table>
-	
+
 	<p>
 		T&nbsp;E&nbsp;X&nbsp;T&nbsp;U&nbsp;R&nbsp;E is a PHP script that
 		creates a GIF or PNG image that can be used as a background
@@ -82,6 +76,15 @@
 		&laquo;&nbsp;&nbsp;<a href="../../">return to HUMOR TREE</a>
 	</p>
 </div>
-
+<script type="text/javascript">
+	var width = 100;
+	var height = 100;
+	var color = drawTexture({ width: width, height: height });
+	var bw = drawTexture({width: width, height: height, grayscale: true });
+	var bg = drawTexture({width: 20, height: 20});
+	document.getElementById("color").style.background = `url(${color})`;
+	document.getElementById("bw").style.background = `url(${bw})`;
+	document.body.style.background = `url(${bg})`;
+</script>
 </body>
 </html>
