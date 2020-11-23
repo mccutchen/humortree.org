@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="author" content="Super Will McCutchen, Sr.">
+    <style type="text/css">
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 100px;
+            height: 100px;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <script type="text/javascript">
+            var rows = 10;
+            var cols = 40;
+            var colors = ["aaa", "ccc", "ddd", "777", "999", "000"];
+
+            // Generate table of randomly colored cells.
+            //
+            // Note: using document.write is gross, but it's replacing PHP code
+            // that did the same thing, and I'll take the tradeoff to avoid
+            // requiring PHP here.
+            document.write(`<table style="width: ${cols * 100}px;">`);
+            for (var j = 0; j < rows; j++) {
+                document.write("<tr>")
+                for (var i = 0; i < cols; i++) {
+                    var color = colors[Math.floor(Math.random() * colors.length)];
+                    document.write(`<td style="background-color: #${color};"></td>`);
+                }
+                document.write("</tr>");
+            }
+            document.write("</table>");
+        </script>
+    </div>
+</body>
+
+<script type="text/javascript">
+    (function kill() {
+        window.setTimeout(kill, Math.floor(Math.random() * 500));
+        var xx = Math.floor(Math.random() * 3000);
+        var yy = Math.floor(Math.random() * 1000);
+        window.scroll(xx, yy);
+    })();
+</script>
+
+</html>
