@@ -17,7 +17,8 @@ var x4;
 
 function setup() {
     initializeFields();
-    createCanvas(800, 300);
+    var canvas = createCanvas(800, 300);
+    canvas.parent('sketch');
     background(100);
     x2[0] = randomColor();
     x3[0] = randomColor();
@@ -33,15 +34,15 @@ function setup() {
     }
 }
 
-function loop() {
+function draw() {
     /* Just too complicated for me to deal with right now
   FOCUSx2 = (mouseY <= 100) ? mouseX / 4 : FOCUSx2;
   FOCUSx3 = (mouseY > 100 && mouseY <= 200) ? mouseX / 8 : FOCUSx3;
   FOCUSx4 = (mouseY > 200) ? mouseX / 16 : FOCUSx4;
   */
-    FOCUSx2 = mouseX / 4;
-    FOCUSx3 = mouseX / 8;
-    FOCUSx4 = mouseX / 16;
+    FOCUSx2 = (mouseX / 4) | 0;
+    FOCUSx3 = (mouseX / 8) | 0;
+    FOCUSx4 = (mouseX / 16) | 0;
     x2[FOCUSx2] = (mouseIsPressed && mouseY <= 100) ? fudgeColor(x2[FOCUSx2]) : slightlyFudgeColor(x2[FOCUSx2]);
     x3[FOCUSx3] = (mouseIsPressed && mouseY > 100 && mouseY <= 200) ? fudgeColor(x3[FOCUSx3]) : slightlyFudgeColor(x3[FOCUSx3]);
     x4[FOCUSx4] = (mouseIsPressed && mouseY > 200) ? fudgeColor(x4[FOCUSx4]) : slightlyFudgeColor(x4[FOCUSx4]);
@@ -102,10 +103,12 @@ function rand(lo, hi) {
 
 var r, g, b;
 
-public Color(r, g, b) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
+class Color {
+    constructor(r, g, b) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+    }
 }
 
 
