@@ -3,43 +3,22 @@
 <html>
 <head>
 	<title>Randomly-Generated Images [with PHP] (humor tree)</title>
-
-	<script src="image.js"></script>
+	
 	<script language="javascript" type="text/javascript">
-		function swap(img)
+		function swap(which)
 		{
-			document.images[0].src = img.src;
-		}
-
-		function renderImageCells(count) {
-			var w = 100;
-			var h = 100;
-			var out = [];
-			for (var i = 0; i < count; i++) {
-				var img = drawImage({
-					width: w,
-					height: h,
-				})
-				out.push(`<td><img src="${img}" onmouseover="swap(this)" width=${w} height=${h} border=0 alt="randomly-generated image"></td>`);
-			}
-			return out.join("\n");
+			document.images[0].src = document.images[which].src;
 		}
 	</script>
-
+	
 	<style type="text/css">
-		body {
-			background-size: 100px;
-		}
-		img {
-			image-rendering: crisp-edges;
-		}
 		.tablebg
 		{
 			background-image: href(tablebg.gif);
 		}
-
+		
 	</style>
-
+	
 </head>
 
 <body bgcolor="#cccccc" background="image.php?xasffgxx=0">
@@ -54,14 +33,20 @@
 				
 				<table align="center" cellspacing="10" cellpadding="0" border="0" style="background-image:url(tablebg.gif);">
 				<tr>
-					<td rowspan="3" align="center"><img src="spacer.gif" height="320" width="320" alt="randomly-generated image"></td>
-					<script>document.writeln(renderImageCells(3));</script>
+				    <td rowspan="3" align="center"><img src="spacer.gif" height="320" width="320" alt="randomly-generated image"></td>
+				    <td><a href="#" onmouseover="swap(1);"><img src="image.php?xxx=1" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
+				    <td><a href="#" onmouseover="swap(2);"><img src="image.php?xxasx=2" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
+				    <td><a href="#" onmouseover="swap(3);"><img src="image.php?xxax=3" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
 				</tr>
 				<tr>
-					<script>document.writeln(renderImageCells(3));</script>
+				    <td><a href="#" onmouseover="swap(4);"><img src="image.php?xx=4" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
+				    <td><a href="#" onmouseover="swap(5);"><img src="image.php?x11xx=5" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
+				    <td><a href="#" onmouseover="swap(6);"><img src="image.php?xxx=6" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
 				</tr>
 				<tr>
-					<script>document.writeln(renderImageCells(3));</script>
+				    <td><a href="#" onmouseover="swap(7);"><img src="image.php?xefxx=7" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
+				    <td><a href="#" onmouseover="swap(8);"><img src="image.php?asdxxx=8" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
+				    <td><a href="#" onmouseover="swap(9);"><img src="image.php?xasxx=9" height="100" width="100" border="0" alt="randomly-generated image"></a></td>
 				</tr>
 				<tr>
 					<td colspan="4" align="right"><a href="../../"><img src="logo.gif" border="0" alt="logo"></a></td>
@@ -123,8 +108,5 @@
 	</td>
 </tr>
 </table>
-<script>
-	document.body.style.backgroundImage = `url(${drawImage()})`;
-</script>
 </body>
 </html>
