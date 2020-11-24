@@ -3,7 +3,6 @@
 <html>
 <head>
 	<title>||||||||| LINES ||||||||||||||||||||||||||||||||||||||||||| HUMOR TREE ///////////////////////</title>
-	<script type="text/javascript" src="lines.js"></script>
 	<style type="text/css">
 		BODY
 		{
@@ -47,7 +46,7 @@
 			color: red;
 			text-decoration: none;
 		}
-		#stripes
+		.stripes
 		{
 			border: 10px solid white;
 			background-color: #cccccc;
@@ -103,27 +102,11 @@
 		There is a method to it, though, and it is
 		a lot prettier than Lines™ is.
 	</div>
-	<div id="stripes">
+	<div class="stripes">
 	</div>
 	<div class="explanation">
 		<a href="../../" style="vertical-align:middle;">&laquo; Back to Humor Tree</a>
 	</div>
-	<script type="text/javascript">
-		var background = drawLines({
-			colorCount: 5,
-			phaseCount: 10,
-			phaseMax: 200,
-			phaseMin: 20,
-		});
-		var accent = drawLines({
-			colorCount: 3,
-			phaseCount: 2,
-			phaseMax: 60,
-			phaseMin: 40,
-		})
-		document.body.style.background = 'url(' + background + ')';
-		document.getElementById("stripes").style.background = 'url(' + accent + ')';
-	</script>
 </div>
 
 </body>
