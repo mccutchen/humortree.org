@@ -1,0 +1,1 @@
+if (document.getElementById) document.writeln ("<link rel=\"stylesheet\" type=\"text/css\" href=\"STYLES/frontpage.css\">");
