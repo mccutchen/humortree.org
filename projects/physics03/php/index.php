@@ -195,7 +195,7 @@
 		Each ball has its own rabbit to chase.  The rabbits' movements are
 		random.  The effect I was aiming at was some more semi-organic motion
 		(hence, the "Organic 3" part of the title, referring to  my original
-		attempt at organic motion, <a href="../organic1">Organic 1</a>).
+		attempt at organic motion, <a href="../organic01">Organic 1</a>).
 	</p>
 	
 	<p>

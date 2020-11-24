@@ -119,7 +119,7 @@
 	<br>
 	<br>
 	<img src="drop_center.gif" height="120" width="60" alt="splash" align="left" class="dropLarge">This is another experiment that attempts to simulate Organic Motion,
-	much like "<a href="../organic1/">organic1</a>."  This one, however, tries to simulate raindrops
+	much like "<a href="../organic01/">organic01</a>."  This one, however, tries to simulate raindrops
 	rolling down a surface, like a window.<br><br>
 	The whole thing is based on sine waves.  Each "raindrop" is started
 	at a random place on the "surface" to the left, and runs down it,
