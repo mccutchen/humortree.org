@@ -7,8 +7,9 @@
 
 <head>
 	<title>Hell.</title>
-	
+
 	<link rel="stylesheet" type="text/css" href="./front/humortree.css" />
+	<script src="../../../projects/lines02/lines02.js"></script>
 
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 	<meta http-equiv= "pragma" content="no-cache" />
@@ -150,6 +151,13 @@
 	</tr>
 	</table>
 </div>
-	
+
+<script type="text/javascript">
+	var background = drawLines({
+		phaseCount: 8,
+	});
+	document.getElementById('candy').style.background = 'url(' + background + ')';
+</script>
+
 </body>
 </html>
