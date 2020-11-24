@@ -1,5 +1,5 @@
 // image.js is a fairly direct port of the original image.php algorithm (found
-// in ./php/image.php).
+// in ./original/image.php).
 
 function drawImage(opts) {
     opts = opts || {};
