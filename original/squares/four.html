@@ -5,7 +5,7 @@
 		var bgColors = new Array("#ffffff","#dddddd","#000000","#ffffff");
 		function bgColorChange() {
 			document.bgColor = bgColors[Math.floor(Math.random() * 4)];
-			setTimeout("bgColorChange()",1);
+			setTimeout("bgColorChange()",50);
 		}
 		
 		function changeArray(what) {
@@ -26,6 +26,6 @@
 	</style>
 </head>
 
-<body style="cursor:hand" bgcolor="#ffffff" onLoad="bgColorChange();" onMouseOver="changeArray('on');" onMouseOut="changeArray('off');" onClick="next_page();">
+<body style="cursor:hand; height:100%; width:100%; margin:0; padding:0;" bgcolor="#ffffff" onLoad="bgColorChange();" onMouseOver="changeArray('on');" onMouseOut="changeArray('off');" onClick="next_page();">
 </body>
 </html>
