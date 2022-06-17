@@ -10,8 +10,8 @@
 		var total_solved = 0;
 		var count = 0;
 		var empty = false;
-		var pre;	
-		
+		var pre = document.location.toString();
+
 		function emptyMe()
 		{
 			if(!empty && count < document.images.length)
@@ -67,8 +67,8 @@
 			{
 				document.images['side1'].src = "side1_on.gif";
 				document.images['side2'].src = "side2_on.gif";
-				document.images['side1'].style.cursor = "hand";
-				document.images['side2'].style.cursor = "hand";
+				document.images['side1'].style.cursor = "pointer";
+				document.images['side2'].style.cursor = "pointer";
 				flag = 1;
 			}
 				
@@ -138,10 +138,11 @@
 		{
 			var temp;
 			var counter = 0;
+			var correctBorder = /(#fff(fff)?|rgb\(255,\s*255,\s*255\))/;
 			for (i = 0; i < 16; i++)
 			{
 				temp = solution[i];
-				if (document.images[temp].style.borderColor == "#ffffff")
+				if (correctBorder.test(document.images[temp].style.borderColor))
 					counter++;
 			}
 			
@@ -151,16 +152,6 @@
 			else
 				return false;
 		}
-			
-	function setPre()
-	{
-		var root = document.images[3];
-		if(root.src.indexOf("blank") != -1)
-			return;
-			
-		else
-			pre = root.src.slice(0,root.src.indexOf("0"));
-	}	
 	</script>
 	<style type="text/css">
 	</style>
@@ -171,12 +162,12 @@
 	<td colspan="9" align="left">
 		<img style="cursor:hand;"  src="blank.gif" height="1" width="225">
 		<img style="cursor:hand;"  src="current_border.gif">
-		<img id="selected" src="blank.gif" height="50" width="50" border="1" 
+		<img id="selected" src="blank.gif" height="50" width="50" border="1"
 			bordercolor="black" style="position:relative;left:-63px; top: -6px;">
 	</td>
 </tr>
 <tr>
-    <td align="center" width="50" height="50"><img style="cursor:hand;"  id="one" src="01.jpg" height="50" width="50" border="1" bordercolor="black" onClick="sel('one');" onload="setPre();"></td>
+    <td align="center" width="50" height="50"><img style="cursor:hand;"  id="one" src="01.jpg" height="50" width="50" border="1" bordercolor="black" onClick="sel('one');"></td>
     <td align="center" width="50" height="50"><img style="cursor:hand;"  id="two" src="02.jpg" height="50" width="50" border="1" bordercolor="black" onClick="sel('two');"></td>
     <td align="center" width="50" height="50"><img style="cursor:hand;"  id="three" src="03.jpg" height="50" width="50" border="1" bordercolor="black" onClick="sel('three');"></td>
     <td align="center" width="50" height="50"><img style="cursor:hand;"  id="four" src="04.jpg" height="50" width="50" border="1" bordercolor="black" onClick="sel('four');"></td>
