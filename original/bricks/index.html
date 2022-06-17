@@ -34,7 +34,7 @@
 		var width = 200;
 		var left = 350;
 		var height = 200;
-		var top = 100;
+		var topOffet = 100;
 		var bricks = document.images;
 		var max,winner;
 		var step = 5;
@@ -83,7 +83,7 @@
 			for(var i = 0; i < max; i++)
 			{
 				xx = Math.floor(Math.random() * width) + left;
-				yy = Math.floor(Math.random() * height) + top;
+				yy = Math.floor(Math.random() * height) + topOffet;
 				if(i == winner)
 					inner += "<div style=\"cursor:hand; position:absolute; top:" + yy + "px; left:" + xx + "; width:50px;\"><a href=\"../swear/\"><img id=\"winner\" src=\"brickx.gif\" border=0></a></div>";
 					
@@ -138,10 +138,10 @@
 </div>
 
 <div style="position:absolute;top:100px;left:25px;">
-	<img src="brickx.gif">
+	<img src="brickx.gif" onclick="place();" style="cursor:pointer">
 </div>
 <div style="position:absolute;top:75px;left:55px;">
-	<img src="brick.gif">
+	<img src="brick.gif" onclick="place();" style="cursor:pointer">
 </div>
 
 </body>
