@@ -2,3 +2,4 @@
 awstats-icon
 .nodelete
 *.pyc
+.vscode
