@@ -2,8 +2,8 @@
 <html>
     <head>
         <title>HUMOR_TREE://GRID [~430 cell table; rough]</title>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-        <script language="javascript">      
+        <script type="text/javascript" src="/vendor/jquery-1.12.4.min.js"></script>
+        <script language="javascript">
             var coords = [
                 0,5,7,12,14,15,16,17,19,20,21,25,26,27,28,31,32,33,34,35,
                 38,39,40,41,42,43,44,46,47,48,49,50,53,54,55,56,57,59,60,
