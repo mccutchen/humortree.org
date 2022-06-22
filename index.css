@@ -31,6 +31,7 @@ ol li {
     position: relative;
     counter-increment: step-counter;
     padding-left: 2rem;
+    break-inside: avoid;
 }
 
 ol li:before {
@@ -39,11 +40,14 @@ ol li:before {
     font-size: smaller;
     position: absolute;
     left: 0;
-    bottom: 0;
+    top: 0.15rem;
     padding-right: 0.5rem;
     width: 1.3rem;
     display: block;
     text-align: right;
+}
+ol li:hover:before {
+    color: #333;
 }
 
 footer {
@@ -60,6 +64,9 @@ a {
     margin: 0 -1px;
     border-radius: 2px;
 }
+a:visited {
+    color: #ff72bb;
+}
 a:hover {
     color: white;
     background-color: #ff0083;
@@ -72,5 +79,7 @@ section:last-of-type ol {
 li span.date {
     color: #999;
     font-size: smaller;
-    padding-left: 0.5rem;
+    display: block;
+    margin-bottom: 0.33rem;
+    white-space: nowrap;
 }
