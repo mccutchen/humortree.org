@@ -3,7 +3,16 @@
 <html>
   <head>
     <title>"FRAMES" BY HUMOR TREE ENJOY!</title>
+    <script type="text/javascript" src="/vendor/jquery-1.12.4.min.js"></script>
+
     <style type="text/css">
+      html {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
       body {
         background-color: #000;
         width: 100%;
@@ -11,54 +20,30 @@
         overflow: hidden;
         margin: 0;
         padding: 0;
-      }
-
-      p {
-        background-color: #000;
-        color: #fff;
-        font: 11px arial, sans-serif;
-        text-align: center;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        padding: 10px;
-        margin: 0;
-        margin-right: -10px;
-        width: 100%;
+        border: 1px solid green;
       }
 
       .frame {
         image-rendering: pixelated;
         position: absolute;
-        top: 0;
+        top: 100px;
+        left: 100px;
         width: 25%;
-        height: 100%;
-        overflow: hidden;
+        height: 50%;
+        border: 1px solid red;
+        /* overflow: hidden; */
       }
       .frame img {
         display: block;
         position: absolute;
-        top: -23%;
-        left: -19%;
+        top: -25%;
+        left: -25%;
         height: 150%;
-        cursor: pointer;
+        border: 1px dotted blue;
       }
 
       #eye {
-        left: 0;
         background-color: #aaa;
-      }
-      #kids {
-        left: 25%;
-        background-color: #f69;
-      }
-      #man {
-        left: 50%;
-        background-color: #39f;
-      }
-      #woman {
-        left: 75%;
-        background-color: #ff9;
       }
     </style>
   </head>
@@ -66,22 +51,7 @@
     <div id="eye" class="frame">
       <img src="eye.gif" />
     </div>
-
-    <div id="kids" class="frame">
-      <img src="kids.gif" />
-    </div>
-    <div id="man" class="frame">
-      <img src="man.gif" />
-    </div>
-    <div id="woman" class="frame">
-      <img src="woman.gif" />
-    </div>
-    <p>
-      click on each picture to move it up, down, left or right.
-      <a href="../ill-fated/">// done?</a>
-    </p>
   </body>
-
   <script type="text/javascript">
     (function () {
       // img element -> image state
@@ -109,9 +79,11 @@
           };
 
           // initial velocity, alternating initial axis for each frame
-          let delta = 0.5;
-          let velocity =
-            index % 2 === 0 ? { x: delta, y: 0 } : { x: 0, y: delta };
+          let velocity = index % 2 === 0 ? { x: 1, y: 0 } : { x: 0, y: 1 };
+          console.log("frame", frameBounds);
+          console.log("image", imgBounds);
+          console.log("range", range);
+          console.log("position", position);
 
           // on click, swap between vertical and horizontal movement
           img.addEventListener("click", () => {
@@ -138,7 +110,7 @@
       function step() {
         for (const [img, state] of imgStates.entries()) {
           const { position, velocity, range } = state;
-
+          console.log(img, position, velocity, range);
           position.x = clamp(position.x + velocity.x, range.xmax, range.xmin);
           position.y = clamp(position.y + velocity.y, range.ymax, range.ymin);
           img.style.left = position.x + "px";
