@@ -84,14 +84,13 @@
 
   <script type="text/javascript">
     (function () {
-      // img element -> image state
-      const imgStates = new Map();
+      // animation state maps <img> elements -> { position, velocity, range }
+      const state = new Map();
 
       // init queries the dom and sets up initial state
-      function init() {
-        document.querySelectorAll(".frame").forEach((frame, index) => {
-          let frameBounds = frame.getBoundingClientRect();
-          let img = frame.querySelector("img");
+      function init(images) {
+        images.forEach((img, index) => {
+          let frameBounds = img.offsetParent.getBoundingClientRect();
           let imgBounds = img.getBoundingClientRect();
 
           // concrete starting position of <img> within parent frame
@@ -110,8 +109,7 @@
 
           // initial velocity, alternating initial axis for each frame
           let delta = 0.5;
-          let velocity =
-            index % 2 === 0 ? { x: delta, y: 0 } : { x: 0, y: delta };
+          let velocity = index % 2 === 0 ? { x: delta, y: 0 } : { x: 0, y: delta };
 
           // on click, swap between vertical and horizontal movement
           img.addEventListener("click", () => {
@@ -124,7 +122,7 @@
             }
           });
 
-          imgStates.set(img, {
+          state.set(img, {
             position,
             velocity,
             range,
@@ -136,9 +134,7 @@
 
       // step executes a single step of the animation
       function step() {
-        for (const [img, state] of imgStates.entries()) {
-          const { position, velocity, range } = state;
-
+        for (const [img, { position, velocity, range }] of state.entries()) {
           position.x = clamp(position.x + velocity.x, range.xmax, range.xmin);
           position.y = clamp(position.y + velocity.y, range.ymax, range.ymin);
           img.style.left = position.x + "px";
@@ -162,7 +158,30 @@
         return n;
       }
 
-      init();
+      // ensure all images are loaded before initializing animation, so we can
+      // calculate their dimensions and positions correctly.
+      //
+      // the next function is called with the array of images elements once all
+      // are loaded.
+      function load(next) {
+        const images = document.querySelectorAll('.frame img');
+        let loaded = 0;
+        let needed = images.length;
+
+        function onLoad(img) {
+          loaded++;
+          if (loaded === needed) {
+            console.log("done loading", images);
+            next(images);
+          }
+        }
+
+        images.forEach(img => {
+          img.complete ? onLoad() : img.addEventListener('load', onLoad);
+        });
+      }
+
+      load(init);
     })();
   </script>
 </html>
