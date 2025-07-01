@@ -5,17 +5,16 @@
 Per [the web site][ht]'s intro:
 
 > The original [Humor Tree][ht] was a turn-of-the century [net.art][] project
-> developed at the tail end of my high school career for entry in a senior-year
-> art competition hosted by the [Longview Museum of Fine Arts][lmfa] in
-> [Longview, Texas][lv].
+> developed at the tail end of my high school career for entry in the annual
+> senior-year art competition hosted by the [Longview Museum of Fine
+> Arts][lmfa] in [Longview, Texas][lv].
 >
-> Despite the enthusiastic support of the director of the LMFA and one of two
-> art teachers on staff — I will always be grateful to you both, [Carolyn
-> Fox-Hearne][cfh] and Ellen Herbert! — plus the generous sponsorship of the
-> local Best Buy, this project was held out of that art competition by the
+> Ultimately, this project was held out of that art competition by the
 > administrators of [Longview High School][lhs] and the Longview Independent
-> School District because I refused to censor the project by removing a few
-> dirty words and a handful of disembodied (and allmost entirely male) nipples.
+> School District, despite the enthusiastic support of an art teacher on staff,
+> the director of the art museum, and the generous sponsorship of the local
+> Best Buy. All because I refused to censor it by removing a few dirty words
+> and a handful of disembodied (and allmost entirely male) nipples.
 >
 > All of the code was written very badly by a novice programmer for very old
 > web browsers, using very outdated Web programming techniques. In the
