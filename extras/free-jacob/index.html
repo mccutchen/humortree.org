@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>!!! FREE JACOB BAILEY !!!</title>
+
+    <script language="javascript">
+        var reds = new Array("#ff0000", "#cc0000", "#990000", "#660000");
+        var fadenum = 0;
+        var sr, sg, sb, er, eg, eb, step, i;
+        var count = 0;
+
+        function startfade() {
+            fadenum++;
+            if ((fadenum % 2) == 0) // means it is even
+                fadeout();
+            else
+                fadein();
+        }
+
+        function makearray(n) {
+            this.length = n;
+            for (var i = 1; i <= n; i++)
+                this[i] = 0;
+            return this;
+        }
+
+        hexa = new makearray(16);
+
+        for (var i = 0; i < 10; i++) hexa[i] = i;
+        hexa[10] = "a"; hexa[11] = "b"; hexa[12] = "c";
+        hexa[13] = "d"; hexa[14] = "e"; hexa[15] = "f";
+
+        function hex(i) {
+            if (i < 0) return "00";
+            else if (i > 255) return "ff";
+            else return "" + hexa[Math.floor(i / 16)] + hexa[i % 16];
+        }
+
+        function setbgColor(r, g, b) {
+            var hr = hex(r); var hg = hex(g); var hb = hex(b);
+            //alert("#"+hr+hg+hb);
+            document.bgColor = "#" + hr + hg + hb;
+        }
+        function fade() {
+            if (count <= step) {
+                //alert(count);
+                setbgColor(Math.floor(sr * ((step - count) / step) + er * (count / step)), Math.floor(sg * ((step - count) / step) + eg * (count / step)), Math.floor(sb * ((step - count) / step) + eb * (count / step)));
+                count++;
+                setTimeout("fade();", 10);
+            }
+            else {
+                count = 0;
+                startfade();
+            }
+        }
+
+        function setvars(_sr, _sg, _sb, _er, _eg, _eb, _step) {
+            sr = _sr;
+            sg = _sg;
+            sb = _sb;
+            er = _er;
+            eg = _eg;
+            eb = _eb;
+            step = _step;
+        }
+
+        function fadein() {
+
+            setvars(255, 0, 0, 100, 0, 0, 255);
+            fade();
+        }
+        function fadeout() {
+            setvars(100, 0, 0, 255, 0, 0, 255);
+            fade();
+        }
+
+    </script>
+
+    <style type="text/css">
+        .headline {
+            font: 48px arial;
+            font-weight: bold;
+            color: black;
+        }
+
+        .lefttext {
+            font: 16px arial;
+            font-weight: bold;
+            color: black;
+        }
+
+        a,
+        a:link,
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: black;
+        }
+
+        .righttext {
+            font: 24px arial;
+            font-weight: bold;
+            color: black;
+        }
+
+        .formtext {
+            font: 36px arial;
+            font-weight: bold;
+            color: black;
+        }
+
+        .inputstyle {
+            font: 12px arial;
+            border: 1px solid black;
+            color: black;
+            background-color: #cc0000;
+            text-align: center;
+            width: 550px;
+        }
+
+        .submitstyle {
+            font: 12px arial;
+            border: 1px solid black;
+            color: black;
+            background-color: #990000;
+            text-align: center;
+            width: 550px;
+        }
+    </style>
+
+</head>
+
+<body bgcolor="red" onload="startfade();">
+    <table align="center" border="0" cellpadding="0" cellspacing="10" width="550">
+        <tr>
+            <td class="headline" colspan="3" align="center" width="511">FREE JACOB BAILEY!</td>
+        </tr>
+        <tr>
+            <td class="lefttext" width="45%">
+                he is an artist and a poet. he is a pioneer. he chose to exercise his first
+                amendment rights by creating fake identification cards.
+                <br>
+                <br>
+                this was an art project. tremendous care and effort went into the creation
+                of his fake licenses.
+                <br>
+                <br>
+                is he to blame if the people he sold his cards to were immature enough to ask
+                for their date of birth to be modified to make them appear to be 21 years old?
+                <br>
+                <br>
+                is he to blame for their abuse of his art project?
+                <br>
+                <br>
+                NO!
+                <br>
+                <br>
+                he is going to be arrested tomorrow, if the police come to the conclusion that
+                he can be prosecuted.
+            </td>
+            <td width="10%">&nbsp;</td>
+            <td class="righttext" width="45%">
+                JACOB IS IN A BAD PLACE RIGHT NOW, MENTALLY. HE FEELS THAT HE IS ALL ALONE.
+                HE THINKS HE HAS TO FIGHT THE MAN ALL BY HIMSELF. PLEASE TAKE THE TIME TO
+                SIGN THE PETITION BELOW, TO TELL HIM THAT HE IS NOT ALONE, THAT PEOPLE DO CARE.
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3"><br></td>
+        </tr>
+        <form action="#" method="POST">
+            <tr>
+                <td class="formtext" colspan="3" align="center"><b>I SUPPORT YOU, JACOB!</b></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="username" value="(name)" class="inputstyle"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="text" name="email" value="(email address)" class="inputstyle"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="COURAGE, JACOB, COURAGE" class="submitstyle"><input
+                        type="hidden" name="redirectTo" value="../HT/colorfade/index.html" class="submitstyle"></td>
+            </tr>
+        </form>
+        <tr>
+            <td colspan="3" class="lefttext" align="center">
+                <br><a href="/">OR CONTINUE INTO HUMOR TREE</a>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3">
+                <br>
+                <br>
+                <font size="1" face="arial">Made possible by
+                    <a href="https://design.humortree.org/" target="_new">The Humor Tree Design Coalition</a>,
+                    <a href="/">Humortree.org</a>
+                    &amp;
+                    <a href="https://web.archive.org/web/20010411162058/http://www.horcob.org/" target="_new">Horcob.org</a>
+                </font>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
+<!--
+     FILE ARCHIVED ON 16:20:58 Apr 11, 2001 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:34:46 Jul 01, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
