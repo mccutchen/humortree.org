@@ -15,6 +15,7 @@ body {
     max-width: 40rem;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    background-color: #fefefe;
     /* line-height: 1.2; */
 }
 
@@ -88,4 +89,36 @@ li span.date {
     display: block;
     margin-bottom: 0.33rem;
     white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ccc;
+    }
+
+    ol li:before {
+        color: #666;
+    }
+
+    ol li:hover:before {
+        color: #e6e6e6;
+    }
+
+    footer {
+        color: #999;
+    }
+
+    a {
+        color: #ff66b3;
+    }
+
+    a:visited {
+        color: #cc8dcc;
+    }
+
+    a:hover {
+        color: white;
+        background-color: #ff66b3;
+    }
 }
