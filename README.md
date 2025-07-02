@@ -2,6 +2,8 @@
 
 <img src="./original/ht/images/tree_bg.gif">
 
+---
+
 Per [the web site][ht]'s intro:
 
 > The original [Humor Tree][ht] was a turn-of-the century [net.art][] project
@@ -9,18 +11,20 @@ Per [the web site][ht]'s intro:
 > senior-year art competition hosted by the [Longview Museum of Fine
 > Arts][lmfa] in [Longview, Texas][lv].
 >
-> Ultimately, this project was held out of that art competition by the
-> administrators of [Longview High School][lhs] and the Longview Independent
-> School District, despite the enthusiastic support of an art teacher on staff,
-> the director of the art museum, and the generous sponsorship of the local
-> Best Buy. All because I refused to censor it by removing a few dirty words
-> and a handful of disembodied (and allmost entirely male) nipples.
+> Despite the enthusiastic support of an art teacher at the school, the
+> director of the museum itself, and the generous sponsorship of the local Best
+> Buy, this project was barred from that competition first by the
+> administrators of [Longview High School][lhs] and then by the assistant
+> superintendent of the school district, all because I refused to remove a mild
+> swear and a handful of disembodied (and almost entirely male) nipples.
 >
 > All of the code was written very badly by a novice programmer for very old
-> web browsers, using very outdated Web programming techniques. In the
-> intervening decades (!!!) I have made minimal updates to try to keep things
-> working in modern browsers while retaining the character of the original
-> (awful) code, but there is undoubtedly still some brokenness throughout.
+> web browsers, using what were then _cutting-edge_ Web programming techniques
+> which are now mostly outdated and/or broken.
+>
+> In the intervening decades (!!!) I have made minimal updates to try to keep
+> things working in modern browsers while retaining the (awful) character of
+> the original code, but there is undoubtedly still some brokenness throughout.
 
 ---
 
