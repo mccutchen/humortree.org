@@ -6,7 +6,7 @@
 
 Per [the web site][ht]'s intro:
 
-> The original [Humor Tree][ht] was a turn-of-the century [net.art][] project
+> The original [Humor Tree][ht] was a turn-of-the century internet art project
 > developed at the tail end of my high school career for entry in the annual
 > senior-year art competition hosted by the [Longview Museum of Fine
 > Arts][lmfa] in [Longview, Texas][lv].
@@ -42,7 +42,6 @@ combination of old backups and the Internet Archive's invaluable Wayback
 Machine.
 
 [ht]: https://humortree.org/
-[net.art]: https://en.wikipedia.org/wiki/Net.art
 [lmfa]: https://www.lmfa.org/
 [lv]: https://en.wikipedia.org/wiki/Longview%2C_Texas
 [lhs]: https://en.wikipedia.org/wiki/Longview_High_School
