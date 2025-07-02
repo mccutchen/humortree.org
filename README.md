@@ -1,4 +1,6 @@
-<h2 align="center" style="border:none;">Humor Tree</h2>
+<h3 align="center" style="border:none;">Humor Tree</h3>
+
+---
 
 <img src="./original/ht/images/tree_bg.gif">
 
