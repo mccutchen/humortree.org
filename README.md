@@ -1,4 +1,4 @@
-# humor tree
+<h2 align="center">Humor Tree</h2>
 
 <img src="./original/ht/images/tree_bg.gif">
 
