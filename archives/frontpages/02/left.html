@@ -3,24 +3,25 @@
 <html>
 <head>
 	<title>HUMORTREE</title>
-		 
+
 	<script language="javascript">
 		function test()
 		{
-			if(document.all)
-				window.parent.right.location = "ie_list.html";
-			else if(document.layers)
+			if (document.layers) {
 				window.parent.right.location = "ns_list.html";
+			} else {
+				window.parent.right.location = "ie_list.html";
+			}
 		}
 	</script>
-	
+
 	<style type="text/css">
 		.humor
    	{
    		font: bold 48pt arial;
    		color: #888888;
 		}
-			 
+
 	 	.tree
 	 	{
 			color: #999999;
@@ -32,26 +33,26 @@
 			top: 0px;
 			left: 0px;
 		}
-		
+
 		.divider
 		{
 			color: #999999;
 			font: bold 24pt arial;
 		}
-				
+
 		a:link, a:visited
 		{
 			font: bold 18pt arial;
 			color: #999999;
 			text-decoration: none;
 		}
-		
+
 		a:hover,a:active
 	 	{
 			color: white;
 			text-decoration: none;
 		}
-		
+
 		.cap
 		{
 			font: bold 18pt arial;
@@ -72,7 +73,7 @@
 	<table border="0" cellpadding="0" cellspacing="10" align="left" width="450">
 	<tr>
 		<td class="head" align="left" valign="top">
-			<a href="ht/index.html" target="_parent">"WHOLE TREE"</a>
+			<a href="/original/ht/" target="_parent">"WHOLE TREE"</a>
 		</td>
 	</tr>
 	<tr>
@@ -103,8 +104,8 @@
 		</td>
 	</tr>
 	</table>
-	
-	
+
+
 </div>
 
 
