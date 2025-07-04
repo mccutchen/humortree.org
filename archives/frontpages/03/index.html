@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -32,7 +32,7 @@
 		}
 	</style>
 	<script language="javascript">
-		
+
 		var nspages = new Array("colorfade","will2","dim_the_lights","ill-fated","frames","bricks","will","drugs","circles","squares","ht");
 		var nsno = new Array("stripes","voyeur","grid","reminder","herman","smalltype","fotograf","swear","colors","kid","this_is","liberty","no","nipples");
 		var allpages = new Array("colorfade","will2","dim_the_lights","stripes","ill-fated","frames","voyeur","grid","reminder","herman","smalltype","fotograf","swear","bricks","colors","kid","this_is","liberty","no","will","nipples","drugs","circles","squares","ht");
@@ -40,8 +40,8 @@
 		function list()
 		{
 			var str = "";
-			var link_pre = "<a target=\"_parent\" href=\"";
-			var link_post = "/index.html\">";
+			var link_pre = "<a target=\"_parent\" href=\"/original/";
+			var link_post = "/\">";
 			var link_close = "</a><br>";
 
 			if(document.all)
@@ -57,7 +57,7 @@
 			}
 			else if(document.getElementById)
 			{
-				for(var i = 0; i < ns6pages.length; i++)
+				for(var i = 0; i < allpages.length; i++)
 					str += link_pre + allpages[i] + link_post + allpages[i] + link_close;
 			}
 
@@ -67,16 +67,12 @@
 		function nolist()
 		{
 			var str = "";
-			if(document.all)
-			{
+			if (document.layers) {
+				for (var i = 0; i < nsno.length; i++)
+					str += nsno[i] + "<br>";
+			} else {
 				str = "<i>none</i>";
 			}
-			else if(document.layers)
-			{
-				for(var i = 0; i < nsno.length; i++)
-					str += nsno[i] + "<br>";
-			}
-
 			return str;
 		}
 	</script>
@@ -135,7 +131,7 @@
 			</td>
 			<td rowspan="2" align="left" valign="top" class="text2" width="150">
 				<div>
-					<b><a href="../design/index.html" target="_new">*NEW*  The HTDC arrives!</a></b><br>
+					<b><a href="https://design.humortree.org/" target="_new">*NEW*  The HTDC arrives!</a></b><br>
 					<script language="javascript">
 						document.write(list());
 					</script>
