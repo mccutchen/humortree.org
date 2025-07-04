@@ -18,19 +18,19 @@ var ns6 = new Array(1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
 function LIST_print(browser)
 {
-	var a_start = "<a href=\"";
-	var a_middle = "/index.html\" target=\"_parent\">";
+	var a_start = "<a href=\"/original/";
+	var a_middle = "/\" target=\"_parent\">";
 	var a_end = "</a><br>";
 	var noa_end = "<br>";
 	var string = "";
-	
+
 	if(browser == "ie")
 		browser = ie;
 	else if(browser == "ns4")
 		browser = ns4;
 	else if(browser == "ns6")
 		browser = ns6;
-	
+
 	for(var i = 0; i < pages.length; i++)
 	{
 		if(browser[i])
@@ -38,7 +38,7 @@ function LIST_print(browser)
 		else if(!browser[i])
 			string += pages[i] + noa_end;
 	}
-	
+
 	return string;
 }
 
